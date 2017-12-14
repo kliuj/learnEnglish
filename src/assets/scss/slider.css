@@ -1,0 +1,110 @@
+.slider{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height:160px;
+}
+.slider:after{
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 50%;
+}
+.slider ul{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+	-webkit-transition: transform 0.3s cubic-bezier(0.22, 0.69, 0.72, 0.88);
+  transition: transform 0.3s cubic-bezier(0.22, 0.69, 0.72, 0.88); 
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+  z-index: 0;
+  overflow-x: visible;
+}
+.slider li{
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*display: none*/
+    z-index: 0
+}
+.show{
+  /*z-index: 50 !important;*/
+}
+.slideLiShow{
+  z-index: 50 !important;
+  animation:myanimationmyanimation 1s;
+-moz-animation:myanimation 1s; /* Firefox */
+-webkit-animation:myanimation 1s; /* Safari and Chrome */
+-o-animation:myanimation 1s; /* Opera */
+}
+.slider li span{
+  display:table-cell
+}
+.slider li img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.slider .dot{
+    position: absolute;
+    left:50%;
+    bottom: 10px;
+    font-size: 0;
+}
+.slider .dot span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin:0 5px;
+    border: 1px solid #1fbad6;
+    border-radius: 50%;
+    background: #ffffff;
+
+}
+.slider .dot .cur{
+    background-color: #1fbad6;
+}
+@keyframes myanimation
+{
+from {opacity:0.2;}
+to {opacity:1;}
+}
+
+@-moz-keyframes myanimation /* Firefox */
+{
+from {opacity:0.2;}
+to {opacity:1;}
+}
+
+@-webkit-keyframes myanimation /* Safari and Chrome */
+{
+from {opacity:0.2;}
+to {opacity:1;}
+}
+
+@-o-keyframes myanimation /* Opera */
+{
+from {opacity:0.2;}
+to {opacity:1;}
+}
+/*.sliderLi1{
+-webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);
+}
+.slideLi2{
+-webkit-transform: translate3d(320px, 0px, 0px); transform: translate3d(320px, 0px, 0px);
+}
+.slideLi3{
+-webkit-transform: translate3d(640px, 0px, 0px); transform: translate3d(640px, 0px, 0px);
+}
+.slideLi4{
+-webkit-transform: translate3d(980px, 0px, 0px); transform: translate3d(980px, 0px, 0px);
+}*/

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="">
+<title>LEDGE</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="copyright" content="">
+<script>
+  // function includeLinkStyle(url) {
+  //    var link = document.createElement("link");
+  //    link.rel = "stylesheet";
+  //    link.type = "text/css";
+  //    link.href = url+"?v="+Date.now();;
+  //    document.getElementsByTagName("head")[0].appendChild(link);
+  // }
+  // includeLinkStyle('Assets/CSS/global.css')
+  // includeLinkStyle('Assets/CSS/main.css')
+  // includeLinkStyle('Assets/CSS/main-res.css')
+  // includeLinkStyle('Assets/CSS/icons.css')
+  document.write('<link href="css/style.min.css?version='+Date.now()+'" rel="stylesheet">')
+</script>
+</head>
+<body class="ui-mobile-viewport ui-overlay-a">
+<div id="app" ></div>
+<div id="qhCommonLoading" class="wx_loading" style="display:block">
+    <div class="wx_loading_inner">
+        <i class="wx_loading_icon"></i>泉亨 · 钱钞藏家社区
+    </div>
+</div>
+<script type="text/javascript" src="lib/promise.js"></script>
+<script type="text/javascript">
+  // function loadInit(){
+  //     var origin = location.origin.indexOf("localhost") > -1 ? '//test.chuenhang.com' : location.origin;
+  //     $.ajax({
+  //       url:origin + '/DuoBao/api/Common/GetWxGzhJsApiConfig',
+  //       type:'post',
+  //       contentType:'application/json',
+  //       data:JSON.stringify({'url':location.href.split("#")[0]}),
+  //       // timeout:50,
+  //       success:function(d){
+  //         wx.config({
+  //           debug: false, //
+  //           appId: d.AppId, // 必填，公众号的唯一标识
+  //           timestamp: d.Timestamp, // 必填，生成签名的时间戳
+  //           nonceStr: d.NonceStr, // 必填，生成签名的随机串
+  //           signature: d.Signature,
+  //           jsApiList: ['chooseWXPay','onMenuShareTimeline','onMenuShareAppMessage'] //
+  //         });
+  //       }
+  //     })
+
+  // //处理客户端缓存问题
+  //   var _head = document.getElementsByTagName('HEAD').item(0);
+  //   function addJs(src,version){
+  //     var oScript= document.createElement("script");
+  //     oScript.type = "text/javascript";
+  //     oScript.src=src+"?v="+version;
+  //     _head.appendChild(oScript);
+  //   }
+  //   // function includeLinkStyle(url,version) {
+  //   //    var link = document.createElement("link");
+  //   //    link.rel = "stylesheet";
+  //   //    link.type = "text/css";
+  //   //    link.href = url+"?v="+version;;
+  //   //    document.getElementsByTagName("head")[0].appendChild(link);
+  //   // }
+  //   //获取版本号
+  //   var getAppVer = new Promise(function(resolve,reject){
+  //         $.ajax({
+  //           url:origin + '/DuoBao/api/Common/GetCurrentVersion',
+  //           type:'post',
+  //           data:{},
+  //           cache:false,
+  //           ifModified :true ,
+  //           timeout:10000,
+  //           success:function(d){
+  //             var version = d.Version;
+  //             if(localStorage.getItem('appVersion') != version){
+  //                 localStorage.setItem('appVersion',JSON.stringify(version));
+  //             }
+  //             resolve(version.replace(/\./g,''));
+  //           },
+  //           error:function(){
+  //              var dateNow = Date.now();
+  //              resolve(dateNow)
+  //           }
+  //         })
+  //   })
+  //   //随机生成设备号
+  //   var getDevice = new Promise(function(resolve,reject){
+  //         if(!localStorage.getItem('generateDeviceId')){
+  //               $.ajax({
+  //                 url:origin + '/DuoBao/api/Common/GenerateDeviceId',
+  //                 type:'post',
+  //                 data:{},
+  //                 cache:false,
+  //                 ifModified :true ,
+  //                 timeout:10000,
+  //                 success:function(d){
+  //                    localStorage.setItem('generateDeviceId',JSON.stringify(d.DeviceId));
+  //                    resolve()
+  //                 },
+  //                 error:function(){
+  //                    var dateNow = Date.now();
+  //                    localStorage.setItem('generateDeviceId',JSON.stringify(dateNow));
+  //                    resolve()
+  //                 }
+  //               })
+  //         }else {
+  //           resolve()
+  //         }
+  //   })
+  //   Promise.all([getAppVer,getDevice]).then(function(result){
+  //     var version = result[0];
+  //     // addJs('js/common.min.js',version);
+  //     // includeLinkStyle('Assets/CSS/css.css',version)
+  //     // addJs('js/main.min.js',version);
+  //   })
+  // }
+</script>
+<script src="lib/zepto.min.js" type="text/javascript" onload="loadInit()"></script>
+</body>
+</html>
