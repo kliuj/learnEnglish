@@ -310,7 +310,7 @@ img {
 	height: 100%;
 	line-height: 20px;
 	font-size: 1.4em;
-	color: #000000
+	color: #021132
 }
 .gb-listview > ul > li > a {text-decoration: none}
 .gb-listview > ul > li > div:after,
@@ -329,7 +329,6 @@ img {
 .gb-listview > ul > li > div > p:not(:first-child) {margin-top: 10px}
 
 .gb-listview > ul > li img {vertical-align: top}
-.gb-listview > ul > li img.full-width {width: 100%}
 
 .gb-listview > ul > li > ul.gallery {
 	margin: 0;
@@ -423,12 +422,14 @@ img {
 .gb-listview > ul > li > a > em.f-l {
 	clear: left;
 	float: left;
+	max-width: 50%;
 	text-align: left
 }
 .gb-listview > ul > li > div > em.f-r,
 .gb-listview > ul > li > a > em.f-r {
 	clear: right;
 	float: right;
+	max-width: 50%;
 	text-align: right
 }
 .gb-listview > ul > li > a.arrow {padding-right: 20px}
@@ -540,7 +541,7 @@ img {
     width: calc(100% - 32px);
     width: -webkit-calc(100% - 32px);
 	width: -moz-calc(100% - 32px);
-	color: #000000
+	color: #021132
 }
 .gb-listview.gb-listview-form > ul > li > div.checkbox > span,
 .gb-listview.gb-listview-form > ul > li > div.radio > span {
@@ -582,7 +583,7 @@ img {
 	vertical-align: top;
 	font-family: 'Segoe UI',Arial,'Microsoft Yahei',sans-serif;;
 	font-size: 1.0em;
-	color: #000000;
+	color: #021132;
 	outline: none
 }
 
@@ -603,8 +604,8 @@ img {
 }
 .gb-listview.gb-listview-form input[type="checkbox"]:checked,
 .gb-listview.gb-listview-form input[type="radio"]:checked {
-	border-color: #021132;
-	background-image: url(../Images/Common/gb_listview_checked.svg);
+	border-color: #588ed4;
+	background-image: url(../Images/gb_listview_checked.svg);
 	background-size: 16px 16px;
 	background-repeat: no-repeat;
 	background-position: center center
@@ -615,21 +616,27 @@ img {
 	margin: 0;
 	padding: 0
 }
+.gb-listview.gb-listview-form ul.file-group:after {
+	clear: both;
+	display: block;
+	content: ""
+}
 .gb-listview.gb-listview-form ul.file-group li {
 	position: relative;
 	float: left;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	width: 64px;
     height: 64px;
 	padding: 0;
 	list-style: none
 }
 .gb-listview.gb-listview-form ul.file-group li:not(:last-child) {margin-right: 10px}
-.gb-listview.gb-listview-form ul.file-group li.file-img img {
+.gb-listview.gb-listview-form ul.file-group li.item img {
 	width: 100%;
 	height: 100%
 }
-.gb-listview.gb-listview-form ul.file-group li.file-img .remove {
+.gb-listview.gb-listview-form ul.file-group li.item .remove {
 	position: absolute;
 	top: -4px;
 	left: -4px;
@@ -638,22 +645,22 @@ img {
 	-moz-border-radius: 50%;
 	width: 16px;
 	height: 16px;
-	background-image: url(../Images/Common/gb_listview_remove.svg);
+	background-image: url(../Images/gb_listview_remove.svg);
 	background-size: 12px 12px;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: #e3e6e9
 }
-.gb-listview.gb-listview-form ul.file-group li.file-uploader {
+.gb-listview.gb-listview-form ul.file-group li.uploader {
 	width: 64px;
 	height: 64px;
 }
-.gb-listview.gb-listview-form ul.file-group li.file-uploader label {
+.gb-listview.gb-listview-form ul.file-group li.uploader label {
 	position: relative;
 	display: block;
 	margin: 0;
 	height: 100%;
-	background-image: url(../Images/Common/gb_listview_uploader.svg);
+	background-image: url(../Images/gb_listview_uploader.svg);
 	background-size: 32px 32px;
 	background-repeat: no-repeat;
 	background-position: top 10px center;
@@ -662,7 +669,7 @@ img {
 	font-size: 1.2em;
 	color: #333333
 }
-.gb-listview.gb-listview-form ul.file-group li.file-uploader label:after {
+.gb-listview.gb-listview-form ul.file-group li.uploader label:after {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -673,7 +680,7 @@ img {
 	text-align: center;
 	content: attr(data-text)
 }
-.gb-listview.gb-listview-form ul.file-group li.file-uploader input[type="file"] {display: none}
+.gb-listview.gb-listview-form ul.file-group li.uploader input[type="file"] {display: none}
 
 .gb-listview.gb-listview-form select {
 	appearance: none;
@@ -691,7 +698,7 @@ img {
 	vertical-align: top;
 	font-family: 'Segoe UI',Arial,'Microsoft Yahei',sans-serif;
 	font-size: 1.0em;
-	color: #000000;
+	color: #021132;
 	outline: none
 }
 .gb-listview.gb-listview-form select option {font-size: 1.0em}
@@ -709,7 +716,7 @@ img {
 	background-color: #ffffff;
 	font-family: 'Segoe UI',Arial,'Microsoft Yahei',sans-serif;
 	font-size: 1.0em;
-	color: #000000;
+	color: #021132;
 	outline: none
 }
 

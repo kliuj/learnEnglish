@@ -10,15 +10,7 @@ module.exports = {
         './src/main',
         './src/assets/scss/common.css',
         './Assets/CSS/global.css',
-        './Assets/CSS/main.css',
-        './Assets/CSS/songping.css',
-        './Assets/CSS/weipai.css',
-        './Assets/CSS/icons.css',
-        './Plugins/font-awesome/css/font-awesome.css',
-        './Plugins/jQueryMobile/css/jquery.mobile.structure-1.4.5.css',
-        './Plugins/jQueryMMenu/css/jquery.mmenu.all.css',
-        './Plugins/jQueryMMenu/extensions/themes/jquery.mmenu.themes.css',
-        './Plugins/jQueryMMenu/extensions/pageshadow/jquery.mmenu.pageshadow.css'
+        './Plugins/font-awesome/css/font-awesome.min.css'
     ],
     // 输出
     output: {
@@ -89,7 +81,7 @@ module.exports = {
         //   $: 'webpack-zepto'
         // }),
         new HtmlWebpackPlugin({
-         template: 'duobao.html',
+         template: 'index.html',
         //  filename:'duobao.html',//输出文件名，默认是index
          minify:{    //压缩HTML文件
                  removeComments:true,    //移除HTML中的注释
@@ -115,9 +107,9 @@ module.exports = {
         // 别名，可以直接使用别名来代表设定的路径以及其他
         alias: {
             'vue': 'vue/dist/vue.js',
-            'vue-swiper':path.join(__dirname, './src/plugins/swiper/vue-swiper'),
+            'vue-swiper':path.join(__dirname, './src/components/swiper/vue-swiper'),
             filter: path.join(__dirname, './src/filters'),
-            components: path.join(__dirname, './src/components')
+            components: path.join(__dirname, './src/pages')
         }
     }
     // externals: {

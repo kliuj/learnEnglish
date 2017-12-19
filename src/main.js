@@ -12,7 +12,7 @@ Vue.config.productionTip = isDebug_mode;
 import router from './routers';
 import store from './store'
 
-import VueLazyload  from './plugins/lazyLoad/vue-lazyload'
+import VueLazyload  from './components/lazyLoad/vue-lazyload'
 
 Vue.use(VueLazyload, {
   error: './CommonImages/loading.jpg',
@@ -24,7 +24,7 @@ Vue.use(VueLazyload, {
 // VueMessageMask.install(Vue)
 // Vue.use(VueMessageMask)
 
-const App =Vue.extend(require('./components/app.vue'))
+const App =Vue.extend(require('./pages/app.vue'))
 
 const app = new Vue({
   el : '#app',

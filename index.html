@@ -12,30 +12,19 @@
 <meta name="keywords" content="">
 <meta name="copyright" content="">
 <script>
-  // function includeLinkStyle(url) {
-  //    var link = document.createElement("link");
-  //    link.rel = "stylesheet";
-  //    link.type = "text/css";
-  //    link.href = url+"?v="+Date.now();;
-  //    document.getElementsByTagName("head")[0].appendChild(link);
-  // }
-  // includeLinkStyle('Assets/CSS/global.css')
-  // includeLinkStyle('Assets/CSS/main.css')
-  // includeLinkStyle('Assets/CSS/main-res.css')
-  // includeLinkStyle('Assets/CSS/icons.css')
   document.write('<link href="css/style.min.css?version='+Date.now()+'" rel="stylesheet">')
 </script>
 </head>
-<body class="ui-mobile-viewport ui-overlay-a">
+<body>
 <div id="app" ></div>
 <div id="qhCommonLoading" class="wx_loading" style="display:block">
     <div class="wx_loading_inner">
-        <i class="wx_loading_icon"></i>泉亨 · 钱钞藏家社区
+        <i class="wx_loading_icon"></i>LEDGE
     </div>
 </div>
 <script type="text/javascript" src="lib/promise.js"></script>
 <script type="text/javascript">
-  // function loadInit(){
+   function loadInit(){
   //     var origin = location.origin.indexOf("localhost") > -1 ? '//test.chuenhang.com' : location.origin;
   //     $.ajax({
   //       url:origin + '/DuoBao/api/Common/GetWxGzhJsApiConfig',
@@ -122,7 +111,7 @@
   //     // includeLinkStyle('Assets/CSS/css.css',version)
   //     // addJs('js/main.min.js',version);
   //   })
-  // }
+   }
 </script>
 <script src="lib/zepto.min.js" type="text/javascript" onload="loadInit()"></script>
 </body>

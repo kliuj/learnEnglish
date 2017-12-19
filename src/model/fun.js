@@ -14,7 +14,7 @@
     //失败回调。可不传，但是这个function必须写，不然promise 的reject会报错
   });
 */
-import VueMessageMask from '../plugins/mask';
+import VueMessageMask from '../components/mask';
 
 export default class Fun {
   constructor() {
