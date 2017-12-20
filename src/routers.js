@@ -1,9 +1,8 @@
 'use strict'
 
-import api from './model/api.js'
-let baseApi = new api ();
-import fun from './model/fun.js'
-let baseFun = new fun ();
+// import api from './model/api.js'
+// let baseApi = new api ();
+import {hideLoading} from './model/fun.js'
 import VueRouter from "vue-router";
 import Vue from "vue";
 
@@ -15,13 +14,102 @@ const routes = [
     	path:'/index',
     	name:'index',
 		meta: { 
-			notRequiresAuth: true
+			needRequiresAuth: true
 		},
     	component:function (resolve) {
-				//打包分开的文件异步加载
 	      require(['./pages/about/about.vue'], resolve)
 	    }
-    },
+	},
+	{
+		path:'/timeline',//学习时间轴
+		name:'timeline',
+		meta: { 
+			needRequiresAuth: true
+		},
+		component:function (resolve) {
+			require(['./pages/timeline/timeline.vue'], resolve)
+		}
+	},
+	{
+    	path:'/ivite',//邀请好友
+    	name:'ivite',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/ivite/ivite.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/courseIndex',//优选课程
+    	name:'courseIndex',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/courses/index.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/upgrade',//升级账户
+    	name:'upgrade',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/account/upgrade.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/activity',//实战活动
+    	name:'activity',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/activities/index.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/credits',//我的积分
+    	name:'credits',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/account/credits.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/activityDetail',//活动详情
+    	name:'activityDetail',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/activities/details.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/courseDetail',//课程详情
+    	name:'courseDetail',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/courses/details.vue'], resolve)
+	    }
+	},
+	{
+    	path:'/about',
+    	name:'about',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/about/about.vue'], resolve)
+	    }
+	},
     {
         path: '*',
         redirect: { name: 'index' }
@@ -71,7 +159,7 @@ let router = new VueRouter({
 //
 router.afterEach(route => {
     // wx.hideOptionMenu();
-    baseFun.hideLoading()
+    hideLoading()
     window.scrollTo(0,0);
 })
 

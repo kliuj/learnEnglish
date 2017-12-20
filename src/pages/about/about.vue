@@ -5,9 +5,7 @@
     <div class="page pg-about">
         <!-- HEADER -->
         <header class="gb-header">
-            <div class="header-left">
-                <Header />
-            </div>
+            <Header />
             <h1 class="has-icon">关于 LEDGE</h1>
         </header>
         <!-- //HEADER -->

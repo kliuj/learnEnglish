@@ -1,16 +1,14 @@
 <template>
-    <div class="page pg-account pg-account-upgrade">
+    <div class="screen">
         <!-- HEADER -->
         <header class="gb-header">
             <Header />
-            <h1 class="has-icon">升级帐户</h1>
+            <h1 class="has-icon">邀请同学</h1>
         </header>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
         <div class="mainview">
-            <section class="">
-                <h2>成为VIP会员</h2>
-            </section>
+            
         </div>
         <!-- //MAINVIEW -->
     </div>

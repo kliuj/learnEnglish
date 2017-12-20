@@ -11,7 +11,7 @@
             <!-- ACTIVITY DETAILS -->
             <section class="activity-details">
                 <div class="activity-summary">
-                    <div class="activity-poster"><img src="<%=basePath%>Webapp/Assets/Images/temp_900x500.jpg"></div>
+                    <div class="activity-poster"><img src="../../../Assets/Images/temp_900x500.jpg"></div>
                 </div>
                 <div class="gb-listview">
                     <ul>
@@ -61,12 +61,12 @@
             </section>
             <!-- //ACTIVITY DETAILS -->
             <!-- BUY ACTIVITY -->
-            <section class="quick-buy">
+            <section class="quick-buy" v-show="modalVisiable">
                 <div class="modal"></div>
                 <div class="container">
                     <div class="hd">
                         <div class="title">购买入场券</div>
-                        <a href="" class="cancel">取消</a>
+                        <a href="javascript:void(0)" class="cancel" @click="hideModal">取消</a>
                     </div>
                     <div class="bd">
                         <ul class="listview">
@@ -97,3 +97,17 @@
         <!-- //MAIN VIEW -->
     </div>
 </template>
+<script>
+export default{
+    data(){
+        return{
+            modalVisiable:true
+        }
+    },
+    methods:{
+        hideModal(){
+            this.modalVisiable = false
+        }
+    }
+}
+</script>

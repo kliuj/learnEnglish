@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="sidenav" :class="{'show':isOpenTap}" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+        <nav class="sidenav" :class="{'show':isOpenTap}" >
             <div class="sidenav-brand"><img src="../../Assets/Images/ledge_logo.png" class="logo"></div>
             <div class="sidenav-header">
                 <div class="user-profile-photo"><img src="../../Assets/Images/temp_user.png"></div>
@@ -9,37 +9,37 @@
             </div>
             <ul class="sidenav-menu">
                 <li>
-                    <a href="../../Views/Timeline/Index.jsp">
+                    <a target-name='timeline' @click="changeTab">
                         <span class="sidenav-link-title">学习时间轴</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/Courses/Index.jsp">
+                    <a target-name='courseIndex' @click="changeTab">
                         <span class="sidenav-link-title">优选课程</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/Activities/Index.jsp">
+                    <a target-name='activity' @click="changeTab">
                         <span class="sidenav-link-title">实战活动</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/Account/Upgrade.jsp">
+                    <a target-name='upgrade' @click="changeTab">
                         <span class="sidenav-link-title">升级帐户</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/Account/Credits.jsp">
+                    <a target-name='credits' @click="changeTab">
                         <span class="sidenav-link-title">我的积分</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/Invite/Index.jsp">
+                    <a target-name='ivite' @click="changeTab">
                         <span class="sidenav-link-title">邀请同学</span>
                     </a>
                 </li>
                 <li>
-                    <a href="../../Views/About/Index.jsp">
+                    <a target-name='about' @click="changeTab">
                         <span class="sidenav-link-title">关于 LEDGE</span>
                     </a>
                 </li>
@@ -70,7 +70,7 @@
                 if(this.isOpenTap){
                     console.log('ok')
                     //展示
-                    this.animate(document.getElementById("mask-blocker"));
+                    this.fadein(document.getElementById("mask-blocker"),1,1);
                 }
 
             }
@@ -108,18 +108,39 @@
             getInfo(){
 
             },
-            animate(obj) {
-                let i = 1
-                function timerInterval() {
-                    setTimeout(()=>{
-                        i++
-                        if(i < 21){
-                            obj.style.opacity = 1/20 * i ;
-                            timerInterval()
-                        }
-                    },10)
+            //切换tab
+            changeTab(e){
+              let name = e.currentTarget.getAttribute("target-name");
+              this.changeOpenTap()
+              setTimeout(() => {
+                  this.$router.push({ name: name});
+              },400);
+            },
+            setOpacity(ele, opacity) {
+                if (ele.style.opacity != undefined) {
+                    ///兼容FF和GG和新版本IE
+                    ele.style.opacity = opacity / 100;
+                } else {
+                    ///兼容老版本ie
+                    ele.style.filter = "alpha(opacity=" + opacity + ")";
                 }
-                timerInterval()
+            },
+            fadein(ele, opacity, speed) {
+                if (ele) {
+                    var v = ele.style.filter.replace("alpha(opacity=", "").replace(")", "") || ele.style.opacity;
+                    v < 1 && (v = v * 100);
+                    var count = speed / 1000;
+                    var avg = count < 2 ? (opacity / count) : (opacity / count - 1);
+                    var timer = null;
+                    timer = setInterval(() =>{
+                        if (v < opacity) {
+                            v += avg;
+                            this.setOpacity(ele, v);
+                        } else {
+                            clearInterval(timer);
+                        }
+                    }, 500);
+                }
             }
         }
     }

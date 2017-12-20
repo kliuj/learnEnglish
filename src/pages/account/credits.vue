@@ -2,7 +2,7 @@
     <div class="page pg-account pg-account-credits">
         <!-- HEADER -->
         <header class="gb-header">
-            <div class="header-left"><a href="javascript:;" class="icon menu toggle" id="sidenav-toggle"></a></div>
+            <Header />
             <h1 class="has-icon">我的积分</h1>
         </header>
         <!-- //HEADER -->
@@ -42,3 +42,11 @@
         <!-- //MAINVIEW -->
     </div>
 </template>
+<script>
+    import Header from '../../components/Header'
+    export default{
+        components:{
+            Header
+        }
+    }
+</script>

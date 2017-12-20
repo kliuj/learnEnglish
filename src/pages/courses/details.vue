@@ -12,7 +12,7 @@
     	<!-- COURSE DETAILS -->
     	<section class="course-details">
     		<div class="course-summary">
-    			<div class="cover"><img src="<%=basePath%>Webapp/Assets/Images/temp_128x128.jpg"></div>
+    			<div class="cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
     			<div class="title">课程名称</div>
     			<div class="category">共18课时&nbsp;&bull;&nbsp;类别名称</div>
     			<div class="price">课程费 ￥100</div>
@@ -65,12 +65,12 @@
     	</section>
     	<!-- //COURSE DETAILS -->
     	<!-- BUY COURSE -->
-    	<section class="quick-buy">
+    	<section class="quick-buy" v-show="modalVisiable">
     		<div class="modal"></div>
     		<div class="container">
 	    		<div class="hd">
 	    			<div class="title">购买课程</div>
-	    			<a href="" class="cancel">取消</a>
+	    			<a href="javascript:void(0)" class="cancel" @click="hideModal">取消</a>
 	    		</div>
 	    		<div class="bd">
 	    			<ul class="listview">
@@ -101,3 +101,17 @@
     <!-- //MAIN VIEW -->
 </div>
 </template>
+<script>
+    export default{
+        data(){
+            return{
+                modalVisiable:true
+            }
+        },
+        methods:{
+            hideModal(){
+                this.modalVisiable = false
+            }
+        }
+    }
+</script>
