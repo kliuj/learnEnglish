@@ -6,7 +6,7 @@
         <!-- HEADER -->
         <header class="gb-header">
             <div class="header-left">
-                <a href="javascript:;" class="icon menu toggle" id="sidenav-toggle"></a>
+                <Header />
             </div>
             <h1 class="has-icon">关于 LEDGE</h1>
         </header>
@@ -24,7 +24,10 @@
     </div>
 </template>
 <script>
+    import Header from '../../components/Header'
     export default{
-
+        components:{
+            Header
+        }
     }
 </script>

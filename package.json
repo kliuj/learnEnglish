@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "servertest": "babel-node entry-server.js",
-    "start": "webpack-dev-server --inline  --config webpack.dev.config.js",
+    "start": "webpack-dev-server --port 3000 --inline  --config webpack.dev.config.js",
     "build:prod": "cross-env NODE_ENV=production gulp",
     "build": "npm run build:prod"
   },

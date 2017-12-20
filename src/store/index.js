@@ -7,18 +7,18 @@ import  Vue from 'vue'
 
 let togCls = () =>{
     window.scrollTo(0,0)
-    //统一操作一些样式
-    if($("#menu")[0].style.display == "none"){
-        $("#menu")[0].style.display = 'block';
-    }else{
-        window.setTimeout(()=>{
-            $("#menu")[0].style.display = 'none';
-        },400)
-    }
-    $('html').toggleClass("mm-opened mm-blocking mm-background mm-theme-dark mm-pageshadow mm-opening ");
-    $("html,body").toggleClass("scroll-hide");
-    $("#mainMenu").removeClass("mm-subopened").addClass("mm-current");
-    $(".subMenuBar").removeClass("mm-opened").addClass("mm-notopen");
+    // //统一操作一些样式
+    // if($("#menu")[0].style.display == "none"){
+    //     $("#menu")[0].style.display = 'block';
+    // }else{
+    //     window.setTimeout(()=>{
+    //         $("#menu")[0].style.display = 'none';
+    //     },400)
+    // }
+    // $('html').toggleClass("mm-opened mm-blocking mm-background mm-theme-dark mm-pageshadow mm-opening ");
+    $("body").toggleClass("sidenav-no-scroll");
+    // $("#mainMenu").removeClass("mm-subopened").addClass("mm-current");
+    // $(".subMenuBar").removeClass("mm-opened").addClass("mm-notopen");
 }
 Vue.use(Vuex)
 
@@ -31,9 +31,7 @@ export  default  new Vuex.Store({
     mutations: {
         changeOpenTap (state) {
             togCls()
-            window.setTimeout(()=>{
-                state.isOpenTap = !state.isOpenTap;
-            },500)
+            state.isOpenTap = !state.isOpenTap;
             //有时候列表未更新的情况下直接打开侧边栏，需要统一初始化列表修改状态
             state.changeState = true;
         },

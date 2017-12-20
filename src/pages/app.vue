@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="sidenav" data-sidenav data-sidenav-toggle="#sidenav-toggle">
+        <nav class="sidenav" :class="{'show':isOpenTap}" data-sidenav data-sidenav-toggle="#sidenav-toggle">
             <div class="sidenav-brand"><img src="../../Assets/Images/ledge_logo.png" class="logo"></div>
             <div class="sidenav-header">
                 <div class="user-profile-photo"><img src="../../Assets/Images/temp_user.png"></div>
@@ -50,10 +50,78 @@
 
             </router-view>
         </div>
+        <div  class="sidenav-overlay" :style='{"display": isOpenTap ? "block" : "none"  }' id="mask-blocker"></div>
     </div>
 </template>
 <script>
+    import { mapActions } from 'vuex'
     export default{
+        data(){
+            return{
+
+            }
+        },
+        watch:{
+            'userStateTime' () {
+                this.getInfo()
+            },
+            'isOpenTap' (){
+                console.log(this.isOpenTap)
+                if(this.isOpenTap){
+                    console.log('ok')
+                    //展示
+                    this.animate(document.getElementById("mask-blocker"));
+                }
+
+            }
+        },
+        computed: {
+            'isOpenTap' () {
+                return this.$store.state.isOpenTap
+            },
+            'userStateTime' (){
+                return this.$store.state.userStateTime
+            },
+            'opacity' (){
+                //fast 时间为200毫秒
+
+            }
+        },
+        created(){
+            this.init()
+        },
+        mounted(){
+            //蒙版触摸事件
+            $("#mask-blocker").on("touchstart",(e)=>{
+                e.preventDefault();
+                this.changeOpenTap()
+            })
+        },
+        methods:{
+            changeOpenTap(){
+                this.$store.dispatch('changeOpenTap')
+            },
+            //根组件初始化
+            init(){
+
+            },
+            getInfo(){
+
+            },
+            animate(obj) {
+                let i = 1
+                function timerInterval() {
+                    setTimeout(()=>{
+                        i++
+                        if(i < 21){
+                            obj.style.opacity = 1/20 * i ;
+                            timerInterval()
+                        }
+                    },10)
+                }
+                timerInterval()
+            }
+        }
     }
 
 </script>
