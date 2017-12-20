@@ -2,7 +2,9 @@
     <div class="page pg-activities pg-activity-details">
         <!-- HEADER -->
         <header class="gb-header">
-            <div class="header-left"><a href="Index.jsp" class="icon back"></a></div>
+            <div class="header-left">
+                <a href="javascript:void(0)" class="icon back" @click="goback"></a>
+            </div>
             <h1 class="has-icon">活动详情</h1>
         </header>
         <!-- //HEADER -->
@@ -98,16 +100,29 @@
     </div>
 </template>
 <script>
-export default{
-    data(){
-        return{
-            modalVisiable:true
-        }
-    },
-    methods:{
-        hideModal(){
-            this.modalVisiable = false
+    import {
+        saveFrom,
+        getBack
+    } from '../../model/store'
+    export default{
+        data(){
+            return{
+                modalVisiable:false
+            }
+        },
+        beforeRouteEnter: (to, from, next) => {
+            next(vm=>{
+                saveFrom('activityDetail',to)
+            })
+        },
+        methods:{
+            goback(){
+                let qhfrom = getBack("activityDetail");
+                this.$router.push({'name':qhfrom.name,query:qhfrom.para})
+            },
+            hideModal(){
+                this.modalVisiable = false
+            }
         }
     }
-}
 </script>

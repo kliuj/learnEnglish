@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="sidenav" :class="{'show':isOpenTap}" >
+        <nav class="sidenav" :class="{'show':tabVisiable}" >
             <div class="sidenav-brand"><img src="../../Assets/Images/ledge_logo.png" class="logo"></div>
             <div class="sidenav-header">
                 <div class="user-profile-photo"><img src="../../Assets/Images/temp_user.png"></div>
@@ -55,10 +55,11 @@
 </template>
 <script>
     import { mapActions } from 'vuex'
+    import { fadeIn } from '../model/fun'
     export default{
         data(){
             return{
-
+                tabVisiable:false
             }
         },
         watch:{
@@ -68,9 +69,13 @@
             'isOpenTap' (){
                 console.log(this.isOpenTap)
                 if(this.isOpenTap){
-                    console.log('ok')
+                    this.tabVisiable = true
                     //展示
-                    this.fadein(document.getElementById("mask-blocker"),1,1);
+                    fadeIn(document.getElementById("mask-blocker"),10);
+                }else{
+                    //关闭
+                    this.tabVisiable = false
+                    fadeIn(document.getElementById("mask-blocker"),10);
                 }
 
             }
@@ -115,32 +120,6 @@
               setTimeout(() => {
                   this.$router.push({ name: name});
               },400);
-            },
-            setOpacity(ele, opacity) {
-                if (ele.style.opacity != undefined) {
-                    ///兼容FF和GG和新版本IE
-                    ele.style.opacity = opacity / 100;
-                } else {
-                    ///兼容老版本ie
-                    ele.style.filter = "alpha(opacity=" + opacity + ")";
-                }
-            },
-            fadein(ele, opacity, speed) {
-                if (ele) {
-                    var v = ele.style.filter.replace("alpha(opacity=", "").replace(")", "") || ele.style.opacity;
-                    v < 1 && (v = v * 100);
-                    var count = speed / 1000;
-                    var avg = count < 2 ? (opacity / count) : (opacity / count - 1);
-                    var timer = null;
-                    timer = setInterval(() =>{
-                        if (v < opacity) {
-                            v += avg;
-                            this.setOpacity(ele, v);
-                        } else {
-                            clearInterval(timer);
-                        }
-                    }, 500);
-                }
             }
         }
     }
