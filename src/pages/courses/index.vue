@@ -69,7 +69,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="more"><a href="All.jsp">查看全部</a></div>
+                <div class="more"><router-link :to="{'name':'allCourses',query:{'qhfrom':'courseIndex'}}">查看全部</router-link></div>
             </section>
             <section class="courses-group">
                 <div class="hd">

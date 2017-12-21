@@ -50,6 +50,26 @@ const routes = [
 	      require(['./pages/courses/index.vue'], resolve)
 	    }
 	},
+    {
+        path:'/courseDetail',//课程详情
+        name:'courseDetail',
+        meta: {
+            needRequiresAuth: true
+        },
+        component:function (resolve) {
+            require(['./pages/courses/details.vue'], resolve)
+        }
+    },
+    {
+        path:'/allCourses',//所有课程
+        name:'allCourses',
+        meta: {
+            needRequiresAuth: true
+        },
+        component:function (resolve) {
+            require(['./pages/courses/all.vue'], resolve)
+        }
+    },
 	{
     	path:'/upgrade',//升级账户
     	name:'upgrade',
@@ -88,16 +108,6 @@ const routes = [
 		},
     	component:function (resolve) {
 	      require(['./pages/activities/details.vue'], resolve)
-	    }
-	},
-	{
-    	path:'/courseDetail',//课程详情
-    	name:'courseDetail',
-		meta: { 
-			needRequiresAuth: true
-		},
-    	component:function (resolve) {
-	      require(['./pages/courses/details.vue'], resolve)
 	    }
 	},
 	{
