@@ -2,7 +2,9 @@
     <div class="page pg-courses pg-courses-categories">
         <!-- HEADER -->
         <header class="gb-header">
-            <div class="header-left"><a href="All.jsp" class="icon back"></a></div>
+            <div class="header-left">
+                <a href="javascript:void(0);" @click="goback" class="icon back"></a>
+            </div>
             <h1 class="has-icon">按类别筛选课程</h1>
         </header>
         <!-- //HEADER -->
@@ -28,3 +30,26 @@
         <!-- //MAIN VIEW -->
     </div>
 </template>
+<script>
+    import {
+        saveFrom,
+        getBack
+    } from '../../model/store'
+    export default{
+        data(){
+            return{
+            }
+        },
+        beforeRouteEnter: (to, from, next) => {
+            next(vm=>{
+                saveFrom('categories',to)
+            })
+        },
+        methods:{
+            goback(){
+                let qhfrom = getBack("categories");
+                this.$router.push({'name':qhfrom.name,query:qhfrom.para})
+            }
+        }
+    }
+</script>

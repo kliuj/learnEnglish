@@ -9,23 +9,14 @@
         <!-- MAIN -->
         <div class="mainview">
             <section class="activity-list">
-                <ul>
-                    <li>
-                        <router-link :to="{'name':'activityDetail',query:{'qhfrom':'activity'}}">
+                <ul v-if="list.length">
+                    <li v-for="(item,index) in list"  :key="item.id">
+                        <router-link :to="{'name':'activityDetail',query:{'qhfrom':'activity','id':item.id}}">
                             <div class="activity-title">
-                                活动主题
-                                <small>12月14日 星期四</small>
+                                {{item.activityTitle}}
+                                <small>{{item.activityDate}}</small>
                             </div>
-                            <div class="activity-poster"><img src="../../../Assets/Images/temp_900x500.jpg"></div>
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{'name':'activityDetail'}">
-                            <div class="activity-title">
-                                活动主题
-                                <small>12月12日 星期二</small>
-                            </div>
-                            <div class="activity-poster"><img src="../../../Assets/Images/temp_900x500.jpg"></div>
+                            <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
                         </router-link>
                     </li>
                 </ul>
@@ -40,11 +31,19 @@
     export default{
         data(){
             return{
-                
+                list:[
+                    {
+                        id:1,    
+                        activityTitle:'第一条标题',
+                        activityDate:'12月14日 星期四',
+                        activityImgUrl:'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg'
+                    }
+                ]
             }
         },
         components:{
             Header
         },
+
     }
 </script>

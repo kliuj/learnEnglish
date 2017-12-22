@@ -70,6 +70,16 @@ const routes = [
             require(['./pages/courses/all.vue'], resolve)
         }
     },
+    {
+        path:'/categories',//课程类别
+        name:'categories',
+        meta: {
+            needRequiresAuth: true
+        },
+        component:function (resolve) {
+            require(['./pages/courses/categories.vue'], resolve)
+        }
+    },
 	{
     	path:'/upgrade',//升级账户
     	name:'upgrade',

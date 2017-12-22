@@ -47,14 +47,7 @@
                         <li>
                             <div>
                                 <label for="">票种名称</label>
-                                <span><a href="">购买</a></span>
-                                <em>这里是一段票种介绍</em>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <label for="">票种名称</label>
-                                <span><a href="">购买</a></span>
+                                <span><a href="javascript:void(0)" @click="showModal">购买</a></span>
                                 <em>这里是一段票种介绍</em>
                             </div>
                         </li>
@@ -122,6 +115,9 @@
             },
             hideModal(){
                 this.modalVisiable = false
+            },
+            showModal(){
+                this.modalVisiable = true
             }
         }
     }

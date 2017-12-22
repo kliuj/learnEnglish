@@ -67,7 +67,6 @@
                 this.getInfo()
             },
             'isOpenTap' (){
-                console.log(this.isOpenTap)
                 if(this.isOpenTap){
                     this.tabVisiable = true
                     //展示
