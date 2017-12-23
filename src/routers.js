@@ -90,6 +90,20 @@ const routes = [
 	      require(['./pages/account/upgrade.vue'], resolve)
 	    }
 	},
+    {
+        path:'/login',//登录
+        name:'login',
+        component:function (resolve) {
+            require(['./pages/account/login.vue'], resolve)
+        }
+    },
+    {
+        path:'/signup',//注册
+        name:'signup',
+        component:function (resolve) {
+            require(['./pages/account/signup.vue'], resolve)
+        }
+    },
 	{
     	path:'/activity',//实战活动
     	name:'activity',

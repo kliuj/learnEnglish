@@ -1,16 +1,15 @@
 <template>
     <div class="page pg-account pg-account-signup">
-        <!-- HEADER -->
-        <header class="gb-header">
-            <div class="header-left"><a href="Index.jsp" class="icon close"></a></div>
-            <h1 class="has-icon">创建帐户</h1>
-            <div class="header-right"><a href="Login.jsp">已经是会员？登录</a></div>
-        </header>
+        <HeaderView pageName="signup" pageTitle="创建帐户" iconName="close">
+            <div class="header-right">
+                <a @click="gotoLogin" href="javascript:void(0);" >已经是会员？登录</a>
+            </div>
+        </HeaderView>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
         <div class="mainview">
             <section class="create">
-                <h2><img src="<%=basePath%>Webapp/Assets/Images/ledge_logo.png"></h2>
+                <h2><img src="../../../Assets/Images/ledge_logo.png"></h2>
                 <p>只需一步即可完成注册，超简单！</p>
                 <div class="signup-form">
                     <div class="row"><input type="tel" id="" name="" value="" maxlength="11" placeholder="手机号码"></div>
@@ -23,3 +22,16 @@
         <!-- //MAINVIEW -->
     </div>
 </template>
+<script>
+    import HeaderView from '../../components/HeaderView'
+    export default{
+        components:{
+            HeaderView
+        },
+        methods:{
+            gotoLogin(){
+                this.$router.replace({name:'login'})
+            }
+        }
+    }
+</script>

@@ -2,7 +2,7 @@
     <!--导航按钮-->
     <header class="gb-header">
         <div class="header-left">
-            <a href="javascript:void (0);" class="icon back" @click="goBack"></a>
+            <a href="javascript:void (0);" class="icon" :class="iconName" @click="goBack"></a>
         </div>
         <h1 class="has-icon">{{pageTitle}}</h1>
         <slot />
@@ -26,6 +26,10 @@
             pageTitle: {
                 type: String,
                 default:'index'
+            },
+            iconName: {
+                type: String,
+                default:'back'
             }
         },
         mounted(){
