@@ -1,8 +1,8 @@
 <template>
 <div class="page pg-courses pg-course-details">
-	<BackButton pageName="courseDetail" pageTitle="课程详情">
+	<HeaderView pageName="courseDetail" pageTitle="课程详情">
 		<div class="header-right"><a href="">购买</a></div>
-	</BackButton>
+	</HeaderView>
     <!-- //HEADER -->
     <!-- MAIN VIEW -->
     <div class="mainview">
@@ -99,7 +99,7 @@
 </div>
 </template>
 <script>
-	import BackButton from '../../components/BackButton'
+	import HeaderView from '../../components/HeaderView'
     export default{
         data(){
             return{
@@ -107,7 +107,7 @@
             }
         },
 		components:{
-            BackButton
+            HeaderView
 		},
         methods:{
             hideModal(){

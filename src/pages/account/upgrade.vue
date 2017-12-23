@@ -2,7 +2,7 @@
     <div class="page pg-account pg-account-upgrade">
         <!-- HEADER -->
         <header class="gb-header">
-            <Header />
+            <NavTab />
             <h1 class="has-icon">升级帐户</h1>
         </header>
         <!-- //HEADER -->
@@ -16,10 +16,10 @@
     </div>
 </template>
 <script>
-    import Header from '../../components/Header'
+    import NavTab from '../../components/NavTab'
     export default{
         components:{
-            Header
+            NavTab
         }
     }
 </script>

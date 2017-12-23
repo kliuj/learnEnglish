@@ -2,7 +2,7 @@
     <div class="page pg-activities pg-activities-hp">
         <!-- HEADER -->
         <header class="gb-header">
-            <Header />
+            <NavTab />
             <h1 class="has-icon">LEDGE 实战活动</h1>
         </header>
         <!-- //HEADER -->
@@ -26,7 +26,7 @@
     </div>
 </template>
 <script>
-    import Header from '../../components/Header'
+    import NavTab from '../../components/NavTab'
 
     export default{
         data(){
@@ -42,7 +42,7 @@
             }
         },
         components:{
-            Header
+            NavTab
         },
 
     }

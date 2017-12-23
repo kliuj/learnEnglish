@@ -2,7 +2,7 @@
     <div class="page pg-courses pg-courses-hp">
         <!-- HEADER -->
         <header class="gb-header">
-            <Header />
+            <NavTab />
             <h1 class="has-icon">LEDGE 优选课程</h1>
         </header>
         <!-- //HEADER -->
@@ -69,10 +69,10 @@ const testData = {
     hisStudyNum:100,
 
 }
-    import Header from '../../components/Header'
+    import NavTab from '../../components/NavTab'
     export default{
         components:{
-            Header
+            NavTab
         },
         data(){
             return{

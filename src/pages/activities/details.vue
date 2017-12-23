@@ -1,7 +1,7 @@
 <template>
     <div class="page pg-activities pg-activity-details">
         <!-- HEADER -->
-        <BackButton pageName="activityDetail" pageTitle="活动详情"/>
+        <HeaderView pageName="activityDetail" pageTitle="活动详情"/>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -88,10 +88,10 @@
     </div>
 </template>
 <script>
-    import BackButton from '../../components/BackButton'
+    import HeaderView from '../../components/HeaderView'
     export default{
         components:{
-            BackButton
+            HeaderView
         },
         data(){
             return{

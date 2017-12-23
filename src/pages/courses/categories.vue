@@ -1,6 +1,6 @@
 <template>
     <div class="page pg-courses pg-courses-categories">
-        <BackButton pageName="categories" pageTitle="按类别筛选课程"/>
+        <HeaderView pageName="categories" pageTitle="按类别筛选课程"/>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -25,10 +25,10 @@
     </div>
 </template>
 <script>
-    import BackButton from '../../components/BackButton'
+    import HeaderView from '../../components/HeaderView'
     export default{
         components:{
-            BackButton
+            HeaderView
         },
         data(){
             return{

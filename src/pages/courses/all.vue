@@ -1,10 +1,10 @@
 <template>
     <div class="page pg-courses pg-courses-all">
-        <BackButton pageName="allCourses" pageTitle="全部课程">
+        <HeaderView pageName="allCourses" pageTitle="全部课程">
             <div class="header-right">
                 <router-link :to="{'name':'categories',query:{para:JSON.stringify({'fee':fee}),qhfrom:'allCourses'}}">类别筛选</router-link>
             </div>
-        </BackButton>
+        </HeaderView>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -81,10 +81,10 @@
     </div>
 </template>
 <script>
-    import BackButton from '../../components/BackButton'
+    import HeaderView from '../../components/HeaderView'
     export default{
         components:{
-            BackButton
+            HeaderView
         },
         data(){
             return{

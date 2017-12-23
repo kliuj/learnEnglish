@@ -2,7 +2,7 @@
     <div class="screen">
         <!-- HEADER -->
         <header class="gb-header">
-            <Header />
+            <NavTab />
             <h1 class="has-icon">邀请同学</h1>
         </header>
         <!-- //HEADER -->
@@ -14,10 +14,10 @@
     </div>
 </template>
 <script>
-    import Header from '../../components/Header'
+    import NavTab from '../../components/NavTab'
     export default{
         components:{
-            Header
+            NavTab
         }
     }
 </script>
