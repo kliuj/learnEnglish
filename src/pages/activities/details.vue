@@ -1,12 +1,7 @@
 <template>
     <div class="page pg-activities pg-activity-details">
         <!-- HEADER -->
-        <header class="gb-header">
-            <div class="header-left">
-                <a href="javascript:void(0)" class="icon back" @click="goback"></a>
-            </div>
-            <h1 class="has-icon">活动详情</h1>
-        </header>
+        <BackButton pageName="activityDetail" pageTitle="活动详情"/>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -93,11 +88,11 @@
     </div>
 </template>
 <script>
-    import {
-        saveFrom,
-        getBack
-    } from '../../model/store'
+    import BackButton from '../../components/BackButton'
     export default{
+        components:{
+            BackButton
+        },
         data(){
             return{
                 modalVisiable:false
@@ -105,14 +100,10 @@
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
-                saveFrom('activityDetail',to)
+
             })
         },
         methods:{
-            goback(){
-                let qhfrom = getBack("activityDetail");
-                this.$router.push({'name':qhfrom.name,query:qhfrom.para})
-            },
             hideModal(){
                 this.modalVisiable = false
             },

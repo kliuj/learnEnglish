@@ -1,15 +1,10 @@
 <template>
     <div class="page pg-courses pg-courses-all">
-        <!-- HEADER -->
-        <header class="gb-header">
-            <div class="header-left">
-                <a href="javascript:;" class="icon back" @click="goback"></a>
-            </div>
-            <h1 class="has-icon">全部课程</h1>
+        <BackButton pageName="allCourses" pageTitle="全部课程">
             <div class="header-right">
                 <router-link :to="{'name':'categories',query:{para:JSON.stringify({'fee':fee}),qhfrom:'allCourses'}}">类别筛选</router-link>
             </div>
-        </header>
+        </BackButton>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -86,11 +81,11 @@
     </div>
 </template>
 <script>
-    import {
-        saveFrom,
-        getBack
-    } from '../../model/store'
+    import BackButton from '../../components/BackButton'
     export default{
+        components:{
+            BackButton
+        },
         data(){
             return{
                 fee:true,//是否付费
@@ -99,14 +94,9 @@
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
                 vm.fee = to.query.fee
-                saveFrom('allCourses',to)
             })
         },
         methods:{
-            goback(){
-                let qhfrom = getBack("allCourses");
-                this.$router.push({'name':qhfrom.name,query:qhfrom.para})
-            },
             showFee(){
                 this.fee = true
             },

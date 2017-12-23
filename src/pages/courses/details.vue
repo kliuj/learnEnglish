@@ -1,11 +1,8 @@
 <template>
 <div class="page pg-courses pg-course-details">
-    <!-- HEADER -->
-    <header class="gb-header">
-        <div class="header-left"><a href="" class="icon back"></a></div>
-        <h1 class="has-icon">课程详情</h1>
-        <div class="header-right"><a href="">购买</a></div>
-    </header>
+	<BackButton pageName="courseDetail" pageTitle="课程详情">
+		<div class="header-right"><a href="">购买</a></div>
+	</BackButton>
     <!-- //HEADER -->
     <!-- MAIN VIEW -->
     <div class="mainview">
@@ -102,12 +99,16 @@
 </div>
 </template>
 <script>
+	import BackButton from '../../components/BackButton'
     export default{
         data(){
             return{
-                modalVisiable:true
+                modalVisiable:false
             }
         },
+		components:{
+            BackButton
+		},
         methods:{
             hideModal(){
                 this.modalVisiable = false

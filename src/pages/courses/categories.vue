@@ -1,12 +1,6 @@
 <template>
     <div class="page pg-courses pg-courses-categories">
-        <!-- HEADER -->
-        <header class="gb-header">
-            <div class="header-left">
-                <a href="javascript:void(0);" @click="goback" class="icon back"></a>
-            </div>
-            <h1 class="has-icon">按类别筛选课程</h1>
-        </header>
+        <BackButton pageName="categories" pageTitle="按类别筛选课程"/>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
@@ -31,25 +25,20 @@
     </div>
 </template>
 <script>
-    import {
-        saveFrom,
-        getBack
-    } from '../../model/store'
+    import BackButton from '../../components/BackButton'
     export default{
+        components:{
+            BackButton
+        },
         data(){
             return{
             }
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
-                saveFrom('categories',to)
             })
         },
         methods:{
-            goback(){
-                let qhfrom = getBack("categories");
-                this.$router.push({'name':qhfrom.name,query:qhfrom.para})
-            }
         }
     }
 </script>
