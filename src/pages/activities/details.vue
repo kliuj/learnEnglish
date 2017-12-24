@@ -36,11 +36,11 @@
                 <div class="gb-listview">
                     <div class="legend">入场券</div>
                     <ul>
-                        <li>
+                        <li v-for="(item ,index ) in tickets" :key="item.id"> 
                             <div>
-                                <label for="">票种名称</label>
+                                <label for="">{{item.TicketClass}}</label>
                                 <span><a href="javascript:void(0)" @click="showModal">购买</a></span>
-                                <em>这里是一段票种介绍</em>
+                                <em>{{data.ticketIntro}}</em>
                             </div>
                         </li>
                     </ul>
@@ -97,16 +97,17 @@
                 id:null,
                 modalVisiable:false,
                 data:{
-    "Id": 1,
-    "ActivityTitle": "sample string 2",
-    "ActivityDate": "2017-12-24 08:32:57",
-    "ActivityAddress": "sample string 4",
-    "ActivityContent": "sample string 5",
-    "ActivityImgUrl": "sample string 6",
-    "ActivityNotice": "sample string 7",
-    "ClickNum": 8,
-    "JoinNum": 9
-  },
+                    "Id": 1,
+                    "ActivityTitle": "sample string 2",
+                    "ActivityDate": "2017-12-24 08:32:57",
+                    "ActivityAddress": "sample string 4",
+                    "ActivityContent": "sample string 5",
+                    "ActivityImgUrl": "sample string 6",
+                    "ActivityNotice": "sample string 7",
+                    "ClickNum": 8,
+                    "JoinNum": 9
+                },
+                tickets:[]
             }
         },
         beforeRouteEnter: (to, from, next) => {
@@ -118,6 +119,9 @@
             getDetail(){
                 //get
                 Models.send('getWechatActivity',{
+                    id:this.id
+                })
+                Models.send('getWechatActivityTicket',{
                     id:this.id
                 })
             },

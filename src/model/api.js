@@ -25,6 +25,8 @@ export default class Api {
     _ret.getWechatCourseIndex = this.setModel('WechatCourseIndex');
     //活动详情
     _ret.getWechatActivity = this.setModel('WechatActivity');
+    //根据活动ID得到所有有效的入场券信息
+    _ret.getWechatActivityTicket = this.setModel('WechatActivityTicket');
     return _ret;
   }
   //发送请求
