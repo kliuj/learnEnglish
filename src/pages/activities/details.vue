@@ -6,36 +6,33 @@
         <!-- MAIN VIEW -->
         <div class="mainview">
             <!-- ACTIVITY DETAILS -->
-            <section class="activity-details">
+            <section class="activity-details" v-if="data">
                 <div class="activity-summary">
-                    <div class="activity-poster"><img src="../../../Assets/Images/temp_900x500.jpg"></div>
+                    <div class="activity-poster"><img :src="data.ActivityImgUrl"></div>
                 </div>
                 <div class="gb-listview">
                     <ul>
                         <li>
                             <div>
                                 <label for="">主题</label>
-                                <span>圣诞之夜</span>
+                                <span>{{data.ActivityTitle}}</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <label for="">时间</label>
-                                <span>2017年12月14日 星期四 下午13:00</span>
+                                <span>{{data.ActivityDate}}</span>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <label for="">地点</label>
-                                <span>上海市黄浦区人民广场</span>
+                                <span>{{data.ActivityAddress}}</span>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="activity-desc">
-                    <p>Ledge为前沿国际会议提供专业语言服务和同声翻译解决方案，致力于打造中高端口译人才和行业领域专业人才学习、交流及跨界合作的平台，我们的核心理念是：社群学习、深挖行业、实战为王。</p>
-                    <p>Ledge provides Simultaneous Interpreting and other language solutions for leading edge international conferences. Combining community learning，industry research with onsite case study，together we are building a training and collaboration platform for professional interpreters and talents from all industries to share and grow.</p>
-                </div>
+                <div class="activity-desc" v-html="data.ActivityContent"></div>
                 <div class="gb-listview">
                     <div class="legend">入场券</div>
                     <ul>
@@ -89,21 +86,41 @@
 </template>
 <script>
     import HeaderView from '../../components/HeaderView'
+    import Api from '../../model/api'
+    const Models = new Api()
     export default{
         components:{
             HeaderView
         },
         data(){
             return{
-                modalVisiable:false
+                id:null,
+                modalVisiable:false,
+                data:{
+    "Id": 1,
+    "ActivityTitle": "sample string 2",
+    "ActivityDate": "2017-12-24 08:32:57",
+    "ActivityAddress": "sample string 4",
+    "ActivityContent": "sample string 5",
+    "ActivityImgUrl": "sample string 6",
+    "ActivityNotice": "sample string 7",
+    "ClickNum": 8,
+    "JoinNum": 9
+  },
             }
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
-
+                vm.id = to.query.id
             })
         },
         methods:{
+            getDetail(){
+                //get
+                Models.send('getWechatActivity',{
+                    id:this.id
+                })
+            },
             hideModal(){
                 this.modalVisiable = false
             },

@@ -53,23 +53,29 @@
                         </a>
                     </li>
                 </ul>
-                <div class="more"><router-link :to="{'name':'allCourses',query:{'qhfrom':'courseIndex',fee:false}}">查看全部</router-link></div>
+                <div class="more">
+                    <router-link :to="{'name':'allCourses',query:{'qhfrom':'courseIndex',fee:false}}">
+                        查看全部
+                    </router-link>
+                </div>
             </section>
         </div>
         <!-- //MAIN VIEW -->
     </div>
 </template>
 <script>
-//    {success:true, errorCode:0, errorMsg:null, recommand:[{name:'name1'},{name:'name2'}], free:[{name:'name1'},{name:'name2'}], fee:[{name:'name3'},{name:'name4'}]}
-const testData = {
-    id:1,
-    courseName:'精选课程',
-    courseImgUrl:'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg',
-    classifyId:1,
-    hisStudyNum:100,
+    //    {success:true, errorCode:0, errorMsg:null, recommand:[{name:'name1'},{name:'name2'}], free:[{name:'name1'},{name:'name2'}], fee:[{name:'name3'},{name:'name4'}]}
+    const testData = {
+        id:1,
+        courseName:'精选课程',
+        courseImgUrl:'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg',
+        classifyId:1,
+        hisStudyNum:100,
 
-}
+    }
     import NavTab from '../../components/NavTab'
+    import Api from '../../model/api'
+    const Models = new Api()
     export default{
         components:{
             NavTab
@@ -77,7 +83,7 @@ const testData = {
         data(){
             return{
                 recommand:[
-
+                    testData
                 ],
                 free:[
                     testData
@@ -88,6 +94,10 @@ const testData = {
             }
         },
         methods:{
+            getInitData(){
+                //post
+                Models.send('getWechatCourseIndex',{})
+            },
             gotoCourseDetail (params){
                 this.$router.push({name:'courseDetail',query:{'id':params.id,'qhfrom':'courseIndex'}})
             }

@@ -1,13 +1,19 @@
-import store from "./store.js"
-let stores = new store()
-import fun from './fun.js'
-let baseFun = new fun()
+import {
+  setStore,
+  getStore
+} from "./store.js"
+import {
+  showAlert,
+  showLoading,
+  hideLoading,
+  jumpUrl
+} from './fun.js'
 import axios from 'axios'
 export default class Api {
   constructor() {
     //path可配置
-    let origin = location.origin.indexOf("localhost") > -1 ? '//www.chuenhang.com' : location.origin;
-    this.path = origin + '/DuoBao';
+    let origin = location.origin.indexOf("localhost") > -1 ? '//101.132.185.126:8080' : location.origin;
+    this.path = origin + '/api/';
   }
   //设置api接口
   setModel(url){
@@ -15,8 +21,10 @@ export default class Api {
   }
   models(){
     let _ret ={};
-    //模拟登录
-    _ret.simulateUserLogin = this.setModel('/api/Account/SimulateUserLogin');
+    //课程首页
+    _ret.getWechatCourseIndex = this.setModel('WechatCourseIndex');
+    //活动详情
+    _ret.getWechatActivity = this.setModel('WechatActivity');
     return _ret;
   }
   //发送请求
@@ -32,11 +40,11 @@ export default class Api {
   send(url,postData,successCallback,errorCallback,nocheck,notShowLoading,withUserInfo){
     if(!notShowLoading){
       //自定义是否showloading
-      baseFun.showLoading()
+      showLoading()
     }
     let apiType = typeof postData == "string" ? 'get' : 'post';
     if(!withUserInfo){
-        postData  = Object.assign(postData,{"UserInfo":stores.getStore('userinfo')},stores.getStore('deviceInfo'));
+        postData  = Object.assign(postData,{"UserInfo":getStore('userinfo')},getStore('deviceInfo'));
     }
     let self= this;
         // jdata = JSON.stringify(postData);
@@ -44,7 +52,7 @@ export default class Api {
     //回调函数
     function callbackFun(successCallback,errorCallback,nocheck,notShowLoading,data){
        if(!notShowLoading){
-           baseFun.hideLoading()
+           hideLoading()
         }
         if(data.Success){
           if(nocheck){
@@ -67,19 +75,19 @@ export default class Api {
               // console.error('错误信息=='+data.Message+'          错误code=='+data.RetCode);
               if(data.hasOwnProperty('LoginStatus')){
                 if(!data.LoginStatus){
-                  baseFun.showAlert(data.Message,errorCallback);
+                  showAlert(data.Message,errorCallback);
                   return false;
                 }else if(data.LoginStatus && data.LoginStatus['IsLogin']){
                   //如果存在LoginStatus ！= null 且已经登录，一般是其他错误
-                    baseFun.showAlert(data.Message,errorCallback);
+                    showAlert(data.Message,errorCallback);
                     return false;
                 }else if(data.LoginStatus && !data.LoginStatus['IsLogin']){
                     //立即去登录
-                    stores.setStore('loginBack',location.href);
-                    baseFun.jumpUrl('wxPrepare')
+                    setStore('loginBack',location.href);
+                    jumpUrl('wxPrepare')
                 }
               }else{
-                baseFun.showAlert(data.Message,errorCallback);
+                showAlert(data.Message,errorCallback);
                 return false;
               }
         }
@@ -96,7 +104,7 @@ export default class Api {
         // if(!notShowLoading){
         //   $("#qhCommonLoading").hide();
         // }
-        baseFun.showAlert("网络异常");
+        showAlert("网络异常");
         return false;
     });
   }
