@@ -144,6 +144,16 @@ const routes = [
 	      require(['./pages/about/about.vue'], resolve)
 	    }
 	},
+	{
+    	path:'/testlogin',
+    	name:'testlogin',
+		meta: { 
+			needRequiresAuth: true
+		},
+    	component:function (resolve) {
+	      require(['./pages/account/testlogin.vue'], resolve)
+	    }
+	},
     {
         path: '*',
         redirect: { name: 'index' }

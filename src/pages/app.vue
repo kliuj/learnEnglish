@@ -56,6 +56,8 @@
 <script>
     import { mapActions } from 'vuex'
     import { fadeIn } from '../model/fun'
+    import Api from '../model/api'
+    const Models = new Api()
     export default{
         data(){
             return{
@@ -107,7 +109,7 @@
             },
             //根组件初始化
             init(){
-
+                Models.send('getWechatUser',{})
             },
             getInfo(){
 

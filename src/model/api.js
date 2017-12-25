@@ -23,10 +23,16 @@ export default class Api {
     let _ret ={};
     //课程首页
     _ret.getWechatCourseIndex = this.setModel('WechatCourseIndex');
+    //课程详情 post
+    _ret.getWechatCourse = this.setModel('WechatCourse');
     //活动详情
     _ret.getWechatActivity = this.setModel('WechatActivity');
     //根据活动ID得到所有有效的入场券信息
     _ret.getWechatActivityTicket = this.setModel('WechatActivityTicket');
+    //登录 注册 
+    _ret.setWechatLogin = this.setModel('WechatLogin');
+    //获取用户信息 get
+    _ret.getWechatUser = this.setModel('WechatUser')
     return _ret;
   }
   //发送请求

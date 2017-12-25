@@ -7,18 +7,15 @@
     <!-- MAIN VIEW -->
     <div class="mainview">
     	<!-- COURSE DETAILS -->
-    	<section class="course-details">
+    	<section class="course-details" v-if="data">
     		<div class="course-summary">
-    			<div class="cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-    			<div class="title">课程名称</div>
-    			<div class="category">共18课时&nbsp;&bull;&nbsp;类别名称</div>
-    			<div class="price">课程费 ￥100</div>
+    			<div class="cover"><img :src="data.courseImgUrl"></div>
+    			<div class="title">{{data.courseName}}</div>
+    			<div class="category">共{{data.coursePeriod}}课时&nbsp;&bull;&nbsp;{{data.courseClassifyName}}</div>
+    			<div class="price">课程费 ￥{{data.coursePrice}}</div>
     			
     		</div>
-    		<div class="course-desc">
-    			<p>Ledge为前沿国际会议提供专业语言服务和同声翻译解决方案，致力于打造中高端口译人才和行业领域专业人才学习、交流及跨界合作的平台，我们的核心理念是：社群学习、深挖行业、实战为王。</p>
-    			<p>Ledge provides Simultaneous Interpreting and other language solutions for leading edge international conferences. Combining community learning，industry research with onsite case study，together we are building a training and collaboration platform for professional interpreters and talents from all industries to share and grow.</p>
-    		</div>
+    		<div class="course-desc" v-html="data.courseIntroduce"></div>
 	    	<div class="gb-listview">
 		        <div class="legend">课程</div>
 		        <ul>
@@ -100,16 +97,49 @@
 </template>
 <script>
 	import HeaderView from '../../components/HeaderView'
+	import Api from '../../model/api'
+	const Models = new Api()
+	const test = {
+			"id": 1,
+			"courseClassifyId": 2,
+			"courseClassifyName": "sample string 3",
+			"courseName": "sample string 4",
+			"courseIntroduce": "sample string 5",
+			"courseTeacherId": 6,
+			"courseTeacherName": "sample string 7",
+			"coursePeriod": 8,
+			"courseImgName": "sample string 9",
+			"courseImgUrl": "sample string 10",
+			"courseHisStudyNum": 11,
+			"courseIsRecommend": 0,
+			"coursePrice": 12.0,
+			"courseVipPrice": 13.0,
+			"courseGiveCredit": 14,
+			"courseSellStatus": 0
+		};
     export default{
         data(){
             return{
-                modalVisiable:false
+				modalVisiable:false,
+				id:0,
+				data:test
             }
         },
 		components:{
             HeaderView
 		},
+		beforeRouteEnter(to, from, next) {
+			const {query} = to
+			next(vm=>{
+				vm.id = query.id
+				// vm.getData()
+			})
+		},
         methods:{
+			getData(){
+				//post
+				Models.send('getWechatCourse',)
+			},
             hideModal(){
                 this.modalVisiable = false
             }
