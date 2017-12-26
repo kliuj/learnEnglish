@@ -109,7 +109,11 @@
             },
             //根组件初始化
             init(){
-                Models.send('getWechatUser',{})
+                Models.send({
+                    url:'getWechatUser',
+                    type:'get',
+                    params:{}
+                })
             },
             getInfo(){
 

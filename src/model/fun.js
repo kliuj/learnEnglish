@@ -120,3 +120,23 @@ export function fadeOut(elem, speed, callback) {
     start()
    //elem.style.display = "none";
 }
+//不保存历史记录刷新页面，解决自带回退按钮的回退问题
+  /*
+  1 replace跳转
+  2 href刷新
+  */
+export function  jumpUrl(replaceUrl,type){
+    type = type || 1;
+    if(location.origin.indexOf("localhost") > -1){
+      replaceUrl = '#/' + replaceUrl
+    }else{
+      if(type == 2){
+        //微信支付页面比较特殊,ios判断页面方式在spa页面只会记录最开始的页面
+        replaceUrl =  '/weixin/index.html?#/'+replaceUrl
+        // location.href =  replaceUrl ;
+      }else{
+        replaceUrl = '/weixin/index.html#/'+replaceUrl
+      }
+    }
+    location.replace(replaceUrl);
+}

@@ -14,7 +14,9 @@
                     <div class="row"><input type="tel" id="" name="" value="" maxlength="11" placeholder="手机号码"></div>
                     <div class="row"><input type="text" id="" name="" value="" maxlength="6" placeholder="短信验证码"></div>
                     <div class="row"><a href="" class="get-sms-code">获取验证码</a></div>
-                    <div class="row"><a href="" class="button primary-button">登录</a></div>
+                    <div class="row">
+                        <a href="javascript:void(0);" class="button primary-button" @click="login">登录</a>
+                    </div>
                 </div>
             </section>
         </div>
@@ -23,6 +25,11 @@
 </template>
 <script>
     import HeaderView from '../../components/HeaderView'
+    import {
+        setStore
+    }from '../../model/store'
+    import Api from '../../model/api'
+    const Models = new Api()
     export default{
         components:{
             HeaderView
@@ -30,6 +37,24 @@
         methods:{
             gotoSignUp(){
                 this.$router.replace({name:'signup'})
+            },
+            login(){
+                Models.send({
+                    url:'setWechatLogin',
+                    type:'get',
+                    params:{
+                        openId:123,
+                        code:111111
+                    },
+                    success:(data)=>{
+                        setStore('userInfo',{
+                            Ticket:data.Ticket
+                        })
+                    },
+                    error:(data)=>{
+
+                    }
+                })
             }
         }
     }
