@@ -41,7 +41,7 @@
             login(){
                 Models.send({
                     url:'setWechatLogin',
-                    type:'get',
+                    type:'post',
                     params:{
                         openId:123,
                         code:111111

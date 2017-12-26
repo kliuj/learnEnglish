@@ -56,6 +56,7 @@
 <script>
     import { mapActions } from 'vuex'
     import { fadeIn } from '../model/fun'
+    import { setStore } from '../model/store'
     import Api from '../model/api'
     const Models = new Api()
     export default{
@@ -109,14 +110,25 @@
             },
             //根组件初始化
             init(){
+                //存设备信息
+                // let deviceInfo = {
+                //     "Version": baseStore.getStore('appVersion'),
+                //     "Platform": 1,
+                //     "DeviceInfo": {
+                //         "DeviceId":baseStore.getStore('generateDeviceId'),
+                //         "UserAgent":navigator.userAgent
+                //     }
+                //     };
+                // //存储登录信息
+                // setStore('deviceInfo',deviceInfo);
+                this.getInfo()   
+            },
+            getInfo(){
                 Models.send({
                     url:'getWechatUser',
                     type:'get',
                     params:{}
                 })
-            },
-            getInfo(){
-
             },
             //切换tab
             changeTab(e){

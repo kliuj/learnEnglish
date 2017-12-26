@@ -33,6 +33,8 @@ export default class Api {
     _ret.setWechatLogin = this.setModel('WechatLogin');
     //获取用户信息 get
     _ret.getWechatUser = this.setModel('WechatUser')
+    //获取积分信息
+    _ret.getWechatCreditLog = this.setModel('WechatCreditLog')
     return _ret;
   }
   //发送请求
@@ -45,7 +47,7 @@ export default class Api {
   * @param errorCallback        [可以传空]		[失败的回调]
   * @param nocheck	 [可选]		[是否需要验证登录信息]
   */
-  send({url,params,type,success,error,nocheck,notShowLoading,withOutUserInfo}){
+  send({url,params = {},type = 'get' ,success,error,nocheck,notShowLoading,withOutUserInfo}){
     if(!notShowLoading){
       //自定义是否showloading
       showLoading()
@@ -73,9 +75,12 @@ export default class Api {
   * - 8表示未登录
   */
   preCallback({success,error,nocheck,notShowLoading,data}){
-    console.log(this)
+    hideLoading()
     if(data.code === -8){
       jumpUrl('login')
+    }
+    if(data.success){
+      success(data)
     }
   }
 }

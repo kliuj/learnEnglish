@@ -29,24 +29,24 @@
 <script type="text/javascript" src="lib/promise.js"></script>
 <script type="text/javascript">
    function loadInit(){
-  //     var origin = location.origin.indexOf("localhost") > -1 ? '//test.chuenhang.com' : location.origin;
-  //     $.ajax({
-  //       url:origin + '/DuoBao/api/Common/GetWxGzhJsApiConfig',
-  //       type:'post',
-  //       contentType:'application/json',
-  //       data:JSON.stringify({'url':location.href.split("#")[0]}),
-  //       // timeout:50,
-  //       success:function(d){
-  //         wx.config({
-  //           debug: false, //
-  //           appId: d.AppId, // 必填，公众号的唯一标识
-  //           timestamp: d.Timestamp, // 必填，生成签名的时间戳
-  //           nonceStr: d.NonceStr, // 必填，生成签名的随机串
-  //           signature: d.Signature,
-  //           jsApiList: ['chooseWXPay','onMenuShareTimeline','onMenuShareAppMessage'] //
-  //         });
-  //       }
-  //     })
+        var origin = location.origin.indexOf("localhost") > -1 ? '//101.132.185.126:8080/api/' : location.origin;
+        $.ajax({
+            url:origin + 'WechatConfig',
+            type:'get',
+            contentType:'application/json',
+            data:{'url':location.href.split("#")[0]},
+            // timeout:50,
+            success:function(d){
+                wx.config({
+                    debug: false, //
+                    appId: d.AppId, // 必填，公众号的唯一标识
+                    timestamp: d.Timestamp, // 必填，生成签名的时间戳
+                    nonceStr: d.NonceStr, // 必填，生成签名的随机串
+                    signature: d.Signature,
+                    jsApiList: ['chooseWXPay','onMenuShareTimeline','onMenuShareAppMessage'] //
+                });
+            }
+        })
 
   // //处理客户端缓存问题
   //   var _head = document.getElementsByTagName('HEAD').item(0);
