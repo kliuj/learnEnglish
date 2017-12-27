@@ -59,7 +59,8 @@ export default class Api {
         // jdata = JSON.stringify(params);
     //axios api
     axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios[type](self.models()[url],params)
+    axios[type](self.models()[url]+'?'+this.buildParams(params))
+    // axios[type](self.models()[url],params)
     .then(({data})=>{
         this.preCallback({success,error,nocheck,notShowLoading,data})
     })
@@ -82,5 +83,13 @@ export default class Api {
     if(data.success){
       success(data)
     }
+  }
+  // 后台接口有bug，post get 所有的参数都需要拼接在url上面
+  buildParams(obj) {
+      const new_arr = [];
+      for (const key in obj) {
+          new_arr.push(`${key}=${obj[key]}`)
+      }
+      return new_arr.join('&')
   }
 }
