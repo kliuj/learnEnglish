@@ -66,7 +66,7 @@ export default class Api {
     .catch((err)=>{
         hideLoading()
         console.dir(err)
-        showAlert("网络异常");
+        // showAlert("网络异常");
         return false;
     });
   }
@@ -81,6 +81,8 @@ export default class Api {
     }
     if(data.success){
       success(data)
+    }else{
+      error(data)
     }
   }
 }

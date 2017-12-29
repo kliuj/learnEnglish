@@ -11,16 +11,6 @@ Vue.use(VueRouter);
 
 const routes = [
 	{
-    	path:'/index',
-    	name:'index',
-		meta: { 
-			needRequiresAuth: true
-		},
-    	component:function (resolve) {
-	      require(['./pages/about/about.vue'], resolve)
-	    }
-	},
-	{
 		path:'/timeline',//学习时间轴
 		name:'timeline',
 		meta: { 
@@ -154,9 +144,16 @@ const routes = [
 	      require(['./pages/account/testlogin.vue'], resolve)
 	    }
 	},
+	{
+    	path:'/test',
+    	name:'test',
+    	component:function (resolve) {
+	      require(['./pages/test/test.vue'], resolve)
+	    }
+	},
     {
         path: '*',
-        redirect: { name: 'index' }
+        redirect: { name: 'courseIndex' }
     }
 ]
 

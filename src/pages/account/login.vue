@@ -13,7 +13,7 @@
                 <div class="login-form">
                     <div class="row"><input type="tel" id="" name="" value="" maxlength="11" placeholder="手机号码"></div>
                     <div class="row"><input type="text" id="" name="" value="" maxlength="6" placeholder="短信验证码"></div>
-                    <div class="row"><a href="" class="get-sms-code">获取验证码</a></div>
+                    <div class="row"><a href="javascript:void(0);" class="get-sms-code">获取验证码</a></div>
                     <div class="row">
                         <a href="javascript:void(0);" class="button primary-button" @click="login">登录</a>
                     </div>
@@ -44,12 +44,14 @@
                     type:'post',
                     params:{
                         openId:123,
-                        code:111111
+                        code:111111,
+                        phone:13795329019
                     },
                     success:(data)=>{
                         setStore('userInfo',{
                             Ticket:data.Ticket
                         })
+                        this.$router.push({name:'index'})
                     },
                     error:(data)=>{
 

@@ -12,10 +12,18 @@
                 <h2><img src="../../../Assets/Images/ledge_logo.png"></h2>
                 <p>只需一步即可完成注册，超简单！</p>
                 <div class="signup-form">
-                    <div class="row"><input type="tel" id="" name="" value="" maxlength="11" placeholder="手机号码"></div>
-                    <div class="row"><input type="text" id="" name="" value="" maxlength="6" placeholder="短信验证码"></div>
-                    <div class="row"><a href="" class="get-sms-code">获取验证码</a></div>
-                    <div class="row"><a href="" class="button primary-button">注册</a></div>
+                    <div class="row">
+                        <input type="tel" v-model="phone"  maxlength="11" placeholder="手机号码">
+                    </div>
+                    <div class="row">
+                        <input type="text" v-model="verifyCode" maxlength="6" placeholder="短信验证码">
+                    </div>
+                    <div class="row">
+                        <a href="javascript:void(0);" class="get-sms-code">获取验证码</a>
+                    </div>
+                    <div class="row">
+                        <a href="javascript:void(0);" class="button primary-button" @click="signUp">注册</a>
+                    </div>
                 </div>
             </section>
         </div>
@@ -28,9 +36,18 @@
         components:{
             HeaderView
         },
+        data(){
+            return{
+                phone:null,
+                verifyCode:null
+            }
+        },
         methods:{
             gotoLogin(){
                 this.$router.replace({name:'login'})
+            },
+            signUp(){
+                console.log(this.phone,this.verifyCode)
             }
         }
     }

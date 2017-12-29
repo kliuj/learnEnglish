@@ -9,7 +9,7 @@
         <!-- MAINVIEW -->
         <div class="mainview">
             <section class="credits-balance">
-                <h2>1000</h2>
+                <h2>0</h2>
                 <p>100积分抵扣人民币1元，适用所有消费<br>新注册会员即获赠1000积分，邀请同学注册会员可获赠500积分，每消费10元可获赠100积分</p>
             </section>
             <section class="gb-listview" v-if="list && list.length > 0">

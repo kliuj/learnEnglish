@@ -55,7 +55,7 @@
 </template>
 <script>
     import { mapActions } from 'vuex'
-    import { fadeIn } from '../model/fun'
+    import { fadeIn ,showAlert } from '../model/fun'
     import { setStore } from '../model/store'
     import Api from '../model/api'
     const Models = new Api()
@@ -127,7 +127,13 @@
                 Models.send({
                     url:'getWechatUser',
                     type:'get',
-                    params:{}
+                    params:{},
+                    success:({item = {}})=>{
+                        setStore('userInfo',item);
+                    },
+                    error:()=>{
+                        console.log('获取用户信息失败')
+                    }
                 })
             },
             //切换tab
