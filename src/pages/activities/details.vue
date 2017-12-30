@@ -76,7 +76,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="action"><a href="" class="button">去支付￥99.00</a></div>
+                    <div class="action"><a href="javascript:void(0);" class="button">去支付￥99.00</a></div>
                 </div>
             </section>
             <!-- //BUY ACTIVITY -->

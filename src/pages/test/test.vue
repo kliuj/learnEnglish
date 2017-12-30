@@ -1,52 +1,41 @@
 <template>
 <div id="app">
-    <div class="flex">
-        <div>
-            <calendar 
-                :range="calendar2.range" 
-                :lunar="calendar2.lunar" 
-                :value="calendar2.value" 
-                :begin="calendar2.begin" 
-                :end="calendar2.end" 
-                @select="calendar2.select">
-            </calendar>
-        </div>
+    <audio src="http://65.ierge.cn/8/126/252123.mp3" id="test" >
+    Your browser does not support the audio element.
+    </audio>
+    <div style="background-color:red;width:100px;height:100px" @click="play">
+        音频播放
     </div>
+    <list
+        :onscroll="onscroll"
+        :onloadmore="onloadmore">
+        <div class="flex"  slot="list">
+            <div v-for="(item,index) in data" :key="index">
+                <calendar 
+                    :range="calendar2.range" 
+                    :lunar="calendar2.lunar" 
+                    :value="calendar2.value" 
+                    :begin="calendar2.begin" 
+                    :end="calendar2.end" 
+                    @select="calendar2.select">
+                </calendar>
+            </div>
+        </div>
+    </list>
 </div>
 </template>
 
 <script>
  
 import calendar from '../../components/calendar/calendar.vue'
+import list from '../../components/list/list.vue'
 export default {
     name: 'app',
     components: {
-        calendar
+        calendar,list
     },
     data(){
         return {
-            calendar1:{
-                value:[2017,7,20], //默认日期
-                // lunar:true, //显示农历
-                weeks:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                months:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                events:{
-                    '2017-7-7':'$408',
-                    '2017-7-20':'$408',
-                    '2017-7-21':'$460',
-                    '2017-7-22':'$500',
-                },
-                select(value){
-                    console.log(value.toString());
-                },
-                selectMonth(month,year){
-                    console.log(year,month)
-                },
-                selectYear(year){
-                    console.log(year)
-                },
-                timestamp:Date.now()
-            },
             calendar2:{
                 range:true,
                 value:[[2017,12,1],[2019,2,16]], //默认日期
@@ -57,93 +46,35 @@ export default {
                     // console.log(begin.toString(),end.toString());
                 }
             },
-            calendar3:{
-                display:"2018/02/16",
-                show:false,
-                zero:true,
-                value:[2018,2,16], //默认日期
-                lunar:true, //显示农历
-                select:(value)=>{
-                    this.calendar3.show=false;
-                    this.calendar3.value=value;
-                    this.calendar3.display=value.join("/");
-                }
-            },
-            calendar4:{
-                display:"2018/02/16 ~ 2019/02/16",
-                show:false,
-                range:true,
-                zero:true,
-                value:[[2018,2,16],[2019,2,16]], //默认日期
-                lunar:true, //显示农历
-                select:(begin,end)=>{
-                    console.log(begin,end)
-                    this.calendar4.show=false;
-                    this.calendar4.value=[begin,end];
-                    this.calendar4.display=begin.join("/")+" ~ "+end.join("/");
-                }
-            },
-            // 多选
-            calendar5:{
-                display:"2017/11/2,2017/12/2",
-                multi:true,
-                show:false,
-                zero:true,
-                value:[[2017,11,1],[2017,11,2]], //默认日期
-                disabled:[[2017,12,24],[2017,12,25]], //默认日期
-                lunar:true, //显示农历
-                select:(value)=>{
-                    let displayValue=[]
-                    value.forEach(v=>{
-                        displayValue.push(v[0]+"/"+(v[1])+"/"+v[2])
-                    })
-                    console.log(displayValue);
-                    this.calendar5.display=displayValue.join(",");
-                    // this.calendar5.show=false;
-                    this.calendar5.value=value;
-                    
-                }
-            },
+            currentpage:0,
+            size:10,
+            data:[1,2,3],
+            state:false
         }
     },
     methods:{
-        openByDrop(e){
-            this.calendar3.show=true;
-            this.calendar3.left=e.target.offsetLeft+19;
-            this.calendar3.top=e.target.offsetTop+70;
-           
-            e.stopPropagation();
-            window.setTimeout(()=>{
-                document.addEventListener("click",(e)=>{
-                    this.calendar3.show=false;
-                    document.removeEventListener("click",()=>{},false);
-                },false);
-            },1000)
+        onscroll(){
+            console.log(1)
         },
-        openByDialog(){
-            this.calendar4.show=true;
-        },
-        closeByDialog(){
-            this.calendar4.show=false;
-        },
-        openMultiByDrop(e){
-            this.calendar5.show=true;
-            this.calendar5.left=e.target.offsetLeft+19;
-            this.calendar5.top=e.target.offsetTop+70;
-            e.stopPropagation();
-            window.setTimeout(()=>{
-                document.addEventListener("click",(e)=>{
-                    this.calendar5.show=false;
-                    document.removeEventListener("click",()=>{},false);
-                },false);
-            },1000)
-        },
-        changeEvents(){
-            this.calendar1.events={
-                '2017-7-20':'$'+(Math.random()*1000>>0),
-                '2017-7-21':'$'+(Math.random()*1000>>0),
-                '2017-7-22':'$'+(Math.random()*1000>>0),
+        onloadmore(callback){
+            this.currentpage ++
+            console.log(this.currentpage)
+            if(this.currentpage <= 4){
+                this.data = this.data.concat([1,2,3])
+                this.$nextTick(()=>{
+                    callback && callback()
+                })
             }
+        },
+        play(){
+           const dom =  document.getElementById("test")
+           if(this.state){
+               this.state = false
+               dom.pause()
+           }else{
+               this.state = true
+               dom.play()
+           }
         }
     }
 }

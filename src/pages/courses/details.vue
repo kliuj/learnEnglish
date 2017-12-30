@@ -1,7 +1,7 @@
 <template>
 <div class="page pg-courses pg-course-details">
 	<HeaderView pageName="courseDetail" pageTitle="课程详情">
-		<div class="header-right"><a href="">购买</a></div>
+		<div class="header-right"><a href="javascript:void(0);">购买</a></div>
 	</HeaderView>
     <!-- //HEADER -->
     <!-- MAIN VIEW -->
@@ -20,39 +20,22 @@
 		        <div class="legend">课程</div>
 		        <ul>
 		            <li>
-						<div>
-		            		<label for="">L-1</label>
-		                    <span><a href=""><i class="fa fa-play-circle"></i> 免费试听</a></span>
-		                    <em>这个课时的一段介绍</em>
-						</div>
+						<Audio 
+							src="http://res.webftp.bbs.hnol.net/zhangyu/music/cd100/03.mp3"
+							label="花好月圆夜"
+							intro="花好月圆夜"/>
 		            </li>
 		            <li>
-						<div>
-		            		<label for="">L-2</label>
-		                    <span><a href=""><i class="fa fa-play-circle"></i> 免费试听</a></span>
-		                    <em>这个课时的一段介绍</em>
-						</div>
+						<Audio 
+							src="http://m10.music.126.net/20171230162800/6c1a86ab8c2bd9eea67c1add1f37e65a/ymusic/5bf9/6b0a/182a/474be4d9aa58b11fd50725f8436b59da.mp3"
+							label="青藏高原"
+							intro="青藏高原"/>
 		            </li>
 		            <li>
-						<div>
-		            		<label for="">L-3</label>
-		                    <span><i class="fa fa-lock"></i></span>
-		                    <em>这个课时的一段介绍</em>
-						</div>
-		            </li>
-		            <li>
-						<div>
-		            		<label for="">L-4</label>
-		                    <span><a href=""><i class="fa fa-play-circle"></i> 播放</a></span>
-		                    <em>这个课时的一段介绍</em>
-						</div>
-		            </li>
-		            <li>
-						<div>
-		            		<label for="">L-4</label>
-		                    <span><a href=""><i class="fa fa-stop-circle"></i> 停止</a></span>
-		                    <em>这个课时的一段介绍</em>
-						</div>
+						<Audio 
+							src="http://m10.music.126.net/20171230163046/915b9ca0af3925a06f3277a2d23aee99/ymusic/e5bc/5e69/c1ee/a7a5b86767bcfe3ae7966ebb50b65175.mp3"
+							label="五星红旗"
+							intro="五星红旗"/>
 		            </li>
 		        </ul>
 		    </div>
@@ -87,7 +70,7 @@
 	    				</li>
 	    			</ul>
 	    		</div>
-	    		<div class="action"><a href="" class="button">去支付￥99.00</a></div>
+	    		<div class="action"><a href="javascript:void(0);" class="button">去支付￥99.00</a></div>
     		</div>
     	</section>
     	<!-- //BUY COURSE -->
@@ -99,6 +82,7 @@
 	import HeaderView from '../../components/HeaderView'
 	import Api from '../../model/api'
 	const Models = new Api()
+	import Audio from '../../components/Audio.vue'
 	const test = {
 			"id": 1,
 			"courseClassifyId": 2,
@@ -126,7 +110,7 @@
             }
         },
 		components:{
-            HeaderView
+            HeaderView,Audio
 		},
 		beforeRouteEnter(to, from, next) {
 			const {query} = to
