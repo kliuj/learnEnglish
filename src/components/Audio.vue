@@ -1,15 +1,15 @@
 <template>
     <div>
         <label for="">{{label}}</label>
-        <span @click="clickAction">
-            <audio :src="src"   
-                @error="onerror"
-                @playing="playing"
-                @waiting="playing"
-                @pause="pauseListener">
-                Your browser does not support the audio element.
-            </audio>
-            <a href="javascript:void(0);">
+        <span>
+            <a href="javascript:void(0);" @click="clickAction">
+                <audio :src="src"   
+                    @error="onerror"
+                    @playing="playing"
+                    @waiting="playing"
+                    @pause="pauseListener">
+                    Your browser does not support the audio element.
+                </audio>
                 <i class="fa" :class="classObject"></i> 
                 {{ !playState ? text : '停止'}}
             </a>
