@@ -1,7 +1,7 @@
 <template>
   <div :id="id" class="scrolllist-container">
         <slot name="list">
-          <div class="al-c pdt3 gray">暂无数据！</div>
+          
         </slot>
   </div>
 </template>
@@ -15,7 +15,7 @@
             onloadmore:{
                 type:Function,
                 default:()=>{
-                    
+
                 }
             },
         },

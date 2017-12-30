@@ -20,61 +20,37 @@
                 </div>
             </div>
             <!-- //TAB -->
-            <section id="paid-courses" class="courses-group">
-                <ul class="courses-list">
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                </ul>
+            <section id="paid-courses" class="courses-group" v-if="fee">
+                <List
+                    id="list-paid"
+                    :onloadmore="onloadmore">
+                    <ul class="courses-list" slot="list">
+                        <li>
+                            <a href="Details.jsp">
+                                <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
+                                <div class="course-title">课程名称占一行限制字数超过截断</div>
+                                <div class="category">类别名称</div>
+                                <div class="read">666人学习</div>
+                            </a>
+                        </li>
+                    </ul>
+                </List>    
             </section>
-            <section id="free-courses" class="courses-group">
-                <ul class="courses-list">
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="Details.jsp">
-                            <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                            <div class="course-title">课程名称占一行限制字数超过截断</div>
-                            <div class="category">类别名称</div>
-                            <div class="read">666人学习</div>
-                        </a>
-                    </li>
-                </ul>
+            <section id="free-courses" class="courses-group"  v-if="!fee">
+                <List
+                    id="list-free"
+                    :onloadmore="onloadmore">
+                    <ul class="courses-list" slot="list">
+                        <li>
+                            <a href="Details.jsp">
+                                <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
+                                <div class="course-title">课程名称占一行限制字数超过截断</div>
+                                <div class="category">类别名称</div>
+                                <div class="read">666人学习</div>
+                            </a>
+                        </li>
+                    </ul>
+                </List>   
             </section>
         </div>
         <!-- //MAIN VIEW -->
@@ -82,9 +58,11 @@
 </template>
 <script>
     import HeaderView from '../../components/HeaderView'
+    import List from '../../components/list/list.vue'
     export default{
         components:{
-            HeaderView
+            HeaderView,
+            List
         },
         data(){
             return{
@@ -102,6 +80,9 @@
             },
             showNoFee(){
                 this.fee = false
+            },
+            onloadmore(){
+                console.log(1)
             }
         }
     }

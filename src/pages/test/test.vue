@@ -7,7 +7,7 @@
         音频播放
     </div>
     <list
-        :onscroll="onscroll"
+        id="list-one"
         :onloadmore="onloadmore">
         <div class="flex"  slot="list">
             <div v-for="(item,index) in data" :key="index">

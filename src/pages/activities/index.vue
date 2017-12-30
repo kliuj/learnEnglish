@@ -8,26 +8,29 @@
         <!-- //HEADER -->
         <!-- MAIN -->
         <div class="mainview">
-            <section class="activity-list">
-                <ul v-if="list.length">
-                    <li v-for="(item,index) in list"  :key="item.id">
-                        <router-link :to="{'name':'activityDetail',query:{'qhfrom':'activity','id':item.id}}">
-                            <div class="activity-title">
-                                {{item.activityTitle}}
-                                <small>{{item.activityDate}}</small>
-                            </div>
-                            <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
-                        </router-link>
-                    </li>
-                </ul>
-            </section>
+            <List
+                :onloadmore="onloadmore">
+                <section class="activity-list" slot="list">
+                    <ul v-if="list.length">
+                        <li v-for="(item,index) in list"  :key="item.id">
+                            <router-link :to="{'name':'activityDetail',query:{'qhfrom':'activity','id':item.id}}">
+                                <div class="activity-title">
+                                    {{item.activityTitle}}
+                                    <small>{{item.activityDate}}</small>
+                                </div>
+                                <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
+                            </router-link>
+                        </li>
+                    </ul>
+                </section>
+            </List>
         </div>
         <!-- //MAIN -->
     </div>
 </template>
 <script>
     import NavTab from '../../components/NavTab'
-
+    import List from '../../components/list/list.vue'
     export default{
         data(){
             return{
@@ -42,8 +45,14 @@
             }
         },
         components:{
-            NavTab
+            NavTab,
+            List
         },
+        methods:{
+            onloadmore(){
+                
+            }
+        }
 
     }
 </script>
