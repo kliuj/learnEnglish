@@ -4,6 +4,8 @@
         <span @click="clickAction">
             <audio :src="src"   
                 @error="onerror"
+                @playing="playing"
+                @waiting="playing"
                 @pause="pauseListener">
                 Your browser does not support the audio element.
             </audio>
@@ -48,15 +50,15 @@
         },
         data(){
             return{
-                playState:false,
+                playState: 0 , // 0 暂停 ，1 播放  2 缓冲中
                 loadFailed:false //资源下载
             }
         },
         computed: {
             classObject() {
                 return {
-                    'fa-play-circle': !this.playState,
-                    'fa-stop-circle': this.playState
+                    'fa-play-circle': this.playState === 0,
+                    'fa-stop-circle': this.playState === 1
                 }
             }
         },
@@ -67,12 +69,12 @@
                     return false
                 }
                 const dom =  e.currentTarget.childNodes[0]
-                if(this.playState){
-                    this.playState = false
+                if(this.playState !== 0){
+                    this.playState = 0
                     dom.pause()
                 }else{
                     this.closeAll()
-                    this.playState = true
+                    this.playState = 1
                     dom.play()
                 }
             },
@@ -86,13 +88,16 @@
             onerror(e){
                 console.log(e)
                 console.log(this.label+'课程下载失败')
-                showAlert(this.label+'课程下载失败')
+                // showAlert(this.label+'课程下载失败')
                 //资源失败时候点击无效
                 this.loadFailed = true
             },
             pauseListener(e){
                 //被其他任务暂停时候修改状态
-                this.playState = false
+                this.playState = 0
+            },
+            playing(e){
+                console.log(e)
             }
         }
     }
