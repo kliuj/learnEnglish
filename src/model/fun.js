@@ -140,3 +140,26 @@ export function  jumpUrl(replaceUrl,type){
     }
     location.replace(replaceUrl);
 }
+
+//router 自带的 刷新页面
+export function routerUrl(url,router){
+  router.replace(url)
+}
+
+//跳转登录
+export function goToLogin(toUrl){
+  //http://wx.ledgetrans.com.cn/home/autologin?returnUrl=
+  const url = encodeURIComponent(toUrl || location.href)
+  location.replace('http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+url)
+}
+
+//get  cookie
+
+//JS get cookies方法!
+export function getCookie(name){
+  var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+  if(arr=document.cookie.match(reg))
+  return unescape(arr[2]);
+  else
+  return null;
+}

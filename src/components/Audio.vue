@@ -19,6 +19,8 @@
 </template>
 <script>
     import { showAlert } from '../model/fun'
+    import Api from '../model/api'
+    const Model = new Api()
     export default{
         props: {
             src:{
@@ -46,6 +48,10 @@
             text:{
                 type:String,
                 default:'免费试听'
+            },
+            audioid:{
+                type:Number,
+                default:0
             }
         },
         data(){
@@ -98,6 +104,16 @@
             },
             playing(e){
                 console.log(e)
+            },
+            sendApi(){
+                Models.send({
+                    url:'getWechatPlayAudio',
+                    params:{
+                        audioId:this.audioId
+                    },
+                    success:(data)=>{
+                    }
+                })
             }
         }
     }

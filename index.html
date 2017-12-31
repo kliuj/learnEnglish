@@ -27,9 +27,10 @@
     </div>
 </div>
 <script type="text/javascript" src="lib/promise.js"></script>
+<script type="text/javascript" src="lib/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
    function loadInit(){
-        var origin = location.origin.indexOf("localhost") > -1 ? '//101.132.185.126:8080/api/' : location.origin;
+        var origin = location.origin.indexOf("localhost") > -1 ? '//wx.ledgetrans.com.cn/api/' : location.origin;
         $.ajax({
             url:origin + 'WechatConfig',
             type:'get',

@@ -1,10 +1,6 @@
 <template>
     <div class="page pg-account pg-account-signup">
-        <HeaderView pageName="signup" pageTitle="创建帐户" iconName="close">
-            <div class="header-right">
-                <a @click="gotoLogin" href="javascript:void(0);" >已经是会员？登录</a>
-            </div>
-        </HeaderView>
+        <HeaderView pageName="signup" pageTitle="创建帐户" iconName="close" />
         <!-- //HEADER -->
         <!-- MAINVIEW -->
         <div class="mainview">

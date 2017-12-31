@@ -2,9 +2,11 @@
     <div>
         <nav class="sidenav" :class="{'show':tabVisiable}" >
             <div class="sidenav-brand"><img src="../../Assets/Images/ledge_logo.png" class="logo"></div>
-            <div class="sidenav-header">
-                <div class="user-profile-photo"><img src="../../Assets/Images/temp_user.png"></div>
-                <span class="nickname">微信昵称</span>
+            <div class="sidenav-header" v-if="profileInfo">
+                <div class="user-profile-photo">
+                    <img :src="profileInfo.userHeadImgUrl">
+                </div>
+                <span class="nickname">{{profileInfo.userName}}</span>
                 <span class="join-in">2017年12月加入</span>
             </div>
             <ul class="sidenav-menu">
@@ -56,13 +58,14 @@
 <script>
     import { mapActions } from 'vuex'
     import { fadeIn ,showAlert } from '../model/fun'
-    import { setStore } from '../model/store'
+    import { setStore ,getStore} from '../model/store'
     import Api from '../model/api'
     const Models = new Api()
     export default{
         data(){
             return{
-                tabVisiable:false
+                tabVisiable:false,
+                profileInfo:'',
             }
         },
         watch:{
@@ -124,17 +127,14 @@
                 this.getInfo()   
             },
             getInfo(){
-                Models.send({
-                    url:'getWechatUser',
-                    type:'get',
-                    params:{},
-                    success:({item = {}})=>{
-                        setStore('userInfo',item);
-                    },
-                    error:()=>{
-                        console.log('获取用户信息失败')
-                    }
-                })
+                if(getStore('userInfo').id > 0){
+                    //防止注册时候刷新信息
+                    this.profileInfo = getStore('userInfo') ;
+                    console.debug("成功获取用户信息");
+                }else{
+                    this.profileInfo = '' ;
+                    // console.debug("暂无用户信息");
+                }
             },
             //切换tab
             changeTab(e){

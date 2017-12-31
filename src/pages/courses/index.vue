@@ -8,6 +8,19 @@
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
+            <section class="today-checks">
+                <div class="today-checks-title">今日打卡会员</div>
+                <a href="../../../Views/Timeline/TodayChecks.jsp">
+                    <ul>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                    </ul>
+                </a>
+            </section>
             <section class="courses-group" v-if="recommand.length">
                 <div class="hd">
                     <div class="group-name">精选课程</div>
@@ -99,7 +112,7 @@
                 Models.send('getWechatCourseIndex',{})
             },
             gotoCourseDetail (params){
-                this.$router.push({name:'courseDetail',query:{'id':params.id,'qhfrom':'courseIndex'}})
+                this.$router.push({name:'courseDetail',query:{'id':params.id,'qhfrom':'index'}})
             }
         }
     }

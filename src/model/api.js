@@ -6,13 +6,14 @@ import {
   showAlert,
   showLoading,
   hideLoading,
-  jumpUrl
+  jumpUrl,
+  getCookie
 } from './fun.js'
 import axios from 'axios'
 export default class Api {
   constructor() {
     //path可配置
-    let origin = location.origin.indexOf("localhost") > -1 ? '//101.132.185.126:8080' : location.origin;
+    let origin = location.origin.indexOf("localhost") > -1 ? '//wx.ledgetrans.com.cn' : location.origin;
     this.path = origin + '/api/';
   }
   //设置api接口
@@ -35,6 +36,10 @@ export default class Api {
     _ret.getWechatUser = this.setModel('WechatUser')
     //获取积分信息
     _ret.getWechatCreditLog = this.setModel('WechatCreditLog')
+    //记录开始播放音频
+    _ret.getWechatPlayAudio = this.setModel('WechatPlayAudio')
+    //获取当天打卡的top条打卡记录
+    _ret.getWechatClockIn = this.setModel('WechatClockIn')
     return _ret;
   }
   //发送请求
@@ -53,14 +58,20 @@ export default class Api {
       showLoading()
     }
     if(!withOutUserInfo){
-        params  = Object.assign(params,{"UserInfo":getStore('userinfo')},getStore('deviceInfo'));
+        params  = Object.assign(params,getStore('deviceInfo'));
     }
     let self= this;
         // jdata = JSON.stringify(params);
     //axios api
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-    axios[type](self.models()[url]+'?'+this.buildParams(params))
-    // axios[type](self.models()[url],params)
+    axios.defaults.headers.post['Content-Type'] = 'application/json'
+    //登录的ticket
+    axios.defaults.headers.common['ticket'] = getCookie('ticket') || 'a654ee41641e428180856d242c95a77e';
+    if(type.toLocaleLowerCase() === 'get'){
+      //get 请求需要 params key
+      params = { params }
+    }
+    console.log(params)
+    axios[type](self.models()[url],params)
     .then(({data})=>{
         this.preCallback({success,error,nocheck,notShowLoading,data})
     })
