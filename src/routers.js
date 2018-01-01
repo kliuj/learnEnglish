@@ -224,7 +224,7 @@ router.beforeEach((to, from, next) => {
 })
 //
 router.afterEach(route => {
-    // wx.hideOptionMenu();
+    wx && wx.hideOptionMenu();
     hideLoading()
     window.scrollTo(0,0);
 })

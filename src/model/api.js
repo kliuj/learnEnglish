@@ -40,6 +40,8 @@ export default class Api {
     _ret.getWechatPlayAudio = this.setModel('WechatPlayAudio')
     //获取当天打卡的top条打卡记录
     _ret.getWechatClockIn = this.setModel('WechatClockIn')
+    //获取邀请码
+    _ret.getWechatInviteCode = this.setModel('WechatInviteCode')
     return _ret;
   }
   //发送请求

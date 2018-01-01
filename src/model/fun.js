@@ -163,3 +163,27 @@ export function getCookie(name){
   else
   return null;
 }
+
+//微信分享
+export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){
+  if(wx){
+    wx.showOptionMenu();
+    //朋友圈
+    wx.onMenuShareTimeline({
+        title , // 分享标题
+        link , // 分享链接
+        imgUrl , // 分享图标
+        success ,
+        cancel
+    });
+    //“分享给朋友”
+    wx.onMenuShareAppMessage({
+        title, // 分享标题
+        desc, // 分享描述
+        link, // 分享链接
+        imgUrl, // 分享图标
+        success,
+        cancel
+    });
+  }
+}

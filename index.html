@@ -30,7 +30,7 @@
 <script type="text/javascript" src="lib/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
    function loadInit(){
-        var origin = location.origin.indexOf("localhost") > -1 ? '//wx.ledgetrans.com.cn/api/' : location.origin;
+        var origin = '//wx.ledgetrans.com.cn/api/';
         $.ajax({
             url:origin + 'WechatConfig',
             type:'get',

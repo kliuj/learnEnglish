@@ -22,9 +22,35 @@
 </template>
 <script>
     import NavTab from '../../components/NavTab'
+    import {
+        share
+    }from '../../model/fun'
+    import Api from '../../model/api'
+    const Models = new Api()
     export default{
         components:{
             NavTab
+        },
+        data(){
+            return{
+                iviteCode:null
+            }
+        },
+        mounted(){
+            share({
+                title:'',
+                desc:'',
+                link:'',
+                imgUrl:''
+            })
+        },
+        created(){
+            Models.send({
+                url:'getWechatInviteCode',
+                success:(d)=>{
+                    this.iviteCode = d.item
+                }
+            })
         }
     }
 </script>
