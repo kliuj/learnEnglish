@@ -30,7 +30,7 @@ export default class Api {
     _ret.getWechatActivity = this.setModel('WechatActivity');
     //根据活动ID得到所有有效的入场券信息
     _ret.getWechatActivityTicket = this.setModel('WechatActivityTicket');
-    //登录 注册 
+    //登录 注册  发短信
     _ret.setWechatLogin = this.setModel('WechatLogin');
     //获取用户信息 get
     _ret.getWechatUser = this.setModel('WechatUser')
@@ -44,8 +44,8 @@ export default class Api {
     _ret.getWechatInviteCode = this.setModel('WechatInviteCode')
     //获取用户时间轴
     _ret.getWechatTimeLine = this.setModel('WechatTimeLine')
-    //发送验证码
-    _ret.sendMessage = this.setModel('SNS')
+    //根据活动ID得到所有有效的入场券信息
+    _ret.getWechatCourseAudio = this.setModel('WechatCourseAudio')
     return _ret;
   }
   //发送请求
@@ -72,6 +72,7 @@ export default class Api {
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     //登录的ticket
     axios.defaults.headers.common['ticket'] = getCookie('ticket');
+    axios.defaults.headers.common['openId'] = getCookie('openId');
     if(type.toLocaleLowerCase() === 'get'){
       //get 请求需要 params key
       params = { params }

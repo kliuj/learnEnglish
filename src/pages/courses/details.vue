@@ -16,26 +16,15 @@
     			
     		</div>
     		<div class="course-desc" v-html="data.courseIntroduce"></div>
-	    	<div class="gb-listview">
+	    	<div class="gb-listview" v-if="audioList.length > 0">
 		        <div class="legend">课程</div>
 		        <ul>
-		            <li>
+		            <li v-for="(item,index) in audioList" :key="index">
 						<Audio 
-							src="http://res.webftp.bbs.hnol.net/zhangyu/music/cd100/03.mp3"
-							label="花好月圆夜"
-							intro="花好月圆夜"/>
-		            </li>
-		            <li>
-						<Audio 
-							src="http://m10.music.126.net/20171230162800/6c1a86ab8c2bd9eea67c1add1f37e65a/ymusic/5bf9/6b0a/182a/474be4d9aa58b11fd50725f8436b59da.mp3"
-							label="青藏高原"
-							intro="青藏高原"/>
-		            </li>
-		            <li>
-						<Audio 
-							src="http://m10.music.126.net/20171230163046/915b9ca0af3925a06f3277a2d23aee99/ymusic/e5bc/5e69/c1ee/a7a5b86767bcfe3ae7966ebb50b65175.mp3"
-							label="五星红旗"
-							intro="五星红旗"/>
+							:audioid=`http://wx.ledgetrans.com.cn/api/wechatcoursePlay/${item.Id}`
+							:label="index"
+							:id="item.Id"
+							:intro="item.AudioName"/>
 		            </li>
 		        </ul>
 		    </div>
@@ -83,30 +72,13 @@
 	import Api from '../../model/api'
 	const Models = new Api()
 	import Audio from '../../components/Audio.vue'
-	const test = {
-			"id": 1,
-			"courseClassifyId": 2,
-			"courseClassifyName": "sample string 3",
-			"courseName": "sample string 4",
-			"courseIntroduce": "sample string 5",
-			"courseTeacherId": 6,
-			"courseTeacherName": "sample string 7",
-			"coursePeriod": 8,
-			"courseImgName": "sample string 9",
-			"courseImgUrl": "sample string 10",
-			"courseHisStudyNum": 11,
-			"courseIsRecommend": 0,
-			"coursePrice": 12.0,
-			"courseVipPrice": 13.0,
-			"courseGiveCredit": 14,
-			"courseSellStatus": 0
-		};
     export default{
         data(){
             return{
 				modalVisiable:false,
 				id:0,
-				data:test
+				data:null,
+				audioList:[]
             }
         },
 		components:{
@@ -116,13 +88,33 @@
 			const {query} = to
 			next(vm=>{
 				vm.id = query.id
-				// vm.getData()
+				vm.getData()
+				vm.getAudioList()
 			})
 		},
         methods:{
 			getData(){
 				//post
-				Models.send('getWechatCourse',)
+				Models.send({
+					url:'getWechatCourse',
+					params:{
+						id:this.id
+					},
+					success:(d)=>{
+						this.data = d.item
+					}
+				})
+			},
+			getAudioList(){
+				Models.send({
+					url:'getWechatCourseAudio',
+					params:{
+						id:this.id
+					},
+					success:(d)=>{
+						this.audioList = d.items
+					}
+				})
 			},
             hideModal(){
                 this.modalVisiable = false

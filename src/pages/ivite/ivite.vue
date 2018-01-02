@@ -39,7 +39,7 @@
         mounted(){
             const title =  window.USER_INFO.userName + '邀请你加入Ledge同声翻译实战学习',
                   imgUrl = 'http://wx.ledgetrans.com.cn/CommonImages/ledge_logo.png',
-                  link =  'http://wx.ledgetrans.com.cn/home/autologin?returnUrl=http://wx.ledgetrans.com.cn/index.html/#/index?iviteCode='+this.iviteCode;
+                  link =  'http://wx.ledgetrans.com.cn/home/autologin?returnUrl=http://wx.ledgetrans.com.cn/index.html#/index?iviteCode='+this.iviteCode;
             share({
                 title ,
                 desc:'你的好多朋友都在这里！完成注册即可获得1000积分。',

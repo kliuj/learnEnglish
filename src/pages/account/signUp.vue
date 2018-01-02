@@ -113,7 +113,7 @@
                     return false    
                 }
                 Models.send({
-                    url:'sendMessage',
+                    url:'setWechatLogin',
                     type:'post',
                     params:{
                         Phone:this.phone,
