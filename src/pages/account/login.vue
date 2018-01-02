@@ -37,6 +37,11 @@
         components:{
             HeaderView
         },
+        beforeRouteEnter(to, from, next){
+            next(vm=>{
+                vm.backurl = to.query.returnUrl
+            })
+        },
         created(){
             this.getUserInfo()
         },
@@ -48,15 +53,11 @@
                 if(this.backurl && this.backurl != 'undefined'){
                     location.replace(this.backurl)
                 }else{
-                    if(!data.code !== -7){
-                        if(loginBack){
-                            delStore('loginBack')
-                            location.replace(loginBack)
-                        }else{
-                            routerUrl('index',this.$router)
-                        }
+                    if(loginBack){
+                        delStore('loginBack')
+                        location.replace(loginBack)
                     }else{
-                        routerUrl('signUp',this.$router)
+                        routerUrl('index',this.$router)
                     }
                 }
             },
@@ -69,8 +70,11 @@
                         setStore('userInfo',item);
                         this.goBack(item)
                     },
-                    error:()=>{
+                    error:(d)=>{
                         console.log('获取用户信息失败')
+                        if(d.errorCode === -7){
+                            routerUrl('signUp',this.$router)
+                        }
                     }
                 })
             }

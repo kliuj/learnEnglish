@@ -8,25 +8,22 @@
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
-            <section class="today-checks">
+            <section class="today-checks" v-if="clockInfo.length > 0">
                 <div class="today-checks-title">今日打卡会员</div>
-                <a href="../../../Views/Timeline/TodayChecks.jsp">
+                <router-link :to="{'name':'todaycheck',query:{'qhfrom':'index'}}">
                     <ul>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
-                        <li><img src="../../../Assets/Images/temp_user.png"></li>
+                        <li v-for="(item,index) in clockInfo" :key="index">
+                            <img :src="item.UserHeadImgUrl">
+                        </li>
                     </ul>
-                </a>
+                </router-link>
             </section>
-            <section class="courses-group" v-if="recommand.length">
+            <section class="courses-group" v-if="recommend.length">
                 <div class="hd">
                     <div class="group-name">精选课程</div>
                 </div>
                 <ul class="courses-list">
-                    <li v-for="(item,index) in recommand" :key="item.id" @click="gotoCourseDetail(item)">
+                    <li v-for="(item,index) in recommend" :key="item.id" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0);">
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
@@ -50,7 +47,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="more"><router-link :to="{'name':'allCourses',query:{'qhfrom':'courseIndex',fee:true}}">查看全部</router-link></div>
+                <div class="more"><router-link :to="{'name':'allcourses',query:{'qhfrom':'index',fee:true}}">查看全部</router-link></div>
             </section>
             <section class="courses-group" v-if="free.length">
                 <div class="hd">
@@ -67,7 +64,7 @@
                     </li>
                 </ul>
                 <div class="more">
-                    <router-link :to="{'name':'allCourses',query:{'qhfrom':'courseIndex',fee:false}}">
+                    <router-link :to="{'name':'allcourses',query:{'qhfrom':'index',fee:false}}">
                         查看全部
                     </router-link>
                 </div>
@@ -77,15 +74,6 @@
     </div>
 </template>
 <script>
-    //    {success:true, errorCode:0, errorMsg:null, recommand:[{name:'name1'},{name:'name2'}], free:[{name:'name1'},{name:'name2'}], fee:[{name:'name3'},{name:'name4'}]}
-    const testData = {
-        id:1,
-        courseName:'精选课程',
-        courseImgUrl:'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg',
-        classifyId:1,
-        hisStudyNum:100,
-
-    }
     import NavTab from '../../components/NavTab'
     import Api from '../../model/api'
     const Models = new Api()
@@ -95,24 +83,41 @@
         },
         data(){
             return{
-                recommand:[
-                    testData
-                ],
-                free:[
-                    testData
-                ],
-                fee:[
-                    testData
-                ]
+                recommend:[],
+                free:[],
+                fee:[],
+                clockInfo:[]
             }
+        },
+        mounted(){
+            this.getInitData()
+            this.getWechatClockIn()
         },
         methods:{
             getInitData(){
                 //post
-                Models.send('getWechatCourseIndex',{})
+                Models.send({
+                    url:'getWechatCourseIndex',
+                    success:(d)=>{
+                        this.free = d.free;
+                        this.fee = d.fee;
+                        this.recommend = d.recommend;
+                    }
+                })
+            },
+            getWechatClockIn(){
+                Models.send({
+                    url:'getWechatClockIn',
+                    params:{
+                        top:5,
+                    },
+                    success:(d)=>{
+
+                    }
+                })
             },
             gotoCourseDetail (params){
-                this.$router.push({name:'courseDetail',query:{'id':params.id,'qhfrom':'index'}})
+                this.$router.push({name:'coursedetail',query:{'id':params.id,'qhfrom':'index'}})
             }
         }
     }

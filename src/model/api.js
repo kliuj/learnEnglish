@@ -42,6 +42,10 @@ export default class Api {
     _ret.getWechatClockIn = this.setModel('WechatClockIn')
     //获取邀请码
     _ret.getWechatInviteCode = this.setModel('WechatInviteCode')
+    //获取用户时间轴
+    _ret.getWechatTimeLine = this.setModel('WechatTimeLine')
+    //发送验证码
+    _ret.sendMessage = this.setModel('SNS')
     return _ret;
   }
   //发送请求
@@ -54,7 +58,7 @@ export default class Api {
   * @param errorCallback        [可以传空]		[失败的回调]
   * @param nocheck	 [可选]		[是否需要验证登录信息]
   */
-  send({url,params = {},type = 'get' ,success,error,nocheck,notShowLoading,withOutUserInfo}){
+  send({url,params = {},type = 'get' ,success = ()=>{},error=()=>{},nocheck,notShowLoading,withOutUserInfo}){
     if(!notShowLoading){
       //自定义是否showloading
       showLoading()
@@ -67,12 +71,11 @@ export default class Api {
     //axios api
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     //登录的ticket
-    axios.defaults.headers.common['ticket'] = getCookie('ticket') || 'a654ee41641e428180856d242c95a77e';
+    axios.defaults.headers.common['ticket'] = getCookie('ticket');
     if(type.toLocaleLowerCase() === 'get'){
       //get 请求需要 params key
       params = { params }
     }
-    console.log(params)
     axios[type](self.models()[url],params)
     .then(({data})=>{
         this.preCallback({success,error,nocheck,notShowLoading,data})

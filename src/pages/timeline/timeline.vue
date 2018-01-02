@@ -1,5 +1,5 @@
 <template>
-    <div class="page pg-timeline">
+    <div class="page pg-timeline pg-timeline-hp">
         <!-- HEADER -->
         <header class="gb-header">
             <NavTab />
@@ -37,7 +37,7 @@
                 </ul>
                 <div class="gb-blank">
                     <h3>没有相关联的学习计划</h3>
-                    <p>去看看 <router-link :to="{'name':'courseIndex'}">LEDGE课程</router-link> 或 <router-link :to="{'name':'activity'}">实战活动</router-link>，开启您的LEDGE学习</p>
+                    <p>去看看 <router-link :to="{'name':'index'}">LEDGE课程</router-link> 或 <router-link :to="{'name':'activity'}">实战活动</router-link>，开启您的LEDGE学习</p>
                 </div>
             </section>
         </div>
@@ -46,9 +46,24 @@
 </template>
 <script>
     import NavTab from '../../components/NavTab'
+    import Api from '../../model/api'
+    const Model = new Api()
     export default{
         components:{
             NavTab
+        },
+        mounted(){
+            this.getTimeLine()
+        },
+        methods:{
+            getTimeLine(){
+                Model.send({
+                    url:'getWechatTimeLine',
+                    success:(d)=>{
+                        
+                    }
+                })
+            }
         }
     }
 </script>

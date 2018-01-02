@@ -45,8 +45,8 @@ const routes = [
 		}
 	},
 	{
-		path:'/todayCheck',//今日打卡会员
-		name:'todayCheck',
+		path:'/todaycheck',//今日打卡会员
+		name:'todaycheck',
 		meta: { 
 			needRequiresAuth: true
 		},
@@ -75,8 +75,8 @@ const routes = [
 	//     }
 	// },
     {
-        path:'/courseDetail',//课程详情
-        name:'courseDetail',
+        path:'/coursedetail',//课程详情
+        name:'coursedetail',
         meta: {
             needRequiresAuth: true
         },
@@ -85,8 +85,8 @@ const routes = [
         }
     },
     {
-        path:'/allCourses',//所有课程
-        name:'allCourses',
+        path:'/allcourses',//所有课程
+        name:'allcourses',
         meta: {
             needRequiresAuth: true
         },
@@ -149,8 +149,8 @@ const routes = [
 	    }
 	},
 	{
-    	path:'/activityDetail',//活动详情
-    	name:'activityDetail',
+    	path:'/activitydetail',//活动详情
+    	name:'activitydetail',
 		meta: { 
 			needRequiresAuth: true
 		},
@@ -177,6 +177,7 @@ const routes = [
 	},
     {
         path: '*',
+        name: '*',
         redirect: { name: 'index' }
     }
 ]

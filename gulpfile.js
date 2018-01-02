@@ -57,19 +57,19 @@ gulp.task('script',function(){
     .pipe(gulp.dest('dist/lib'));
 });
 gulp.task('html',function(){
-    var options = {
-        collapseWhitespace:true,
-        collapseBooleanAttributes:true,
-        removeComments:true,
-        removeEmptyAttributes:true,
-        removeScriptTypeAttributes:true,
-        removeStyleLinkTypeAttributes:true,
-        minifyJS:true,
-        minifyCSS:true
-    };
-    gulp.src('./dist/index.html')
-    .pipe(htmlmin(options))
-    .pipe(gulp.dest('dist/')); 
+    // var options = {
+    //     collapseWhitespace:true,
+    //     collapseBooleanAttributes:true,
+    //     removeComments:true,
+    //     removeEmptyAttributes:true,
+    //     removeScriptTypeAttributes:true,
+    //     removeStyleLinkTypeAttributes:true,
+    //     minifyJS:true,
+    //     minifyCSS:true
+    // };
+    // gulp.src('./dist/index.html')
+    // .pipe(htmlmin(options))
+    // .pipe(gulp.dest('dist/')); 
 });
 //一个包含任务列表的数组，这些任务会在你当前任务运行之前完成。
 gulp.task('default', ['webpack'], function() {

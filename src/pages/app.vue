@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li>
-                    <a target-name='courseIndex' @click="changeTab">
+                    <a target-name='index' @click="changeTab">
                         <span class="sidenav-link-title">优选课程</span>
                     </a>
                 </li>
@@ -98,6 +98,7 @@
             }
         },
         created(){
+            window.USER_INFO = {}
             this.init()
         },
         mounted(){
@@ -129,6 +130,7 @@
             getInfo(){
                 if(getStore('userInfo').id > 0){
                     //防止注册时候刷新信息
+                    window.USER_INFO = getStore('userInfo')
                     this.profileInfo = getStore('userInfo') ;
                     console.debug("成功获取用户信息");
                 }else{

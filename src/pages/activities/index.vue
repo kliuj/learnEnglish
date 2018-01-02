@@ -13,7 +13,7 @@
                 <section class="activity-list" slot="list">
                     <ul v-if="list.length">
                         <li v-for="(item,index) in list"  :key="item.id">
-                            <router-link :to="{'name':'activityDetail',query:{'qhfrom':'activity','id':item.id}}">
+                            <router-link :to="{'name':'activitydetail',query:{'qhfrom':'activity','id':item.id}}">
                                 <div class="activity-title">
                                     {{item.activityTitle}}
                                     <small>{{item.activityDate}}</small>
