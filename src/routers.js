@@ -6,7 +6,8 @@ import {
 	showLoading,
 	hideLoading,
 	hideMessage,
-	goToLogin
+	goToLogin,
+    routerUrl
 } from './model/fun.js'
 import VueRouter from "vue-router";
 import Vue from "vue";
@@ -191,7 +192,7 @@ router.beforeEach((to, from, next) => {
 	if(to.query.force){
 		//强制登录
 		localStorage.setItem('loginBack',location.href.split('force')[0]);
-		goToLogin()
+        jumpUrl('login')
 		// return false;
 	}
 	//验证后的回调

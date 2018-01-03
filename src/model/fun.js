@@ -127,22 +127,19 @@ export function fadeOut(elem, speed, callback) {
   */
 export function  jumpUrl(replaceUrl,type){
     type = type || 1;
-    if(location.origin.indexOf("localhost") > -1){
-      replaceUrl = '#/' + replaceUrl
-    }else{
-      if(type == 2){
+    if(type == 2){
         //微信支付页面比较特殊,ios判断页面方式在spa页面只会记录最开始的页面
-        replaceUrl =  '/weixin/index.html?#/'+replaceUrl
+        replaceUrl = encodeURIComponent('http://wx.ledgetrans.com.cn/index.html?#/'+replaceUrl)
         // location.href =  replaceUrl ;
-      }else{
-        replaceUrl = '/weixin/index.html#/'+replaceUrl
-      }
+    }else{
+        replaceUrl = encodeURIComponent('http://wx.ledgetrans.com.cn/index.html#/'+replaceUrl)
     }
-    location.replace(replaceUrl);
+    location.replace('http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+replaceUrl);
 }
 
 //router 自带的 刷新页面
 export function routerUrl(url,router){
+    console.log(12)
   router.replace(url)
 }
 
@@ -165,7 +162,7 @@ export function getCookie(name){
 }
 
 export function setCookie({name,value}) {
-    document.cookie=name"="+value;
+    document.cookie=name+"="+value;
 }
 //微信分享
 export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){

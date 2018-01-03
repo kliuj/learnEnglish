@@ -77,6 +77,9 @@
     import NavTab from '../../components/NavTab'
     import Api from '../../model/api'
     const Models = new Api()
+    import {
+        routerUrl
+    }from '../../model/fun'
     export default{
         components:{
             NavTab

@@ -46,10 +46,9 @@ gulp.task('style',function() {
  *  压缩js文件
  */
 gulp.task('script',function(){
-    gulp.src('./dist/js/*.js')
-    // .pipe(rename({suffix:'.min'}))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'));
+    // gulp.src('./dist/js/*.js')
+    // .pipe(uglify())
+    // .pipe(gulp.dest('dist/js'));
     
      gulp.src('./dist/lib/*.js')
     // .pipe(rename({suffix:'.min'}))
