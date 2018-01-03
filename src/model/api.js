@@ -72,7 +72,6 @@ export default class Api {
     axios.defaults.headers.post['Content-Type'] = 'application/json'
     //登录的ticket
     axios.defaults.headers.common['ticket'] = getCookie('ticket');
-    axios.defaults.headers.common['openId'] = getCookie('openId');
     if(type.toLocaleLowerCase() === 'get'){
       //get 请求需要 params key
       params = { params }

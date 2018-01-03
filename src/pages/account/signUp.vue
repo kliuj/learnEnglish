@@ -86,7 +86,7 @@
                 }
                 Models.send({
                     url:'setWechatLogin',
-                    type:'put',
+                    type:'post',
                     params:{
                         Phone:this.phone,
                         InviteCode:this.inviteCode,
@@ -114,7 +114,7 @@
                 }
                 Models.send({
                     url:'setWechatLogin',
-                    type:'post',
+                    type:'put',
                     params:{
                         Phone:this.phone,
                         InviteCode:this.inviteCode
