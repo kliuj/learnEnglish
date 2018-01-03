@@ -27,10 +27,10 @@
         },
         mounted(){
             this.currentDom = document.getElementById(this.id)
-            window.addEventListener("scroll",this.loadBottom)
+            this.loadBottom && window.addEventListener("scroll",this.loadBottom)
         },
         beforeDestroy(){
-            window.removeEventListener('scroll',this.loadBottom)
+            this.loadBottom && window.removeEventListener('scroll',this.loadBottom)
         },
         methods:{
             //加载更多

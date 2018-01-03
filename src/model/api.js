@@ -10,6 +10,8 @@ import {
   getCookie
 } from './fun.js'
 import axios from 'axios'
+axios.defaults.headers.post['Content-Type'] = 'application/json'
+
 export default class Api {
   constructor() {
     //path可配置
@@ -26,7 +28,7 @@ export default class Api {
     _ret.getWechatCourseIndex = this.setModel('WechatCourseIndex');
     //课程详情 post
     _ret.getWechatCourse = this.setModel('WechatCourse');
-    //活动详情
+    //活动详情 和获取所有当前有效的活动
     _ret.getWechatActivity = this.setModel('WechatActivity');
     //根据活动ID得到所有有效的入场券信息
     _ret.getWechatActivityTicket = this.setModel('WechatActivityTicket');
@@ -69,7 +71,6 @@ export default class Api {
     let self= this;
         // jdata = JSON.stringify(params);
     //axios api
-    axios.defaults.headers.post['Content-Type'] = 'application/json'
     //登录的ticket
     axios.defaults.headers.common['ticket'] = getCookie('ticket');
     if(type.toLocaleLowerCase() === 'get'){

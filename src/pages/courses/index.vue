@@ -69,6 +69,7 @@
                     </router-link>
                 </div>
             </section>
+            <EmptyPage v-if="recommend.length === 0 && free.length === 0 && fee.length ===0" info="没有相关联的学习计划"/>
         </div>
         <!-- //MAIN VIEW -->
     </div>
@@ -80,9 +81,11 @@
     import {
         routerUrl
     }from '../../model/fun'
+    import EmptyPage from '../../components/EmptyPage'
     export default{
         components:{
-            NavTab
+            NavTab,
+            EmptyPage
         },
         data(){
             return{
@@ -95,6 +98,7 @@
         mounted(){
             this.getInitData()
             this.getWechatClockIn()
+            
         },
         methods:{
             getInitData(){

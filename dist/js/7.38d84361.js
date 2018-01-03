@@ -1,22 +1,15 @@
 /*! k.liu */
 webpackJsonp([7],{
 
-/***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/d8814739.temp_128x128.jpg";
-
-/***/ }),
-
-/***/ 78:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(79),
+	  __webpack_require__(89),
 	  /* template */
-	  __webpack_require__(80),
+	  __webpack_require__(90),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -24,7 +17,7 @@ webpackJsonp([7],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49,7 +42,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -109,7 +102,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 80:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -140,15 +133,15 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 91:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(92),
+	  __webpack_require__(102),
 	  /* template */
-	  __webpack_require__(100),
+	  __webpack_require__(108),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -156,7 +149,7 @@ webpackJsonp([7],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/courses/all.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/courses/all.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] all.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -181,7 +174,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 92:
+/***/ 102:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -190,11 +183,11 @@ webpackJsonp([7],{
 	    value: true
 	});
 
-	var _HeaderView = __webpack_require__(78);
+	var _HeaderView = __webpack_require__(88);
 
 	var _HeaderView2 = _interopRequireDefault(_HeaderView);
 
-	var _list = __webpack_require__(93);
+	var _list = __webpack_require__(103);
 
 	var _list2 = _interopRequireDefault(_list);
 
@@ -290,19 +283,19 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 93:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
 	function injectStyle (ssrContext) {
 	  if (disposed) return
-	  __webpack_require__(94)
+	  __webpack_require__(104)
 	}
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(98),
+	  __webpack_require__(106),
 	  /* template */
-	  __webpack_require__(99),
+	  __webpack_require__(107),
 	  /* styles */
 	  injectStyle,
 	  /* scopeId */
@@ -310,7 +303,7 @@ webpackJsonp([7],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/list/list.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/list/list.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -335,16 +328,16 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 94:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(95);
+	var content = __webpack_require__(105);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(97)(content, {});
+	var update = __webpack_require__(36)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -362,10 +355,10 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 95:
+/***/ 105:
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(96)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -377,7 +370,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 98:
+/***/ 106:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -412,10 +405,10 @@ webpackJsonp([7],{
 	    },
 	    mounted: function mounted() {
 	        this.currentDom = document.getElementById(this.id);
-	        window.addEventListener("scroll", this.loadBottom);
+	        this.loadBottom && window.addEventListener("scroll", this.loadBottom);
 	    },
 	    beforeDestroy: function beforeDestroy() {
-	        window.removeEventListener('scroll', this.loadBottom);
+	        this.loadBottom && window.removeEventListener('scroll', this.loadBottom);
 	    },
 
 	    methods: {
@@ -439,7 +432,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 99:
+/***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -460,7 +453,7 @@ webpackJsonp([7],{
 
 /***/ }),
 
-/***/ 100:
+/***/ 108:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -545,7 +538,7 @@ webpackJsonp([7],{
 	    staticClass: "course-cover"
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(69)
+	      "src": __webpack_require__(109)
 	    }
 	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "course-title"
@@ -577,7 +570,7 @@ webpackJsonp([7],{
 	    staticClass: "course-cover"
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(69)
+	      "src": __webpack_require__(109)
 	    }
 	  })]), _vm._v(" "), _c('div', {
 	    staticClass: "course-title"
@@ -594,6 +587,13 @@ webpackJsonp([7],{
 	     require("vue-hot-reload-api").rerender("data-v-5b539cdf", module.exports)
 	  }
 	}
+
+/***/ }),
+
+/***/ 109:
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "img/d8814739.temp_128x128.jpg";
 
 /***/ })
 

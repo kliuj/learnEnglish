@@ -1,15 +1,15 @@
 /*! k.liu */
-webpackJsonp([8],{
+webpackJsonp([11],{
 
-/***/ 78:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(79),
+	  __webpack_require__(89),
 	  /* template */
-	  __webpack_require__(80),
+	  __webpack_require__(90),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([8],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102,7 +102,7 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 80:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -133,15 +133,15 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 101:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(102),
+	  __webpack_require__(122),
 	  /* template */
-	  __webpack_require__(103),
+	  __webpack_require__(123),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -149,9 +149,9 @@ webpackJsonp([8],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/courses/categories.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/account/login.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] categories.vue: functional components are not supported with templates, they should use render functions.")}
+	if (Component.options.functional) {console.error("[vue-loader] login.vue: functional components are not supported with templates, they should use render functions.")}
 
 	/* hot reload */
 	if (false) {(function () {
@@ -160,9 +160,9 @@ webpackJsonp([8],{
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-264eeace", Component.options)
+	    hotAPI.createRecord("data-v-530ad55c", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-264eeace", Component.options)
+	    hotAPI.reload("data-v-530ad55c", Component.options)
 	  }
 	  module.hot.dispose(function (data) {
 	    disposed = true
@@ -174,7 +174,7 @@ webpackJsonp([8],{
 
 /***/ }),
 
-/***/ 102:
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -183,93 +183,99 @@ webpackJsonp([8],{
 	    value: true
 	});
 
-	var _HeaderView = __webpack_require__(78);
+	var _HeaderView = __webpack_require__(88);
 
 	var _HeaderView2 = _interopRequireDefault(_HeaderView);
 
+	var _store = __webpack_require__(27);
+
+	var _fun = __webpack_require__(30);
+
+	var _api = __webpack_require__(7);
+
+	var _api2 = _interopRequireDefault(_api);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//
+	//
+	//
+	//
+
+	var Models = new _api2.default();
 	exports.default = {
+	    data: function data() {
+	        return {
+	            backurl: ''
+	        };
+	    },
+
 	    components: {
 	        HeaderView: _HeaderView2.default
 	    },
-	    data: function data() {
-	        return {};
+	    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+	        next(function (vm) {
+	            vm.backurl = to.query.returnUrl;
+	        });
+	    },
+	    created: function created() {
+	        this.getUserInfo();
 	    },
 
-	    beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-	        next(function (vm) {});
-	    },
-	    methods: {}
-	}; //
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	    methods: {
+	        goBack: function goBack(data) {
+	            var loginBack = (0, _store.getStore)('loginBack');
+	            //强制更新用户信息
+	            this.$store.dispatch('getNewUserInfo');
+	            if (this.backurl && this.backurl != 'undefined') {
+	                location.replace(this.backurl);
+	            } else {
+	                if (loginBack) {
+	                    (0, _store.delStore)('loginBack');
+	                    location.replace(loginBack);
+	                } else {
+	                    (0, _fun.routerUrl)('index', this.$router);
+	                }
+	            }
+	        },
+	        getUserInfo: function getUserInfo() {
+	            var _this = this;
+
+	            Models.send({
+	                url: 'getWechatUser',
+	                type: 'get',
+	                params: {},
+	                success: function success(_ref) {
+	                    var _ref$item = _ref.item,
+	                        item = _ref$item === undefined ? {} : _ref$item;
+
+	                    (0, _store.setStore)('userInfo', item);
+	                    _this.goBack(item);
+	                },
+	                error: function error(d) {
+	                    console.log('获取用户信息失败');
+	                    if (d.errorCode === -7) {
+	                        (0, _fun.routerUrl)('signUp', _this.$router);
+	                    }
+	                }
+	            });
+	        }
+	    }
+	};
 
 /***/ }),
 
-/***/ 103:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "page pg-courses pg-courses-categories"
-	  }, [_c('HeaderView', {
-	    attrs: {
-	      "pageName": "categories",
-	      "pageTitle": "按类别筛选课程"
-	    }
-	  }), _vm._v(" "), _vm._m(0)], 1)
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "mainview"
-	  }, [_c('section', {
-	    staticClass: "gb-listview"
-	  }, [_c('ul', [_c('li', [_c('a', {
-	    attrs: {
-	      "href": "All.jsp"
-	    }
-	  }, [_vm._v("所有类别")])]), _vm._v(" "), _c('li', [_c('a', {
-	    attrs: {
-	      "href": "All.jsp"
-	    }
-	  }, [_vm._v("类别名-1")])]), _vm._v(" "), _c('li', [_c('a', {
-	    attrs: {
-	      "href": "All.jsp"
-	    }
-	  }, [_vm._v("类别名-2")])]), _vm._v(" "), _c('li', [_c('a', {
-	    attrs: {
-	      "href": "All.jsp"
-	    }
-	  }, [_vm._v("类别名-3")])])])])])
-	}]}
+	  return _c('div')
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-264eeace", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-530ad55c", module.exports)
 	  }
 	}
 

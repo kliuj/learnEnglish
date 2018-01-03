@@ -10,32 +10,31 @@
         <div class="mainview">
             <section class="timeline">
                 <p>学习时间轴自动记录您在 LEDGE 的学习过程，它以卡片的形式为您导航，在这里能找到您的每一次进步。</p>
-                <ul class="timeline-cards">
-                    <li>
-                        <div class="datetime">2017-12-12 18:20</div>
-                        <div class="card course-card">
-                            <a href="../../../Views/Courses/Details.jsp">
-                                <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                                <div class="course-title">课程名称占一行限制字数超过截断</div>
-                                <div class="category">类别名称</div>
-                                <div class="period">共18课时</div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="datetime">2017-11-22 13:58</div>
-                        <div class="card activity-card">
-                            <a href="../../../Views/Activities/Details.jsp">
-                                <div class="activity-title">
-                                    活动主题
-                                    <small>12月14日 星期四</small>
+                <ul class="timeline-cards" v-if="list">
+                    <li v-for="(item,index) in list" :key="index">
+                        <div class="datetime">{{item.Time}}</div>
+                        <div class="card course-card" v-if="item.Course">
+                            <router-link :to="{name:'coursedetail',query:{'id':item.Course.id,'qhfrom':'timeline'}}">
+                                <div class="course-cover">
+                                    <img :src="item.Course.courseImgUrl">
                                 </div>
-                                <div class="activity-poster"><img src="../../../Assets/Images/temp_900x500.jpg"></div>
-                            </a>
+                                <div class="course-title">{{item.Course.courseName}}</div>
+                                <div class="category">{{item.Course.courseClassifyName}}</div>
+                                <div class="period">共{{item.Course.coursePeriod}}课时</div>
+                            </router-link>
+                        </div>
+                        <div class="card activity-card" v-if="item.Activity">
+                            <router-link :to="{'name':'activitydetail',query:{'qhfrom':'timeline','id':item.Activity.id}}">
+                                <div class="activity-title">
+                                    {{item.Activity.activityTitle}}
+                                    <small>{{item.Activity.activityDate}}</small>
+                                </div>
+                                <div class="activity-poster"><img :src="item.Activity.activityImgUrl"></div>
+                            </router-link>
                         </div>
                     </li>
                 </ul>
-                <div class="gb-blank">
+                <div class="gb-blank"  v-if="list && list.length === 0">
                     <h3>没有相关联的学习计划</h3>
                     <p>去看看 <router-link :to="{'name':'index'}">LEDGE课程</router-link> 或 <router-link :to="{'name':'activity'}">实战活动</router-link>，开启您的LEDGE学习</p>
                 </div>
@@ -52,6 +51,11 @@
         components:{
             NavTab
         },
+        data(){
+            return{
+                list:null
+            }
+        },
         mounted(){
             this.getTimeLine()
         },
@@ -60,7 +64,7 @@
                 Model.send({
                     url:'getWechatTimeLine',
                     success:(d)=>{
-                        
+                        this.list = d.items
                     }
                 })
             }

@@ -1,6 +1,6 @@
 <template>
-  <div class="go-blank">
-      {{info}}
+  <div class="gb-blank">
+      <p>{{info}}</p>
   </div>
 </template>
 <script>

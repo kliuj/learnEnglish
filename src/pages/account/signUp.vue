@@ -61,8 +61,9 @@
                 vm.iviteCode = to.query.iviteCode
             })
         },
-        beforeRouteLeave(){
+        beforeRouteLeave(to, from, next){
             this.countDown && window.clearInterval(this.countDown);
+            next()
         },
         methods:{
             //倒计时

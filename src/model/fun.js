@@ -140,7 +140,8 @@ export function  jumpUrl(replaceUrl,type){
 //router 自带的 刷新页面
 export function routerUrl(url,router){
     console.log(12)
-  router.replace(url)
+  router.replace({ name: url })
+  
 }
 
 //跳转登录

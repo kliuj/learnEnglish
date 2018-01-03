@@ -1,22 +1,22 @@
 /*! k.liu */
 webpackJsonp([4],{
 
-/***/ 74:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "img/affdeb08.temp_user.png";
 
 /***/ }),
 
-/***/ 76:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(77),
+	  __webpack_require__(87),
 	  /* template */
-	  __webpack_require__(81),
+	  __webpack_require__(91),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -24,7 +24,7 @@ webpackJsonp([4],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/timeline/todayCheck.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/timeline/todayCheck.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] todayCheck.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -49,7 +49,7 @@ webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 77:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58,7 +58,7 @@ webpackJsonp([4],{
 	    value: true
 	});
 
-	var _HeaderView = __webpack_require__(78);
+	var _HeaderView = __webpack_require__(88);
 
 	var _HeaderView2 = _interopRequireDefault(_HeaderView);
 
@@ -106,15 +106,15 @@ webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 78:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(79),
+	  __webpack_require__(89),
 	  /* template */
-	  __webpack_require__(80),
+	  __webpack_require__(90),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -122,7 +122,7 @@ webpackJsonp([4],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -147,7 +147,7 @@ webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -207,7 +207,7 @@ webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 80:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -238,7 +238,7 @@ webpackJsonp([4],{
 
 /***/ }),
 
-/***/ 81:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -261,7 +261,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -269,7 +269,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -277,7 +277,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -285,7 +285,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -293,7 +293,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -301,7 +301,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -309,7 +309,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -317,7 +317,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -325,7 +325,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -333,7 +333,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -341,7 +341,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -349,7 +349,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -357,7 +357,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -365,7 +365,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -373,7 +373,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -381,7 +381,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -389,7 +389,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -397,7 +397,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -405,7 +405,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])]), _vm._v(" "), _c('li', [_c('a', {
 	    attrs: {
@@ -413,7 +413,7 @@ webpackJsonp([4],{
 	    }
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(74)
+	      "src": __webpack_require__(84)
 	    }
 	  })])])])])])
 	}]}

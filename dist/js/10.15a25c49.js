@@ -1,15 +1,15 @@
 /*! k.liu */
 webpackJsonp([10],{
 
-/***/ 78:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(79),
+	  __webpack_require__(89),
 	  /* template */
-	  __webpack_require__(80),
+	  __webpack_require__(90),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([10],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([10],{
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102,7 +102,7 @@ webpackJsonp([10],{
 
 /***/ }),
 
-/***/ 80:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -133,15 +133,15 @@ webpackJsonp([10],{
 
 /***/ }),
 
-/***/ 108:
+/***/ 117:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(109),
+	  __webpack_require__(118),
 	  /* template */
-	  __webpack_require__(110),
+	  __webpack_require__(119),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -149,7 +149,7 @@ webpackJsonp([10],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/account/signup.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/account/signup.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] signup.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -174,7 +174,7 @@ webpackJsonp([10],{
 
 /***/ }),
 
-/***/ 109:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -183,11 +183,11 @@ webpackJsonp([10],{
 	    value: true
 	});
 
-	var _HeaderView = __webpack_require__(78);
+	var _HeaderView = __webpack_require__(88);
 
 	var _HeaderView2 = _interopRequireDefault(_HeaderView);
 
-	var _fun = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../model/fun\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _fun = __webpack_require__(30);
 
 	var _store = __webpack_require__(27);
 
@@ -247,8 +247,9 @@ webpackJsonp([10],{
 	            vm.backurl = to.query.returnUrl, vm.iviteCode = to.query.iviteCode;
 	        });
 	    },
-	    beforeRouteLeave: function beforeRouteLeave() {
+	    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
 	        this.countDown && window.clearInterval(this.countDown);
+	        next();
 	    },
 
 	    methods: {
@@ -364,7 +365,7 @@ webpackJsonp([10],{
 
 /***/ }),
 
-/***/ 110:
+/***/ 119:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -457,7 +458,7 @@ webpackJsonp([10],{
 	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('h2', [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(111)
+	      "src": __webpack_require__(120)
 	    }
 	  })])
 	}]}

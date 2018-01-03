@@ -187,6 +187,7 @@ let router = new VueRouter({
 	routes:routes
 });
 router.beforeEach((to, from, next) => {
+    wx && wx.hideOptionMenu();
     hideMessage();
 	showLoading()
 	if(to.query.force){
@@ -226,7 +227,6 @@ router.beforeEach((to, from, next) => {
 })
 //
 router.afterEach(route => {
-    wx && wx.hideOptionMenu();
     hideLoading()
     window.scrollTo(0,0);
 })

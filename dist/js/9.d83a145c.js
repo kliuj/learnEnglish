@@ -1,15 +1,15 @@
 /*! k.liu */
 webpackJsonp([9],{
 
-/***/ 61:
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(62),
+	  __webpack_require__(71),
 	  /* template */
-	  __webpack_require__(64),
+	  __webpack_require__(73),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([9],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/NavTab.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/NavTab.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] NavTab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 62:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51,7 +51,7 @@ webpackJsonp([9],{
 	    value: true
 	});
 
-	var _vuex = __webpack_require__(63);
+	var _vuex = __webpack_require__(72);
 
 	exports.default = {
 	    methods: (0, _vuex.mapActions)(['changeOpenTap'])
@@ -64,7 +64,7 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 64:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -90,15 +90,15 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 104:
+/***/ 113:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(105),
+	  __webpack_require__(114),
 	  /* template */
-	  __webpack_require__(106),
+	  __webpack_require__(115),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -106,7 +106,7 @@ webpackJsonp([9],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/account/upgrade.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/account/upgrade.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] upgrade.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -131,7 +131,7 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 105:
+/***/ 114:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -140,7 +140,7 @@ webpackJsonp([9],{
 	    value: true
 	});
 
-	var _NavTab = __webpack_require__(61);
+	var _NavTab = __webpack_require__(70);
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
@@ -171,7 +171,7 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 106:
+/***/ 115:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -189,7 +189,7 @@ webpackJsonp([9],{
 	    staticClass: "upgrade-banner"
 	  }, [_c('img', {
 	    attrs: {
-	      "src": __webpack_require__(107),
+	      "src": __webpack_require__(116),
 	      "width": "100%"
 	    }
 	  })]), _vm._v(" "), _c('div', {
@@ -210,7 +210,7 @@ webpackJsonp([9],{
 
 /***/ }),
 
-/***/ 107:
+/***/ 116:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "img/b5868a66.upgrade_banner.png";

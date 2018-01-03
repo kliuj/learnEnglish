@@ -8,47 +8,51 @@
         <!-- //HEADER -->
         <!-- MAIN -->
         <div class="mainview">
-            <List
-                :onloadmore="onloadmore">
-                <section class="activity-list" slot="list">
-                    <ul v-if="list.length">
-                        <li v-for="(item,index) in list"  :key="item.id">
-                            <router-link :to="{'name':'activitydetail',query:{'qhfrom':'activity','id':item.id}}">
-                                <div class="activity-title">
-                                    {{item.activityTitle}}
-                                    <small>{{item.activityDate}}</small>
-                                </div>
-                                <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
-                            </router-link>
-                        </li>
-                    </ul>
-                </section>
-            </List>
+            <section class="activity-list" v-if="list">
+                <ul v-if="list.length">
+                    <li v-for="(item,index) in list"  :key="item.id">
+                        <router-link :to="{'name':'activitydetail',query:{'qhfrom':'activity','id':item.id}}">
+                            <div class="activity-title">
+                                {{item.activityTitle}}
+                                <small>{{item.activityDate}}</small>
+                            </div>
+                            <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
+                        </router-link>
+                    </li>
+                </ul>
+            </section>
+            <EmptyPage v-if="list && list.length === 0" info="没有相关联的实战活动"/>
         </div>
         <!-- //MAIN -->
     </div>
 </template>
 <script>
     import NavTab from '../../components/NavTab'
-    import List from '../../components/list/list.vue'
+    import Api from '../../model/api'
+    const Models = new Api()
+    import EmptyPage from '../../components/EmptyPage'
     export default{
         data(){
             return{
-                list:[
-                    {
-                        id:1,    
-                        activityTitle:'第一条标题',
-                        activityDate:'12月14日 星期四',
-                        activityImgUrl:'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg'
-                    }
-                ]
+                list:null
             }
         },
         components:{
             NavTab,
-            List
+            EmptyPage
+        },
+        mounted(){
+            this.getData()
         },
         methods:{
+            getData(){
+                Models.send({
+                    url:'getWechatActivity',
+                    success:(d)=>{
+                        this.list = d.items
+                    }
+                })
+            },
             onloadmore(){
                 
             }

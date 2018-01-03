@@ -1,15 +1,15 @@
 /*! k.liu */
 webpackJsonp([12],{
 
-/***/ 61:
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(62),
+	  __webpack_require__(71),
 	  /* template */
-	  __webpack_require__(64),
+	  __webpack_require__(73),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([12],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/NavTab.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/NavTab.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] NavTab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 62:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51,7 +51,7 @@ webpackJsonp([12],{
 	    value: true
 	});
 
-	var _vuex = __webpack_require__(63);
+	var _vuex = __webpack_require__(72);
 
 	exports.default = {
 	    methods: (0, _vuex.mapActions)(['changeOpenTap'])
@@ -64,7 +64,7 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 64:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -90,29 +90,25 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 93:
+/***/ 74:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	function injectStyle (ssrContext) {
-	  if (disposed) return
-	  __webpack_require__(94)
-	}
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(98),
+	  __webpack_require__(75),
 	  /* template */
-	  __webpack_require__(99),
+	  __webpack_require__(76),
 	  /* styles */
-	  injectStyle,
+	  null,
 	  /* scopeId */
-	  "data-v-2a08dd86",
+	  null,
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/list/list.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/EmptyPage.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
+	if (Component.options.functional) {console.error("[vue-loader] EmptyPage.vue: functional components are not supported with templates, they should use render functions.")}
 
 	/* hot reload */
 	if (false) {(function () {
@@ -121,9 +117,9 @@ webpackJsonp([12],{
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-2a08dd86", Component.options)
+	    hotAPI.createRecord("data-v-1259ae1a", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-2a08dd86", Component.options)
+	    hotAPI.reload("data-v-1259ae1a", Component.options)
 	  }
 	  module.hot.dispose(function (data) {
 	    disposed = true
@@ -135,49 +131,7 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 94:
-/***/ (function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(95);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(97)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2a08dd86\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/autoprefixer-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./list.vue", function() {
-				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2a08dd86\",\"scoped\":true,\"hasInlineConfig\":false}!../../../node_modules/autoprefixer-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./list.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(96)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "\n.scrolllist-container[data-v-2a08dd86]{\n    background-color: 'res'\n}\n", ""]);
-
-	// exports
-
-
-/***/ }),
-
-/***/ 98:
+/***/ 75:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -190,85 +144,45 @@ webpackJsonp([12],{
 	//
 	//
 	//
-	//
-	//
 
 	exports.default = {
 	    props: {
-	        id: {
+	        info: {
 	            type: String,
-	            default: 'scroll-list-view'
-	        },
-	        onloadmore: {
-	            type: Function,
-	            default: function _default() {}
-	        }
-	    },
-	    data: function data() {
-	        return {
-	            currentDom: null,
-	            busy: false
-	        };
-	    },
-	    mounted: function mounted() {
-	        this.currentDom = document.getElementById(this.id);
-	        window.addEventListener("scroll", this.loadBottom);
-	    },
-	    beforeDestroy: function beforeDestroy() {
-	        window.removeEventListener('scroll', this.loadBottom);
-	    },
-
-	    methods: {
-	        //加载更多
-	        loadBottom: function loadBottom() {
-	            //结构限制，实际滚动的是  $(window);文档高度是$(".scrolllist-container").height()
-	            if (!this.busy) {
-	                var totalheight = parseFloat(window.innerHeight) + parseFloat(window.scrollY);
-	                //提前100px开始加载
-	                if (this.currentDom.offsetHeight <= totalheight + 200) {
-	                    this.busy = true;
-	                    this.onloadmore(this.resetState);
-	                }
-	            }
-	        },
-	        resetState: function resetState() {
-	            this.busy = false;
+	            default: '暂无相关信息'
 	        }
 	    }
 	};
 
 /***/ }),
 
-/***/ 99:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
-	    staticClass: "scrolllist-container",
-	    attrs: {
-	      "id": _vm.id
-	    }
-	  }, [_vm._t("list")], 2)
+	    staticClass: "gb-blank"
+	  }, [_c('p', [_vm._v(_vm._s(_vm.info))])])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-2a08dd86", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-1259ae1a", module.exports)
 	  }
 	}
 
 /***/ }),
 
-/***/ 115:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(116),
+	  __webpack_require__(125),
 	  /* template */
-	  __webpack_require__(117),
+	  __webpack_require__(126),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -276,7 +190,7 @@ webpackJsonp([12],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/activities/index.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/activities/index.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -301,7 +215,7 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 116:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -310,13 +224,17 @@ webpackJsonp([12],{
 	    value: true
 	});
 
-	var _NavTab = __webpack_require__(61);
+	var _NavTab = __webpack_require__(70);
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
-	var _list = __webpack_require__(93);
+	var _api = __webpack_require__(7);
 
-	var _list2 = _interopRequireDefault(_list);
+	var _api2 = _interopRequireDefault(_api);
+
+	var _EmptyPage = __webpack_require__(74);
+
+	var _EmptyPage2 = _interopRequireDefault(_EmptyPage);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -348,26 +266,34 @@ webpackJsonp([12],{
 	//
 	//
 	//
-	//
-	//
 
+	var Models = new _api2.default();
 	exports.default = {
 	    data: function data() {
 	        return {
-	            list: [{
-	                id: 1,
-	                activityTitle: '第一条标题',
-	                activityDate: '12月14日 星期四',
-	                activityImgUrl: 'https://car2.autoimg.cn/cardfs/product/g6/M01/83/90/t_autohomecar__wKgHzVnGd3CABqWjAAo58Wwkur0549.jpg'
-	            }]
+	            list: null
 	        };
 	    },
 
 	    components: {
 	        NavTab: _NavTab2.default,
-	        List: _list2.default
+	        EmptyPage: _EmptyPage2.default
 	    },
+	    mounted: function mounted() {
+	        this.getData();
+	    },
+
 	    methods: {
+	        getData: function getData() {
+	            var _this = this;
+
+	            Models.send({
+	                url: 'getWechatActivity',
+	                success: function success(d) {
+	                    _this.list = d.items;
+	                }
+	            });
+	        },
 	        onloadmore: function onloadmore() {}
 	    }
 
@@ -375,7 +301,7 @@ webpackJsonp([12],{
 
 /***/ }),
 
-/***/ 117:
+/***/ 126:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -387,16 +313,8 @@ webpackJsonp([12],{
 	    staticClass: "has-icon"
 	  }, [_vm._v("LEDGE 实战活动")])], 1), _vm._v(" "), _c('div', {
 	    staticClass: "mainview"
-	  }, [_c('List', {
-	    attrs: {
-	      "onloadmore": _vm.onloadmore
-	    }
-	  }, [_c('section', {
-	    staticClass: "activity-list",
-	    attrs: {
-	      "slot": "list"
-	    },
-	    slot: "list"
+	  }, [(_vm.list) ? _c('section', {
+	    staticClass: "activity-list"
 	  }, [(_vm.list.length) ? _c('ul', _vm._l((_vm.list), function(item, index) {
 	    return _c('li', {
 	      key: item.id
@@ -412,7 +330,7 @@ webpackJsonp([12],{
 	      }
 	    }, [_c('div', {
 	      staticClass: "activity-title"
-	    }, [_vm._v("\n                                " + _vm._s(item.activityTitle) + "\n                                "), _c('small', [_vm._v(_vm._s(item.activityDate))])]), _vm._v(" "), _c('div', {
+	    }, [_vm._v("\n                            " + _vm._s(item.activityTitle) + "\n                            "), _c('small', [_vm._v(_vm._s(item.activityDate))])]), _vm._v(" "), _c('div', {
 	      staticClass: "activity-poster"
 	    }, [_c('img', {
 	      directives: [{
@@ -422,7 +340,11 @@ webpackJsonp([12],{
 	        expression: "item.activityImgUrl"
 	      }]
 	    })])])], 1)
-	  })) : _vm._e()])])], 1)])
+	  })) : _vm._e()]) : _vm._e(), _vm._v(" "), (_vm.list && _vm.list.length === 0) ? _c('EmptyPage', {
+	    attrs: {
+	      "info": "没有相关联的实战活动"
+	    }
+	  }) : _vm._e()], 1)])
 	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {

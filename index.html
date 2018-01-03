@@ -39,7 +39,7 @@
             // timeout:50,
             success:function(d){
                 wx.config({
-                    debug: false, //
+                    debug: true, //
                     appId: d.AppId, // 必填，公众号的唯一标识
                     timestamp: d.Timestamp, // 必填，生成签名的时间戳
                     nonceStr: d.NonceStr, // 必填，生成签名的随机串

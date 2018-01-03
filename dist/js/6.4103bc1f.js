@@ -1,15 +1,15 @@
 /*! k.liu */
 webpackJsonp([6],{
 
-/***/ 78:
+/***/ 88:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(79),
+	  __webpack_require__(89),
 	  /* template */
-	  __webpack_require__(80),
+	  __webpack_require__(90),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([6],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -102,7 +102,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 80:
+/***/ 90:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -133,15 +133,15 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 85:
+/***/ 95:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(86),
+	  __webpack_require__(96),
 	  /* template */
-	  __webpack_require__(90),
+	  __webpack_require__(100),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -149,7 +149,7 @@ webpackJsonp([6],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/courses/details.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/courses/details.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] details.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -174,7 +174,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 86:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -183,7 +183,7 @@ webpackJsonp([6],{
 		value: true
 	});
 
-	var _HeaderView = __webpack_require__(78);
+	var _HeaderView = __webpack_require__(88);
 
 	var _HeaderView2 = _interopRequireDefault(_HeaderView);
 
@@ -191,7 +191,7 @@ webpackJsonp([6],{
 
 	var _api2 = _interopRequireDefault(_api);
 
-	var _Audio = __webpack_require__(87);
+	var _Audio = __webpack_require__(97);
 
 	var _Audio2 = _interopRequireDefault(_Audio);
 
@@ -327,15 +327,15 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 87:
+/***/ 97:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(88),
+	  __webpack_require__(98),
 	  /* template */
-	  __webpack_require__(89),
+	  __webpack_require__(99),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -343,7 +343,7 @@ webpackJsonp([6],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/Audio.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/Audio.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] Audio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -368,7 +368,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 88:
+/***/ 98:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -377,7 +377,7 @@ webpackJsonp([6],{
 	    value: true
 	});
 
-	var _fun = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../model/fun\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _fun = __webpack_require__(30);
 
 	var _api = __webpack_require__(7);
 
@@ -503,7 +503,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 89:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -511,7 +511,7 @@ webpackJsonp([6],{
 	    attrs: {
 	      "for": ""
 	    }
-	  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('span', [_c('a', {
+	  }, [_vm._v("L-" + _vm._s(_vm.label))]), _vm._v(" "), _c('span', [_c('a', {
 	    attrs: {
 	      "href": "javascript:void(0);"
 	    },
@@ -543,7 +543,7 @@ webpackJsonp([6],{
 
 /***/ }),
 
-/***/ 90:
+/***/ 100:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

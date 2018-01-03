@@ -1,15 +1,15 @@
 /*! k.liu */
 webpackJsonp([2],{
 
-/***/ 61:
+/***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(62),
+	  __webpack_require__(71),
 	  /* template */
-	  __webpack_require__(64),
+	  __webpack_require__(73),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -17,7 +17,7 @@ webpackJsonp([2],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/NavTab.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/NavTab.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] NavTab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42,7 +42,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 62:
+/***/ 71:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51,7 +51,7 @@ webpackJsonp([2],{
 	    value: true
 	});
 
-	var _vuex = __webpack_require__(63);
+	var _vuex = __webpack_require__(72);
 
 	exports.default = {
 	    methods: (0, _vuex.mapActions)(['changeOpenTap'])
@@ -64,7 +64,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 64:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -90,15 +90,15 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 66:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(67),
+	  __webpack_require__(79),
 	  /* template */
-	  __webpack_require__(68),
+	  __webpack_require__(80),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -106,7 +106,7 @@ webpackJsonp([2],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/timeline/timeline.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/timeline/timeline.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] timeline.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -131,7 +131,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 67:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -140,7 +140,7 @@ webpackJsonp([2],{
 	    value: true
 	});
 
-	var _NavTab = __webpack_require__(61);
+	var _NavTab = __webpack_require__(70);
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
@@ -195,12 +195,16 @@ webpackJsonp([2],{
 	//
 	//
 	//
-	//
 
 	var Model = new _api2.default();
 	exports.default = {
 	    components: {
 	        NavTab: _NavTab2.default
+	    },
+	    data: function data() {
+	        return {
+	            list: null
+	        };
 	    },
 	    mounted: function mounted() {
 	        this.getTimeLine();
@@ -208,9 +212,13 @@ webpackJsonp([2],{
 
 	    methods: {
 	        getTimeLine: function getTimeLine() {
+	            var _this = this;
+
 	            Model.send({
 	                url: 'getWechatTimeLine',
-	                success: function success(d) {}
+	                success: function success(d) {
+	                    _this.list = d.items;
+	                }
 	            });
 	        }
 	    }
@@ -218,7 +226,7 @@ webpackJsonp([2],{
 
 /***/ }),
 
-/***/ 68:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -232,7 +240,59 @@ webpackJsonp([2],{
 	    staticClass: "mainview"
 	  }, [_c('section', {
 	    staticClass: "timeline"
-	  }, [_c('p', [_vm._v("学习时间轴自动记录您在 LEDGE 的学习过程，它以卡片的形式为您导航，在这里能找到您的每一次进步。")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+	  }, [_c('p', [_vm._v("学习时间轴自动记录您在 LEDGE 的学习过程，它以卡片的形式为您导航，在这里能找到您的每一次进步。")]), _vm._v(" "), (_vm.list) ? _c('ul', {
+	    staticClass: "timeline-cards"
+	  }, _vm._l((_vm.list), function(item, index) {
+	    return _c('li', {
+	      key: index
+	    }, [_c('div', {
+	      staticClass: "datetime"
+	    }, [_vm._v(_vm._s(item.Time))]), _vm._v(" "), (item.Course) ? _c('div', {
+	      staticClass: "card course-card"
+	    }, [_c('router-link', {
+	      attrs: {
+	        "to": {
+	          name: 'coursedetail',
+	          query: {
+	            'id': item.Course.id,
+	            'qhfrom': 'timeline'
+	          }
+	        }
+	      }
+	    }, [_c('div', {
+	      staticClass: "course-cover"
+	    }, [_c('img', {
+	      attrs: {
+	        "src": item.Course.courseImgUrl
+	      }
+	    })]), _vm._v(" "), _c('div', {
+	      staticClass: "course-title"
+	    }, [_vm._v(_vm._s(item.Course.courseName))]), _vm._v(" "), _c('div', {
+	      staticClass: "category"
+	    }, [_vm._v(_vm._s(item.Course.courseClassifyName))]), _vm._v(" "), _c('div', {
+	      staticClass: "period"
+	    }, [_vm._v("共" + _vm._s(item.Course.coursePeriod) + "课时")])])], 1) : _vm._e(), _vm._v(" "), (item.Activity) ? _c('div', {
+	      staticClass: "card activity-card"
+	    }, [_c('router-link', {
+	      attrs: {
+	        "to": {
+	          'name': 'activitydetail',
+	          query: {
+	            'qhfrom': 'timeline',
+	            'id': item.Activity.id
+	          }
+	        }
+	      }
+	    }, [_c('div', {
+	      staticClass: "activity-title"
+	    }, [_vm._v("\n                                " + _vm._s(item.Activity.activityTitle) + "\n                                "), _c('small', [_vm._v(_vm._s(item.Activity.activityDate))])]), _vm._v(" "), _c('div', {
+	      staticClass: "activity-poster"
+	    }, [_c('img', {
+	      attrs: {
+	        "src": item.Activity.activityImgUrl
+	      }
+	    })])])], 1) : _vm._e()])
+	  })) : _vm._e(), _vm._v(" "), (_vm.list && _vm.list.length === 0) ? _c('div', {
 	    staticClass: "gb-blank"
 	  }, [_c('h3', [_vm._v("没有相关联的学习计划")]), _vm._v(" "), _c('p', [_vm._v("去看看 "), _c('router-link', {
 	    attrs: {
@@ -246,48 +306,8 @@ webpackJsonp([2],{
 	        'name': 'activity'
 	      }
 	    }
-	  }, [_vm._v("实战活动")]), _vm._v("，开启您的LEDGE学习")], 1)])])])])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('ul', {
-	    staticClass: "timeline-cards"
-	  }, [_c('li', [_c('div', {
-	    staticClass: "datetime"
-	  }, [_vm._v("2017-12-12 18:20")]), _vm._v(" "), _c('div', {
-	    staticClass: "card course-card"
-	  }, [_c('a', {
-	    attrs: {
-	      "href": "../../../Views/Courses/Details.jsp"
-	    }
-	  }, [_c('div', {
-	    staticClass: "course-cover"
-	  }, [_c('img', {
-	    attrs: {
-	      "src": __webpack_require__(69)
-	    }
-	  })]), _vm._v(" "), _c('div', {
-	    staticClass: "course-title"
-	  }, [_vm._v("课程名称占一行限制字数超过截断")]), _vm._v(" "), _c('div', {
-	    staticClass: "category"
-	  }, [_vm._v("类别名称")]), _vm._v(" "), _c('div', {
-	    staticClass: "period"
-	  }, [_vm._v("共18课时")])])])]), _vm._v(" "), _c('li', [_c('div', {
-	    staticClass: "datetime"
-	  }, [_vm._v("2017-11-22 13:58")]), _vm._v(" "), _c('div', {
-	    staticClass: "card activity-card"
-	  }, [_c('a', {
-	    attrs: {
-	      "href": "../../../Views/Activities/Details.jsp"
-	    }
-	  }, [_c('div', {
-	    staticClass: "activity-title"
-	  }, [_vm._v("\n                                活动主题\n                                "), _c('small', [_vm._v("12月14日 星期四")])]), _vm._v(" "), _c('div', {
-	    staticClass: "activity-poster"
-	  }, [_c('img', {
-	    attrs: {
-	      "src": __webpack_require__(70)
-	    }
-	  })])])])])])
-	}]}
+	  }, [_vm._v("实战活动")]), _vm._v("，开启您的LEDGE学习")], 1)]) : _vm._e()])])])
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
@@ -295,20 +315,6 @@ webpackJsonp([2],{
 	     require("vue-hot-reload-api").rerender("data-v-03587c24", module.exports)
 	  }
 	}
-
-/***/ }),
-
-/***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/d8814739.temp_128x128.jpg";
-
-/***/ }),
-
-/***/ 70:
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "img/c5c38b9c.temp_900x500.jpg";
 
 /***/ })
 

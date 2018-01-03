@@ -1,19 +1,19 @@
 /*! k.liu */
 webpackJsonp([16],{
 
-/***/ 93:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
 	function injectStyle (ssrContext) {
 	  if (disposed) return
-	  __webpack_require__(94)
+	  __webpack_require__(104)
 	}
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(98),
+	  __webpack_require__(106),
 	  /* template */
-	  __webpack_require__(99),
+	  __webpack_require__(107),
 	  /* styles */
 	  injectStyle,
 	  /* scopeId */
@@ -21,7 +21,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/list/list.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/list/list.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46,16 +46,16 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 94:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(95);
+	var content = __webpack_require__(105);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(97)(content, {});
+	var update = __webpack_require__(36)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -73,10 +73,10 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 95:
+/***/ 105:
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(96)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -88,7 +88,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 98:
+/***/ 106:
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -123,10 +123,10 @@ webpackJsonp([16],{
 	    },
 	    mounted: function mounted() {
 	        this.currentDom = document.getElementById(this.id);
-	        window.addEventListener("scroll", this.loadBottom);
+	        this.loadBottom && window.addEventListener("scroll", this.loadBottom);
 	    },
 	    beforeDestroy: function beforeDestroy() {
-	        window.removeEventListener('scroll', this.loadBottom);
+	        this.loadBottom && window.removeEventListener('scroll', this.loadBottom);
 	    },
 
 	    methods: {
@@ -150,7 +150,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 99:
+/***/ 107:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -171,19 +171,19 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 132:
+/***/ 138:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
 	function injectStyle (ssrContext) {
 	  if (disposed) return
-	  __webpack_require__(133)
+	  __webpack_require__(139)
 	}
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(135),
+	  __webpack_require__(141),
 	  /* template */
-	  __webpack_require__(146),
+	  __webpack_require__(152),
 	  /* styles */
 	  injectStyle,
 	  /* scopeId */
@@ -191,7 +191,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/test/test.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/test/test.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] test.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -216,16 +216,16 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 133:
+/***/ 139:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(134);
+	var content = __webpack_require__(140);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(97)(content, {});
+	var update = __webpack_require__(36)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -243,10 +243,10 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 134:
+/***/ 140:
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(96)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -258,7 +258,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 135:
+/***/ 141:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -267,11 +267,11 @@ webpackJsonp([16],{
 	    value: true
 	});
 
-	var _calendar = __webpack_require__(136);
+	var _calendar = __webpack_require__(142);
 
 	var _calendar2 = _interopRequireDefault(_calendar);
 
-	var _list = __webpack_require__(93);
+	var _list = __webpack_require__(103);
 
 	var _list2 = _interopRequireDefault(_list);
 
@@ -359,19 +359,19 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 136:
+/***/ 142:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
 	function injectStyle (ssrContext) {
 	  if (disposed) return
-	  __webpack_require__(137)
+	  __webpack_require__(143)
 	}
-	var Component = __webpack_require__(59)(
+	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(139),
-	  /* template */
 	  __webpack_require__(145),
+	  /* template */
+	  __webpack_require__(151),
 	  /* styles */
 	  injectStyle,
 	  /* scopeId */
@@ -379,7 +379,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/calendar/calendar.vue"
+	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/calendar/calendar.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] calendar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -404,16 +404,16 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 137:
+/***/ 143:
 /***/ (function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(138);
+	var content = __webpack_require__(144);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(97)(content, {});
+	var update = __webpack_require__(36)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -431,10 +431,10 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 138:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(96)();
+	exports = module.exports = __webpack_require__(35)();
 	// imports
 
 
@@ -446,7 +446,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 139:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -455,7 +455,7 @@ webpackJsonp([16],{
 	    value: true
 	});
 
-	var _keys = __webpack_require__(140);
+	var _keys = __webpack_require__(146);
 
 	var _keys2 = _interopRequireDefault(_keys);
 
@@ -463,7 +463,7 @@ webpackJsonp([16],{
 
 	var _assign2 = _interopRequireDefault(_assign);
 
-	var _calendar = __webpack_require__(144);
+	var _calendar = __webpack_require__(150);
 
 	var _calendar2 = _interopRequireDefault(_calendar);
 
@@ -1271,7 +1271,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 144:
+/***/ 150:
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -1750,7 +1750,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 145:
+/***/ 151:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1890,7 +1890,7 @@ webpackJsonp([16],{
 
 /***/ }),
 
-/***/ 146:
+/***/ 152:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
