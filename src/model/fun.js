@@ -164,6 +164,9 @@ export function getCookie(name){
   return null;
 }
 
+export function setCookie({name,value}) {
+    document.cookie=name"="+value;
+}
 //微信分享
 export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){
   if(wx){

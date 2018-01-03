@@ -31,7 +31,8 @@
     import HeaderView from '../../components/HeaderView'
     import {
         showAlert,
-        routerUrl
+        routerUrl,
+        setCookie
     }from '../../model/fun'
     import {
         setStore,
@@ -93,6 +94,10 @@
                         VerifyCode:this.verifyCode
                     },
                     success:(d)=>{
+                        setCookie({
+                            name:'ticket',
+                            value:d.Ticket
+                        })
                         this.getUserInfo()
                     },
                     error:(d)=>{
