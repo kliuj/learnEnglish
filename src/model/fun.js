@@ -134,6 +134,7 @@ export function  jumpUrl(replaceUrl,type){
     }else{
         replaceUrl = encodeURIComponent('http://wx.ledgetrans.com.cn/index.html#/'+replaceUrl)
     }
+    console.log(replaceUrl)
     location.replace('http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+replaceUrl);
 }
 
@@ -145,11 +146,11 @@ export function routerUrl(url,router){
 }
 
 //跳转登录
-export function goToLogin(toUrl){
-  //http://wx.ledgetrans.com.cn/home/autologin?returnUrl=
-  const url = encodeURIComponent(toUrl || location.href)
-  location.replace('http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+url)
-}
+// export function goToLogin(toUrl){
+//   //http://wx.ledgetrans.com.cn/home/autologin?returnUrl=
+//   const url = encodeURIComponent(toUrl || location.href)
+//   location.replace('http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+url)
+// }
 
 //get  cookie
 

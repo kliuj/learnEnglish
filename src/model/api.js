@@ -60,7 +60,7 @@ export default class Api {
   * @param errorCallback        [可以传空]		[失败的回调]
   * @param nocheck	 [可选]		[是否需要验证登录信息]
   */
-  send({url,params = {},type = 'get' ,success = ()=>{},error=()=>{},nocheck,notShowLoading,withOutUserInfo}){
+  send({url,params = {},type = 'get' ,success = ()=>{},error=()=>{},nocheck,notShowLoading,withOutUserInfo,backUrl,needLogin=true}){
     if(!notShowLoading){
       //自定义是否showloading
       showLoading()
@@ -79,7 +79,7 @@ export default class Api {
     }
     axios[type](self.models()[url],params)
     .then(({data})=>{
-        this.preCallback({success,error,nocheck,notShowLoading,data})
+        this.preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin})
     })
     .catch((err)=>{
         hideLoading()
@@ -92,10 +92,10 @@ export default class Api {
   /*
   * - 8表示未登录
   */
-  preCallback({success,error,nocheck,notShowLoading,data}){
+  preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin}){
     hideLoading()
-    if(data.errorCode === -8){
-      setStore('loginBack',location.href)
+    if(data.errorCode === -8 && needLogin){
+      setStore('loginBack',backUrl || location.href)
       jumpUrl('login')
     }
     if(data.success){

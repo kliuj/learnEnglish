@@ -1,12 +1,11 @@
 'use strict'
 
 import Api from './model/api.js'
-let Model = new Api ();
+let Models = new Api ();
 import {
 	showLoading,
 	hideLoading,
 	hideMessage,
-	goToLogin,
     routerUrl
 } from './model/fun.js'
 import VueRouter from "vue-router";
@@ -37,7 +36,7 @@ const routes = [
 	},
 	{
 		path:'/check',//打卡记录
-		name:'checkout',
+		name:'check',
 		meta: { 
 			needRequiresAuth: true
 		},
@@ -56,13 +55,13 @@ const routes = [
 		}
 	},
 	{
-    	path:'/ivite',//邀请好友
-    	name:'ivite',
+    	path:'/invite',//邀请好友
+    	name:'invite',
 		meta: { 
 			needRequiresAuth: true
 		},
     	component:function (resolve) {
-	      require(['./pages/ivite/ivite.vue'], resolve)
+	      require(['./pages/invite/invite.vue'], resolve)
 	    }
 	},
 	// {
@@ -162,9 +161,6 @@ const routes = [
 	{
     	path:'/about',
     	name:'about',
-		meta: { 
-			needRequiresAuth: true
-		},
     	component:function (resolve) {
 	      require(['./pages/about/about.vue'], resolve)
 	    }
@@ -198,19 +194,20 @@ router.beforeEach((to, from, next) => {
 	}
 	//验证后的回调
 	let afterCheck = ()=>{
-			// var toPath = transition.to.path;
-			// //判断是否是一级目录
-			// if(toPath.replace(/[^/]/g,"").length>1){`
-			// 		router.app.isIndex = false;
-			// }else{
-			// 		router.app.isIndex = true;
-			// }
-			next()
+		//检查是否登录过
+			Models.send({
+				url:'getWechatUser',
+				type:'get',
+				backUrl:'/index.html#' + to.fullPath,
+				success:()=>{
+					next()
+				}
+			})
 	}
 	if(to.meta.needRequiresAuth){
 		afterCheck()
 	}else{
-		afterCheck()
+		next()
 		//需要登录的页面先判登录态，由于需要登录的页面很多，所以设置不需要登录的页面参数
 			// baseApi.send('isUserLogin',{},(d)=>{
 			// 	if(d.IsLogin){
@@ -227,6 +224,7 @@ router.beforeEach((to, from, next) => {
 })
 //
 router.afterEach(route => {
+	wx && wx.hideOptionMenu();
     hideLoading()
     window.scrollTo(0,0);
 })

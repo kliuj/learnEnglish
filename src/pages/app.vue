@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a target-name='ivite' @click="changeTab">
+                    <a target-name='invite' @click="changeTab">
                         <span class="sidenav-link-title">邀请同学</span>
                     </a>
                 </li>

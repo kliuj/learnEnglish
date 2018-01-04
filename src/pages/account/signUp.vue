@@ -1,5 +1,5 @@
 <template>
-    <div class="page pg-account pg-account-signup">
+    <div class="page pg-account pg-account-signup" >
         <HeaderView pageName="signup" pageTitle="创建帐户" iconName="close" />
         <!-- //HEADER -->
         <!-- MAINVIEW -->
@@ -47,18 +47,19 @@
         },
         data(){
             return{
+                mountedDom:false,
                 countDown:null,
                 second:0,
-                phone:13795329019,
+                phone:null,
                 verifyCode:null,
-                iviteCode:null,
+                inviteCode:null,
                 backUrl:''
             }
         },
         beforeRouteEnter(to, from, next){
             next(vm=>{
                 vm.backurl = to.query.returnUrl,
-                vm.iviteCode = to.query.iviteCode
+                vm.inviteCode = to.query.inviteCode
             })
         },
         beforeRouteLeave(to, from, next){

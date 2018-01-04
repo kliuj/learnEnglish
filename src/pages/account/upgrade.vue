@@ -10,7 +10,7 @@
         <div class="mainview">
             <section>
                 <div class="upgrade-banner"><img src="../../../Assets/Images/upgrade_banner.png" width="100%"></div>
-                <div class="pay-vip-fee"><a href="javascript:void(0);">年费￥1500 成为VIP会员</a></div>
+                <div class="pay-vip-fee"><a href="javascript:void(0);" @click="upgrade">年费￥1500 成为VIP会员</a></div>
             </section>
         </div>
         <!-- //MAINVIEW -->
@@ -21,6 +21,11 @@
     export default{
         components:{
             NavTab
+        },
+        methods:{
+            upgrade(){
+                
+            }
         }
     }
 </script>

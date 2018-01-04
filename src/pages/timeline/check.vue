@@ -1,14 +1,12 @@
 <template>
   <div class="page pg-timeline pg-timeline-check">
         <!-- HEADER -->
-        <header class="gb-header">
-            <div class="header-left"><a href="" class="icon back"></a></div>
-            <h1 class="has-icon">打卡记录</h1>
+        <HeaderView pageName="check" pageTitle="打卡记录">
             <div class="header-right">
-                <a href="" class="icon calendar"></a>
-                <a href="" class="icon list hidden"></a>
+                <a href="javascript:void(0);" class="icon calendar"></a>
+                <a href="javascript:void(0);" class="icon list hidden"></a>
             </div>
-        </header>
+        </HeaderView>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
         <div class="mainview">
@@ -30,20 +28,6 @@
                             <em>2017-12-31，用户录入的100字以内学习心得...</em>
                         </div>
                     </li>
-                    <li>
-                        <div>
-                            <label for="">第221天打卡</label>
-                            <span>聆听了2节课</span>
-                            <em>2017-12-30，用户录入的100字以内学习心得...</em>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <label for="">第218天打卡</label>
-                            <span>聆听了2节课</span>
-                            <em>2017-12-27，用户录入的100字以内学习心得...</em>
-                        </div>
-                    </li>
                 </ul>
             </section>
             <section class="calendar-view">	    	
@@ -51,18 +35,19 @@
                 <div class="c"><img src="../../../Assets/Images/temp_calendar.png" width="100%"></div>
             </section>
             <!-- CHECK -->
-            <section class="quick-check">
+            <section class="quick-check" v-show="visable">
                 <div class="modal"></div>
                 <div class="container">
                     <div class="hd">
                         <div class="title">今日打卡</div>
-                        <a href="" class="cancel">取消</a>
+                        <a href="javascript:void(0)" class="cancel" @click="cancel">取消</a>
                     </div>
                     <div class="bd">
                         <ul class="listview">
                             <li>
                                 <div class="textarea">
-                                    <span><textarea id="WhatsUp" name="WhatsUp" rows="5" maxlength="30" placeholder="学习心得（100字以内）" data-role="none"></textarea></span>
+                                    <span>
+                                        <textarea id="WhatsUp" rows="5" maxlength="30" placeholder="学习心得（100字以内）" ></textarea></span>
                                 </div>
                             </li>
                         </ul>
@@ -76,5 +61,24 @@
     </div>
 </template>
 <script>
-    
+    import HeaderView from '../../components/HeaderView'
+    export default{
+        components:{
+            HeaderView
+        },
+        data(){
+            return {
+                visable:false,
+                isowner:false
+            }
+        },
+        beforeRouteEnter(to, from, next){
+            // ...
+        },
+        methods:{
+            cancel(){
+                this.visable = false
+            }
+        }
+    }
 </script>

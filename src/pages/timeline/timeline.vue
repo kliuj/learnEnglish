@@ -4,6 +4,9 @@
         <header class="gb-header">
             <NavTab />
             <h1 class="has-icon">我的学习时间轴</h1>
+            <div class="header-right">
+                <a href="javascript:void(0)" @click="gotoCheck">打卡</a>
+            </div>
         </header>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
@@ -67,6 +70,9 @@
                         this.list = d.items
                     }
                 })
+            },
+            gotoCheck(){
+                this.$router.push({'name':'check',query:{'qhfrom':'timeline','uid':USER_INFO.id}})
             }
         }
     }

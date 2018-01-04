@@ -26,7 +26,7 @@
         },
         beforeRouteEnter(to, from, next){
             next(vm=>{
-                vm.backurl = to.query.returnUrl
+                // vm.backurl = to.query.returnUrl
             })
         },
         created(){
