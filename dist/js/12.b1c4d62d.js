@@ -17,7 +17,7 @@ webpackJsonp([12],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/NavTab.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/NavTab.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] NavTab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -106,7 +106,7 @@ webpackJsonp([12],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/EmptyPage.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/EmptyPage.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] EmptyPage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -190,7 +190,7 @@ webpackJsonp([12],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/activities/index.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/activities/index.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 

@@ -21,7 +21,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/list/list.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/list/list.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] list.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -191,7 +191,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/test/test.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/test/test.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] test.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -379,7 +379,7 @@ webpackJsonp([16],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/calendar/calendar.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/calendar/calendar.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] calendar.vue: functional components are not supported with templates, they should use render functions.")}
 

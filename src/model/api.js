@@ -94,7 +94,7 @@ export default class Api {
   */
   preCallback({success,error,nocheck,notShowLoading,data}){
     hideLoading()
-    if(data.code === -8){
+    if(data.errorCode === -8){
       setStore('loginBack',location.href)
       jumpUrl('login')
     }

@@ -17,7 +17,7 @@ webpackJsonp([10],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/HeaderView.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/HeaderView.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] HeaderView.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -149,7 +149,7 @@ webpackJsonp([10],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/account/signup.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/account/signup.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] signup.vue: functional components are not supported with templates, they should use render functions.")}
 

@@ -1,5 +1,5 @@
 /*! k.liu */
-webpackJsonp([5],{
+webpackJsonp([2],{
 
 /***/ 70:
 /***/ (function(module, exports, __webpack_require__) {
@@ -17,7 +17,7 @@ webpackJsonp([5],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/components/NavTab.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/components/NavTab.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 	if (Component.options.functional) {console.error("[vue-loader] NavTab.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -90,15 +90,15 @@ webpackJsonp([5],{
 
 /***/ }),
 
-/***/ 92:
+/***/ 78:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var disposed = false
 	var Component = __webpack_require__(37)(
 	  /* script */
-	  __webpack_require__(93),
+	  __webpack_require__(79),
 	  /* template */
-	  __webpack_require__(94),
+	  __webpack_require__(80),
 	  /* styles */
 	  null,
 	  /* scopeId */
@@ -106,9 +106,9 @@ webpackJsonp([5],{
 	  /* moduleIdentifier (server only) */
 	  null
 	)
-	Component.options.__file = "/Users/joy/Desktop/code/learnEnglish/src/pages/ivite/ivite.vue"
+	Component.options.__file = "/Users/kerwinliu/Documents/code/code/learnEnglish/src/pages/timeline/timeline.vue"
 	if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-	if (Component.options.functional) {console.error("[vue-loader] ivite.vue: functional components are not supported with templates, they should use render functions.")}
+	if (Component.options.functional) {console.error("[vue-loader] timeline.vue: functional components are not supported with templates, they should use render functions.")}
 
 	/* hot reload */
 	if (false) {(function () {
@@ -117,9 +117,9 @@ webpackJsonp([5],{
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-dbf5e4c0", Component.options)
+	    hotAPI.createRecord("data-v-03587c24", Component.options)
 	  } else {
-	    hotAPI.reload("data-v-dbf5e4c0", Component.options)
+	    hotAPI.reload("data-v-03587c24", Component.options)
 	  }
 	  module.hot.dispose(function (data) {
 	    disposed = true
@@ -131,7 +131,7 @@ webpackJsonp([5],{
 
 /***/ }),
 
-/***/ 93:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -144,15 +144,36 @@ webpackJsonp([5],{
 
 	var _NavTab2 = _interopRequireDefault(_NavTab);
 
-	var _fun = __webpack_require__(30);
-
 	var _api = __webpack_require__(7);
 
 	var _api2 = _interopRequireDefault(_api);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Models = new _api2.default(); //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 	//
 	//
@@ -175,65 +196,123 @@ webpackJsonp([5],{
 	//
 	//
 
+	var Model = new _api2.default();
 	exports.default = {
 	    components: {
 	        NavTab: _NavTab2.default
 	    },
 	    data: function data() {
 	        return {
-	            iviteCode: null
+	            list: null
 	        };
 	    },
 	    mounted: function mounted() {
-	        var title = window.USER_INFO.userName + '邀请你加入Ledge同声翻译实战学习',
-	            imgUrl = 'http://wx.ledgetrans.com.cn/CommonImages/ledge_logo.png',
-	            link = 'http://wx.ledgetrans.com.cn/home/autologin?returnUrl=http://wx.ledgetrans.com.cn/index.html#/index?iviteCode=' + this.iviteCode;
-	        (0, _fun.share)({
-	            title: title,
-	            desc: '你的好多朋友都在这里！完成注册即可获得1000积分。',
-	            link: link,
-	            imgUrl: imgUrl
-	        });
+	        this.getTimeLine();
 	    },
-	    created: function created() {
-	        var _this = this;
 
-	        Models.send({
-	            url: 'getWechatInviteCode',
-	            success: function success(d) {
-	                _this.iviteCode = d.item;
-	            }
-	        });
+	    methods: {
+	        getTimeLine: function getTimeLine() {
+	            var _this = this;
+
+	            Model.send({
+	                url: 'getWechatTimeLine',
+	                success: function success(d) {
+	                    _this.list = d.items;
+	                }
+	            });
+	        }
 	    }
 	};
 
 /***/ }),
 
-/***/ 94:
+/***/ 80:
 /***/ (function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
 	  return _c('div', {
-	    staticClass: "page pg-invite"
+	    staticClass: "page pg-timeline pg-timeline-hp"
 	  }, [_c('header', {
 	    staticClass: "gb-header"
 	  }, [_c('NavTab'), _vm._v(" "), _c('h1', {
 	    staticClass: "has-icon"
-	  }, [_vm._v("邀请同学")])], 1), _vm._v(" "), _vm._m(0)])
-	},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
+	  }, [_vm._v("我的学习时间轴")])], 1), _vm._v(" "), _c('div', {
 	    staticClass: "mainview"
 	  }, [_c('section', {
-	    staticClass: "invitation-detail"
-	  }, [_c('h2', [_vm._v("邀请同学获得奖励")]), _vm._v(" "), _c('p', [_vm._v("同学只需要完成注册，即可获得1000积分，"), _c('br'), _vm._v("同时你也获得500积分，积分可以用来抵扣消费。")])]), _vm._v(" "), _c('section', {
-	    staticClass: "how-to-do"
-	  }, [_c('h3', [_vm._v("如何邀请")]), _vm._v(" "), _c('p', [_vm._v("很简单！你只需要点击右上角“分享给朋友”或“分享到朋友圈”就搞定了。坐等赚积分吧~")])])])
-	}]}
+	    staticClass: "timeline"
+	  }, [_c('p', [_vm._v("学习时间轴自动记录您在 LEDGE 的学习过程，它以卡片的形式为您导航，在这里能找到您的每一次进步。")]), _vm._v(" "), (_vm.list) ? _c('ul', {
+	    staticClass: "timeline-cards"
+	  }, _vm._l((_vm.list), function(item, index) {
+	    return _c('li', {
+	      key: index
+	    }, [_c('div', {
+	      staticClass: "datetime"
+	    }, [_vm._v(_vm._s(item.Time))]), _vm._v(" "), (item.Course) ? _c('div', {
+	      staticClass: "card course-card"
+	    }, [_c('router-link', {
+	      attrs: {
+	        "to": {
+	          name: 'coursedetail',
+	          query: {
+	            'id': item.Course.id,
+	            'qhfrom': 'timeline'
+	          }
+	        }
+	      }
+	    }, [_c('div', {
+	      staticClass: "course-cover"
+	    }, [_c('img', {
+	      attrs: {
+	        "src": item.Course.courseImgUrl
+	      }
+	    })]), _vm._v(" "), _c('div', {
+	      staticClass: "course-title"
+	    }, [_vm._v(_vm._s(item.Course.courseName))]), _vm._v(" "), _c('div', {
+	      staticClass: "category"
+	    }, [_vm._v(_vm._s(item.Course.courseClassifyName))]), _vm._v(" "), _c('div', {
+	      staticClass: "period"
+	    }, [_vm._v("共" + _vm._s(item.Course.coursePeriod) + "课时")])])], 1) : _vm._e(), _vm._v(" "), (item.Activity) ? _c('div', {
+	      staticClass: "card activity-card"
+	    }, [_c('router-link', {
+	      attrs: {
+	        "to": {
+	          'name': 'activitydetail',
+	          query: {
+	            'qhfrom': 'timeline',
+	            'id': item.Activity.id
+	          }
+	        }
+	      }
+	    }, [_c('div', {
+	      staticClass: "activity-title"
+	    }, [_vm._v("\n                                " + _vm._s(item.Activity.activityTitle) + "\n                                "), _c('small', [_vm._v(_vm._s(item.Activity.activityDate))])]), _vm._v(" "), _c('div', {
+	      staticClass: "activity-poster"
+	    }, [_c('img', {
+	      attrs: {
+	        "src": item.Activity.activityImgUrl
+	      }
+	    })])])], 1) : _vm._e()])
+	  })) : _vm._e(), _vm._v(" "), (_vm.list && _vm.list.length === 0) ? _c('div', {
+	    staticClass: "gb-blank"
+	  }, [_c('h3', [_vm._v("没有相关联的学习计划")]), _vm._v(" "), _c('p', [_vm._v("去看看 "), _c('router-link', {
+	    attrs: {
+	      "to": {
+	        'name': 'index'
+	      }
+	    }
+	  }, [_vm._v("LEDGE课程")]), _vm._v(" 或 "), _c('router-link', {
+	    attrs: {
+	      "to": {
+	        'name': 'activity'
+	      }
+	    }
+	  }, [_vm._v("实战活动")]), _vm._v("，开启您的LEDGE学习")], 1)]) : _vm._e()])])])
+	},staticRenderFns: []}
 	module.exports.render._withStripped = true
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-hot-reload-api").rerender("data-v-dbf5e4c0", module.exports)
+	     require("vue-hot-reload-api").rerender("data-v-03587c24", module.exports)
 	  }
 	}
 
