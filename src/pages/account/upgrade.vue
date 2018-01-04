@@ -18,13 +18,15 @@
 </template>
 <script>
     import NavTab from '../../components/NavTab'
+    import Api from '../../model/api'
+    const Model = new Api()
     export default{
         components:{
             NavTab
         },
         methods:{
             upgrade(){
-                
+
             }
         }
     }

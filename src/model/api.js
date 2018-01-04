@@ -97,6 +97,7 @@ export default class Api {
     if(data.errorCode === -8 && needLogin){
       setStore('loginBack',backUrl || location.href)
       jumpUrl('login')
+      return false
     }
     if(data.success){
       success(data)
