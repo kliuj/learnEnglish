@@ -48,6 +48,8 @@ export default class Api {
     _ret.getWechatTimeLine = this.setModel('WechatTimeLine')
     //根据活动ID得到所有有效的入场券信息
     _ret.getWechatCourseAudio = this.setModel('WechatCourseAudio')
+    //vip支付
+    _ret.getWechatVipPay = this.setModel('WechatVipPay')
     return _ret;
   }
   //发送请求
@@ -99,7 +101,7 @@ export default class Api {
       jumpUrl('login')
       return false
     }
-    if(data.success){
+    if(data.success || data.appId){
       success(data)
     }else{
       error(data)

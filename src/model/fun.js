@@ -194,22 +194,25 @@ export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){
 export function wxPay ({d={},success=()=>{},cancel=()=>{},fail=()=>{}}){
     //发起一个微信支付请求
     wx.chooseWXPay({
-        timestamp: d.Timestamp,
-        nonceStr: d.NonceStr,
-        package: d.Package,
-        signType: d.SignType,
-        paySign: d.PaySign,
+        timestamp: d.timeStamp,
+        nonceStr: d.nonceStr,
+        package: d.package,
+        signType: d.signType,
+        paySign: d.paySign,
         success: function (res) {
             // 支付成功后的回调函数
             // alert("返回值描述"+res.err_msg);
             if(res.errMsg == "chooseWXPay:ok" ) {
+                success && success()
                 console.log('支付成功')
             }else{
                 console.log('支付失败')
+                fail && fail()
             }
         },
         cancel:function(res){
             console.log('支付取消')
+            cancel()
         }
     });
 }
