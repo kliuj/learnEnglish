@@ -248,7 +248,8 @@
         <tbody>
         <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
             <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" @click="select(k1,k2,$event)">
-                <span :class="{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar)}">{{child.day}}</span>
+                <!-- <span :class="{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar)}">{{child.day}}</span> -->
+                <span :class="getCheckedState(child.dataString)">{{child.day}}</span>
                 <div class="text" v-if="child.eventName!=undefined">{{child.eventName}}</div>
                 <div class="text" :class="{'isLunarFestival':child.isLunarFestival,'isGregorianFestival':child.isGregorianFestival}" v-if="lunar">{{child.lunar}}</div>
             </td>
@@ -336,6 +337,13 @@ export default {
                 return {}
             }
         },
+        // 自定义选中的日期
+        selectcheckdate:{
+            type: Object,
+            default: function(){
+                return {}
+            }
+        }
     },
     data() {
         return {
@@ -422,6 +430,11 @@ export default {
                 }
             }
             this.render(this.year, this.month)
+        },
+        getCheckedState(currentDate){
+            if(this.selectcheckdate[currentDate]){
+                return 'red'
+            }     
         },
         // 渲染日期
         render(y, m) {
@@ -645,6 +658,7 @@ export default {
                 isGregorianFestival=true
             }
             return {
+                dataString:y+'-'+ ('0'+ m).substr(-2)+'-'+('0'+ d).substr(-2),
                 lunar:lunarValue,
                 isLunarFestival:isLunarFestival,
                 isGregorianFestival:isGregorianFestival,

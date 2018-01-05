@@ -132,7 +132,7 @@
                     //防止注册时候刷新信息
                     window.USER_INFO = getStore('userInfo')
                     this.profileInfo = getStore('userInfo') ;
-                    console.debug("成功获取用户信息");
+                    console.log("成功获取用户信息",USER_INFO);
                 }else{
                     this.profileInfo = '' ;
                     // console.debug("暂无用户信息");

@@ -52,6 +52,8 @@ export default class Api {
     _ret.getWechatCourseAudio = this.setModel('WechatCourseAudio')
     //vip支付
     _ret.getWechatVipPay = this.setModel('WechatVipPay')
+    //打卡
+    _ret.WechatClockIn = this.setModel('WechatClockIn')
     return _ret;
   }
   //发送请求
