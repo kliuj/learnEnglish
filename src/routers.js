@@ -6,7 +6,8 @@ import {
 	showLoading,
 	hideLoading,
 	hideMessage,
-    routerUrl
+    routerUrl,
+    jumpUrl
 } from './model/fun.js'
 import VueRouter from "vue-router";
 import Vue from "vue";
@@ -196,11 +197,17 @@ router.beforeEach((to, from, next) => {
 	let afterCheck = ()=>{
 		//检查是否登录过
 			Models.send({
-				url:'getWechatUser',
-				type:'get',
-				backUrl:'/index.html#' + to.fullPath,
-				success:()=>{
-					next()
+                url:'getWechatIsLogin',
+                type:'get',
+                needLogin:false,
+				success:({item})=>{
+                    if(item == true){
+                        next()
+					}else{
+						let toUrl= '/index.html#' + to.fullPath
+						localStorage.setItem('loginBack',JSON.stringify(toUrl));
+                        jumpUrl('login')
+					}
 				}
 			})
 	}

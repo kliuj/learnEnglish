@@ -168,6 +168,7 @@ export function setCookie({name,value}) {
 }
 //微信分享
 export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){
+    console.log(link)
   if(wx){
     wx.showOptionMenu();
     //朋友圈

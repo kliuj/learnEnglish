@@ -53,6 +53,7 @@
                     url:'getWechatUser',
                     type:'get',
                     params:{},
+                    backUrl:'/index.html#/index',
                     success:({item = {}})=>{
                         setStore('userInfo',item);
                         this.goBack(item)

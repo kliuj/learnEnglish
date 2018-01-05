@@ -37,23 +37,29 @@
             }
         },
         mounted(){
-            const title =  window.USER_INFO.userName + '邀请你加入Ledge同声翻译实战学习',
-                  imgUrl = 'http://wx.ledgetrans.com.cn/CommonImages/ledge_logo.png',
-                  link =  'http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+encodeURIComponent('http://wx.ledgetrans.com.cn/index.html#/signup?inviteCode='+this.inviteCode);
-            share({
-                title ,
-                desc:'你的好多朋友都在这里！完成注册即可获得1000积分。',
-                link ,
-                imgUrl
-            })
+          this.getCode()
         },
-        created(){
-            Models.send({
-                url:'getWechatInviteCode',
-                success:(d)=>{
-                    this.inviteCode = d.item
-                }
-            })
+        methods:{
+            getCode(){
+                Models.send({
+                    url:'getWechatInviteCode',
+                    success:(d)=>{
+                        this.inviteCode = d.item
+                        this.setConfig()
+                    }
+                })
+            },
+            setConfig(){
+                const title =  window.USER_INFO.userName + '邀请你加入Ledge同声翻译实战学习',
+                    imgUrl = 'http://wx.ledgetrans.com.cn/CommonImages/ledge_logo.png',
+                    link =  'http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+encodeURIComponent('http://wx.ledgetrans.com.cn/index.html#/signup?inviteCode='+this.inviteCode);
+                share({
+                    title ,
+                    desc:'你的好多朋友都在这里！完成注册即可获得1000积分。',
+                    link ,
+                    imgUrl
+                })
+            }
         }
     }
 </script>

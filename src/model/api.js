@@ -34,6 +34,8 @@ export default class Api {
     _ret.getWechatActivityTicket = this.setModel('WechatActivityTicket');
     //登录 注册  发短信
     _ret.setWechatLogin = this.setModel('WechatLogin');
+    //判断是否登录
+    _ret.getWechatIsLogin = this.setModel('WechatIsLogin');
     //获取用户信息 get
     _ret.getWechatUser = this.setModel('WechatUser')
     //获取积分信息
@@ -97,9 +99,9 @@ export default class Api {
   preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin}){
     hideLoading()
     if(data.errorCode === -8 && needLogin){
-      setStore('loginBack',backUrl || location.href)
-      jumpUrl('login')
-      return false
+        setStore('loginBack',backUrl || location.href)
+        jumpUrl('login')
+        return false
     }
     if(data.success || data.appId){
       success(data)
