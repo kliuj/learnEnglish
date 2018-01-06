@@ -9,12 +9,12 @@
         </HeaderView>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
-        <div class="mainview">
+        <div class="mainview" v-if="data">
             <section class="check-summary">
                 <div class="profile-photo">
-                    <img src="../../../Assets/Images/temp_user.png">
+                    <img :src="icon">
                 </div>
-                <div class="check-stat">2017.01.18 ~ 至今</div>
+                <div class="check-stat" v-if="beginDate">{{beginDate}} ~ 至今</div>
                 <div class="goto-check" v-if="isowner">
                     <a href="javascript:void(0)" @click="checkData">打卡</a>
                 </div>
@@ -23,19 +23,19 @@
                 </div>
             </section>
             <section class="gb-listview" v-show="!isCalendar">
-                <div class="legend">打卡216天</div>
+                <div class="legend">打卡{{data.Total}}天</div>
                 <ul>
-                    <li>
+                    <li v-for="(item,index) in data.Details" :key="index">
                         <div>
-                            <label for="">第222天打卡</label>
-                            <span>聆听了2节课</span>
-                            <em>2017-12-31，用户录入的100字以内学习心得...</em>
+                            <label for="">第{{index + 1}}天打卡</label>
+                            <span>聆听了{{item.LearnCourseNum}}节课</span>
+                            <em>{{item.ClockInDate.split(" ")[0]}}{{'，'+item.StudyNotes}}</em>
                         </div>
                     </li>
                 </ul>
             </section>
             <section class="calendar-view" v-show="isCalendar">	    	
-                <div class="legend">打卡216天</div>
+                <div class="legend">打卡{{data.Total}}天</div>
                 <div class="c">
                     <Calendar 
                         :range="calendar2.range" 
@@ -79,28 +79,29 @@
     import Calendar from '../../components/calendar/calendar.vue'
     import Api from '../../model/api'
     const Models = new Api()
+    import{
+        showToast
+    }from '../../model/fun'
     export default{
         components:{
             HeaderView,Calendar
         },
         data(){
             return {
+                beginDate:null,
                 visable:false,
                 isowner:false,
                 isCalendar:false,
                 uid:0,
+                icon:'',
+                data:null,
                 calendar2:{
                     range:true,
                     value:[[2017,12,1],[2019,2,16]], //默认日期
                     lunar:false, //显示农历
-                    begin:[2017,2,16], //可选开始日期
+                    begin:[2017,1,19], //可选开始日期
                     end:[2019,2,16], //可选结束日期
-                    selectCheckDate:{
-                        '2017-12-02':true,
-                        '2017-12-12':true,
-                        '2017-12-22':true,
-                        '2017-12-28':true
-                    },
+                    selectCheckDate:{},
                     select(begin,end){
                         // console.log(begin.toString(),end.toString());
                     }
@@ -121,6 +122,7 @@
                 this.visable = false
             },
             getCheckList(){
+                this.cancel()
                 Models.send({
                     url:'WechatClockIn',
                     type:'get',
@@ -128,10 +130,22 @@
                         from:'2017-01-05 21:47:15',
                         to:'2019-01-05 21:47:15'
                     },
-                    success:()=>{
-
+                    success:(d)=>{
+                        this.data = d.item
+                        let begin = d.item.BindingDate.split(" ")[0]
+                        this.calendar2.value[0] = begin.split("-")
+                        this.beginDate = begin
+                        this.icon = d.item.UserHeadImgUrl
+                        this.setCalendarData(d.item.Details)
                     }
                 })
+            },
+            //设置日历数据
+            setCalendarData(details){
+                for(let i of details){
+                    let value = i.ClockInDate.split(" ")[0]
+                    this.calendar2.selectCheckDate[value] = true
+                }
             },
             checkData(){
                 Models.send({
@@ -141,7 +155,7 @@
                         id:this.uid
                     },
                     success:(d)=>{
-
+                        showToast('你今天已经打过卡了')
                     },
                     error:()=>{
                         this.visable = true

@@ -112,14 +112,15 @@
                     }
                 })
             },
+            //获取打卡记录的人
             getWechatClockIn(){
                 Models.send({
                     url:'getWechatClockIn',
                     params:{
-                        top:5,
+                        top:6,
                     },
                     success:(d)=>{
-
+                        this.clockInfo = d.items
                     }
                 })
             },

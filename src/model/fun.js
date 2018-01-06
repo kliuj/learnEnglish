@@ -33,6 +33,11 @@ export function  showAlert(msg,success,okName){
         okAction:success
     })
 }
+
+export function  showToast(text){
+    VueMessageMask.showVMToast(text)
+}
+
 export function  showConfirm(msg,success,error,okName,cancelName){
     VueMessageMask.showVMaskMultiMsg({
         message:msg,

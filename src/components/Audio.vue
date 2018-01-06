@@ -48,6 +48,10 @@
             audioId:{
                 type:String,
                 default:''
+            },
+            id:{
+                type: Number,
+                default:0
             }
         },
         data(){
@@ -111,7 +115,7 @@
                     url:'getWechatPlayAudio',
                     type:'get',
                     params:{
-                        audioId:this.audioId
+                        audioId:this.id
                     },
                     success:(data)=>{
                     }

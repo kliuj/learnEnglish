@@ -53,12 +53,14 @@
 							</li>
 							<li>
 								<label for="">可用积分</label>
-								<span>100</span>
-								<span class="right"><input type="checkbox" id="" name="" value="" checked class="ctrl-checkbox"></span>
+								<span>{{data.userValidCredit}}</span>
+								<span class="right">
+									<input type="checkbox"  v-model="usercredit" class="ctrl-checkbox">
+								</span>
 							</li>
 							<li>
 								<label>获赠积分</label>
-								<span>990</span>
+								<span>{{data.courseGiveCredit}}</span>
 							</li>
 						</ul>
 					</div>
@@ -79,7 +81,8 @@
 	const Models = new Api()
 	import Audio from '../../components/Audio.vue'
 	import {
-		wxPay
+		wxPay,
+		showAlert
 	} from '../../model/fun'
     export default{
         data(){
@@ -87,7 +90,8 @@
 				modalVisiable:false,
 				id:0,
 				data:null,
-				audioList:[]
+				audioList:[],
+				usercredit:true
             }
         },
 		components:{
@@ -137,7 +141,7 @@
 					type:'post',
 					params:{
 						CourseId:this.id,
-						CreditPay:0
+						CreditPay:this.usercredit ? this.data.userValidCredit : 0
 					},
 					success:(d)=>{
 						this.sendWxPay(d.item)
@@ -155,6 +159,8 @@
 						wxPay({
                             d,
                             success:()=>{
+								showAlert('购买成功')
+								this.modalVisiable = false
                                 console.log('支付成功')
                             },
                             cancel:()=>{

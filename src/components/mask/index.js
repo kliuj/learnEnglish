@@ -45,7 +45,7 @@ let initInstance = ()=> {
     vmaskInstance.callback = defaultCallback;
 };
 
-let showMaskContainer = ()=> {
+let showMaskContainer = (state = true)=> {
     if (!vmaskInstance.showMask || vmaskInstance.closeTimer) {
         var options = currentMsg;
         for (var prop in options) {
@@ -58,7 +58,7 @@ let showMaskContainer = ()=> {
         }
 
         Vue.nextTick(() => {
-            vmaskInstance['showMask'] = true
+            vmaskInstance['showMask'] = state
         });
     }
 };
@@ -113,7 +113,20 @@ const VueMessageMask = {
             diyComponent:source
         })
         showMaskContainer()
-    }
+    },
+    //toast 普通信息提示
+    showVMToast(text){
+        closeMaskContainer()
+        currentMsg = merge({
+            showToast:true,
+            toastMessage:text
+        })
+        showMaskContainer()
+        window.hideToad && clearTimeout(window.hideToad)
+        window.hideToad = setTimeout(()=>{
+            closeMaskContainer()
+        },2000)
+    },
 }
 
 export default VueMessageMask

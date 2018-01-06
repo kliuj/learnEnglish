@@ -1,20 +1,25 @@
 <template>
-    <div v-show="showMask" class="vmask-box" >
-        <div v-if="showLoading" class="vmask-loading-inner" >
-            <i v-if="showLoadingCloseButton" class="vmask-close-icon" @click="close()"></i>
-            <i class="vmask-loading-icon"></i>
-            <p>{{loadingText}}</p>
-        </div>
-        <div v-if="showMessage" class="vmask-msg-inner van-slide-bottom-enter-active">
-            <div class="cui-error-tips">{{message}}</div>
-            <div class="cui-roller-btns">
-                <div class="cui-flexbd cui-btns-cancel" v-if="showCancelButton" @click="handleAction('cancelAction')">{{cancelText}}</div>
-                <div class="cui-flexbd cui-btns-ok" v-if="showOkButton" @click="handleAction('okAction')">{{okText}}</div>
+    <div>
+        <div v-show="showMask" class="vmask-box" >
+            <div v-if="showLoading" class="vmask-loading-inner" >
+                <i v-if="showLoadingCloseButton" class="vmask-close-icon" @click="close()"></i>
+                <i class="vmask-loading-icon"></i>
+                <p>{{loadingText}}</p>
             </div>
-        </div>
-        <div v-if="diyComponent"  class="vmask-diy">
-            <component :is="diyComponent">
-            </component>
+            <div v-if="showMessage" class="vmask-msg-inner van-slide-bottom-enter-active">
+                <div class="cui-error-tips">{{message}}</div>
+                <div class="cui-roller-btns">
+                    <div class="cui-flexbd cui-btns-cancel" v-if="showCancelButton" @click="handleAction('cancelAction')">{{cancelText}}</div>
+                    <div class="cui-flexbd cui-btns-ok" v-if="showOkButton" @click="handleAction('okAction')">{{okText}}</div>
+                </div>
+            </div>
+            <div v-if="diyComponent"  class="vmask-diy">
+                <component :is="diyComponent">
+                </component>
+            </div>
+            <div v-if="showToast" class="toast-box">
+                {{toastMessage}}
+            </div>
         </div>
     </div>
 </template>
@@ -56,6 +61,24 @@
     }
 </script>
 <style scoped>
+.toast-box{
+    position: fixed;
+    top:50%;
+    left:50%;
+    width: 30%;
+    line-height: 24px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .7);
+    padding: 10px 15px;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    word-break: break-all;
+    font-size: 14px;
+    transform: translate(-50%,-50%) ;
+    -webkit-transform: translate(-50%,-50%) ;
+    text-align: center
+}
 .vmask-box{
     position: fixed;
     top:0;
@@ -75,6 +98,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%) ;
+    -webkit-transform: translate(-50%,-50%) ;
     width: 50%;
     border-radius: 6px;
     font-size: 14px;

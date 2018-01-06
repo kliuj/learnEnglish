@@ -16,7 +16,10 @@ const DEFAULT_DATA = {
     cancelAction:null,
     okText:'确认',//确认文案
     cancelText:'取消',//取消按钮文案
-    diyComponent:null
+    diyComponent:null,
+    //toast
+    showToast:false,
+    toastMessage:''
 }
 
 export  default DEFAULT_DATA
