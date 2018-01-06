@@ -1,7 +1,7 @@
 <template>
 <div class="page pg-courses pg-course-details">
 	<HeaderView pageName="courseDetail" pageTitle="课程详情">
-		<div class="header-right">
+		<div class="header-right" v-if="data && !data.isPurchased && !data.isFree">
 			<a href="javascript:void(0);" @click="buy">购买</a>
 		</div>
 	</HeaderView>
@@ -26,6 +26,7 @@
 							:audioId="item.PlayID"
 							:label="index"
 							:id="item.Id"
+							:text="(data.isPurchased || data.isFree) ? '播放' : '免费试听'"
 							:intro="item.AudioName"/>
 		            </li>
 		        </ul>
@@ -33,7 +34,7 @@
     	</section>
     	<!-- //COURSE DETAILS -->
     	<!-- BUY COURSE -->
-		<template v-if="data">
+		<template v-if="data && !data.isPurchased && !data.isFree">
 			<section class="quick-buy" v-show="modalVisiable">
 				<div class="modal"></div>
 				<div class="container">
@@ -82,7 +83,8 @@
 	import Audio from '../../components/Audio.vue'
 	import {
 		wxPay,
-		showAlert
+		showAlert,
+		routerUrl
 	} from '../../model/fun'
     export default{
         data(){
@@ -161,6 +163,7 @@
                             success:()=>{
 								showAlert('购买成功')
 								this.modalVisiable = false
+								routerUrl('index')
                                 console.log('支付成功')
                             },
                             cancel:()=>{

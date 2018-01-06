@@ -19,7 +19,10 @@
                     <a href="javascript:void(0)" @click="checkData">打卡</a>
                 </div>
                 <div class="thumbs-up" v-if="!isowner">
-                    <a href="javascript:void(0)"><i class="fa fa-thumbs-o-up"></i> </a>
+                    <a href="javascript:void(0)" @click="thumbUp">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        {{thumbUpCount || ''}}
+                    </a>
                 </div>
             </section>
             <section class="gb-listview" v-show="!isCalendar">
@@ -93,6 +96,7 @@
                 isowner:false,
                 isCalendar:false,
                 uid:0,
+                thumbUpCount:0,
                 icon:'',
                 data:null,
                 calendar2:{
@@ -127,14 +131,16 @@
                     url:'WechatClockIn',
                     type:'get',
                     params:{
-                        from:'2017-01-05 21:47:15',
-                        to:'2019-01-05 21:47:15'
+                        from:'',
+                        to:'',
+                        userId:this.uid
                     },
                     success:(d)=>{
                         this.data = d.item
                         let begin = d.item.BindingDate.split(" ")[0]
                         this.calendar2.value[0] = begin.split("-")
                         this.beginDate = begin
+                        this.thumbUpCount = d.item.ThumbUpCount
                         this.icon = d.item.UserHeadImgUrl
                         this.setCalendarData(d.item.Details)
                     }
@@ -155,10 +161,15 @@
                         id:this.uid
                     },
                     success:(d)=>{
-                        showToast('你今天已经打过卡了')
+                        if(d.item && d.item.ClockInDate){
+                            showToast('你今天已经打过卡了')
+                        }else{
+                            this.visable = true
+                        }
+                        
                     },
                     error:()=>{
-                        this.visable = true
+                        
                     }
                 })
             },
@@ -178,6 +189,22 @@
             },
             changeCalendar(state){
                 this.isCalendar = state
+            },
+            //点赞
+            thumbUp(){
+                Models.send({
+                    url:'getWechatThumbUp',
+                    type:'post',
+                    params:{
+                        Id:USER_INFO.id
+                    },
+                    success:(d)=>{
+                        this.thumbUpCount = this.thumbUpCount + 1
+                    },
+                    error:(d)=>{
+                        showToast(d.errorMsg)
+                    }
+                })
             }
         }
     }

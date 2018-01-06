@@ -1,8 +1,8 @@
 <template>
     <div class="page pg-courses pg-courses-all">
-        <HeaderView pageName="allCourses" pageTitle="全部课程">
+        <HeaderView pageName="allcourses" pageTitle="全部课程">
             <div class="header-right">
-                <router-link :to="{'name':'categories',query:{para:JSON.stringify({'fee':fee}),qhfrom:'allCourses'}}">类别筛选</router-link>
+                <router-link :to="{'name':'categories',query:{para:JSON.stringify({'fee':fee}),qhfrom:'allcourses'}}">类别筛选</router-link>
             </div>
         </HeaderView>
         <!-- //HEADER -->
@@ -20,37 +20,29 @@
                 </div>
             </div>
             <!-- //TAB -->
-            <section id="paid-courses" class="courses-group" v-if="fee">
-                <List
-                    id="list-paid"
-                    :onloadmore="onloadmore">
-                    <ul class="courses-list" slot="list">
-                        <li>
-                            <a href="Details.jsp">
-                                <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                                <div class="course-title">课程名称占一行限制字数超过截断</div>
-                                <div class="category">类别名称</div>
-                                <div class="read">666人学习</div>
-                            </a>
-                        </li>
-                    </ul>
-                </List>    
+            <section id="paid-courses" class="courses-group" v-show="fee">
+                <ul class="courses-list" slot="list">
+                    <li v-for="(item,index) in feeList" :key="index" @click="gotoCourseDetail(item)">
+                        <a href="javascript:void(0)" >
+                            <div class="course-cover"><img :src="item.courseImgUrl"></div>
+                            <div class="course-title">{{item.courseName}}</div>
+                            <div class="category">{{item.courseClassifyName}}</div>
+                            <div class="read">{{item.courseHisStudyNum}}人学习</div>
+                        </a>
+                    </li>
+                </ul>  
             </section>
-            <section id="free-courses" class="courses-group"  v-if="!fee">
-                <List
-                    id="list-free"
-                    :onloadmore="onloadmore">
-                    <ul class="courses-list" slot="list">
-                        <li>
-                            <a href="Details.jsp">
-                                <div class="course-cover"><img src="../../../Assets/Images/temp_128x128.jpg"></div>
-                                <div class="course-title">课程名称占一行限制字数超过截断</div>
-                                <div class="category">类别名称</div>
-                                <div class="read">666人学习</div>
-                            </a>
-                        </li>
-                    </ul>
-                </List>   
+            <section id="free-courses" class="courses-group"  v-show="!fee">
+                <ul class="courses-list" slot="list">
+                    <li v-for="(item,index) in freeList" :key="index" @click="gotoCourseDetail(item)">
+                        <a href="javascript:void(0)" >
+                            <div class="course-cover"><img :src="item.courseImgUrl"></div>
+                            <div class="course-title">{{item.courseName}}</div>
+                            <div class="category">{{item.courseClassifyName}}</div>
+                            <div class="read">{{item.courseHisStudyNum}}人学习</div>
+                        </a>
+                    </li>
+                </ul>  
             </section>
         </div>
         <!-- //MAIN VIEW -->
@@ -58,31 +50,64 @@
 </template>
 <script>
     import HeaderView from '../../components/HeaderView'
-    import List from '../../components/list/list.vue'
+    import EmptyPage from '../../components/EmptyPage'
+    import Api from '../../model/api'
+    const Models = new Api()
     export default{
         components:{
             HeaderView,
-            List
+            EmptyPage
         },
         data(){
             return{
                 fee:true,//是否付费
+                freeList:null,
+                feeList:null
             }
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
                 vm.fee = to.query.fee
+                if(vm.fee){
+                    vm.getFeeList()
+                }else{
+                    vm.getFreeList()
+                }
             })
         },
         methods:{
             showFee(){
-                this.fee = true
+                this.fee = true,
+                this.getFeeList()
             },
             showNoFee(){
                 this.fee = false
+                this.getFreeList()
             },
-            onloadmore(){
-                console.log(1)
+            getFeeList(){
+                Models.send({
+                    url:'getWechatFeeCourseList',
+                    params:{
+                        categoryId:0
+                    },
+                    success:(d)=>{
+                        this.feeList = d.items
+                    }
+                })
+            },
+            getFreeList(){
+                Models.send({
+                    url:'getWechatFreeCourseList',
+                    params:{
+                        categoryId:0
+                    },
+                    success:(d)=>{
+                        this.freeList = d.items
+                    }
+                })
+            },
+            gotoCourseDetail (params){
+                this.$router.push({name:'coursedetail',query:{'id':params.id,'qhfrom':'allcourses','para':JSON.stringify({'fee':this.fee}),}})
             }
         }
     }

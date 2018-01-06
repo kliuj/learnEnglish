@@ -58,6 +58,14 @@ export default class Api {
     _ret.getWechatBuyCourse = this.setModel('WechatBuyCourse')    
     //微信支付订单
     _ret.getWechatConfig = this.setModel('WechatConfig')  
+    //点赞用户结果
+    _ret.getWechatThumbUp = this.setModel('WechatThumbUp')
+    //课程分类
+    _ret.getWechatCourseCategory = this.setModel('WechatCourseCategory')
+    //免费课程
+    _ret.getWechatFreeCourseList = this.setModel('WechatFreeCourseList')
+    //免费课程
+    _ret.getWechatFeeCourseList = this.setModel('WechatFeeCourseList')
     return _ret;
   }
   //发送请求
