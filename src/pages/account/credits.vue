@@ -63,7 +63,7 @@
                 if(num < 0) {
                     return '增加 ' + num 
                 }else{
-                    return '抵扣 ' + num * -1
+                    return '抵扣 ' + num 
                 }
             }
         }

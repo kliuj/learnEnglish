@@ -20,16 +20,12 @@
 <script>
     import { showAlert } from '../model/fun'
     import Api from '../model/api'
-    const Model = new Api()
+    const Models = new Api()
     export default{
         props: {
-            src:{
-                type: String,
-                default:''
-            },
             label:{
-                type: String,
-                default:''
+                type: Number,
+                default:0
             },
             intro:{
                 type: String,
@@ -49,16 +45,20 @@
                 type:String,
                 default:'免费试听'
             },
-            audioid:{
-                type:Number,
-                default:0
+            audioId:{
+                type:String,
+                default:''
             }
         },
         data(){
             return{
+                src:'',
                 playState: 0 , // 0 暂停 ，1 播放  2 缓冲中
                 loadFailed:false //资源下载
             }
+        },
+        mounted(){
+            this.src = 'http://wx.ledgetrans.com.cn/api/wechatcoursePlay/'+this.audioId
         },
         computed: {
             classObject() {
@@ -82,6 +82,7 @@
                     this.closeAll()
                     this.playState = 1
                     dom.play()
+                    this.sendApi()
                 }
             },
             closeAll(){
@@ -108,6 +109,7 @@
             sendApi(){
                 Models.send({
                     url:'getWechatPlayAudio',
+                    type:'get',
                     params:{
                         audioId:this.audioId
                     },

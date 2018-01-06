@@ -34,43 +34,41 @@
                     </li>
                 </ul>
             </section>
-            <div v-show="isCalendar">
-                <section class="calendar-view">	    	
-                    <div class="legend">打卡216天</div>
-                    <div class="c">
-                        <Calendar 
-                            :range="calendar2.range" 
-                            :lunar="calendar2.lunar" 
-                            :value="calendar2.value" 
-                            :begin="calendar2.begin" 
-                            :end="calendar2.end" 
-                            :selectcheckdate="calendar2.selectCheckDate"
-                            @select="calendar2.select">
-                        </Calendar>
+            <section class="calendar-view" v-show="isCalendar">	    	
+                <div class="legend">打卡216天</div>
+                <div class="c">
+                    <Calendar 
+                        :range="calendar2.range" 
+                        :lunar="calendar2.lunar" 
+                        :value="calendar2.value" 
+                        :begin="calendar2.begin" 
+                        :end="calendar2.end" 
+                        :selectcheckdate="calendar2.selectCheckDate"
+                        @select="calendar2.select">
+                    </Calendar>
+                </div>
+            </section>
+            <!-- CHECK -->
+            <section class="quick-check" v-show="visable">
+                <div class="modal"></div>
+                <div class="container">
+                    <div class="hd">
+                        <div class="title">今日打卡</div>
+                        <a href="javascript:void(0)" class="cancel" @click="cancel">取消</a>
                     </div>
-                </section>
-                <!-- CHECK -->
-                <section class="quick-check" v-show="visable">
-                    <div class="modal"></div>
-                    <div class="container">
-                        <div class="hd">
-                            <div class="title">今日打卡</div>
-                            <a href="javascript:void(0)" class="cancel" @click="cancel">取消</a>
-                        </div>
-                        <div class="bd">
-                            <ul class="listview">
-                                <li>
-                                    <div class="textarea">
-                                        <span>
-                                            <textarea id="WhatsUp" rows="5" maxlength="30" placeholder="学习心得（100字以内）" ></textarea></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="action"><a href="" class="button">打卡</a></div>
+                    <div class="bd">
+                        <ul class="listview">
+                            <li>
+                                <div class="textarea">
+                                    <span>
+                                        <textarea v-model="studyNotes" rows="5" maxlength="30" placeholder="学习心得（100字以内）" ></textarea></span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </section>
-            </div>    
+                    <div class="action"><a href="javascript:void(0)" class="button" @click="goCheck">打卡</a></div>
+                </div>
+            </section> 
             <!-- //CHECK -->
         </div>
         <!-- //MAINVIEW -->
@@ -107,7 +105,7 @@
                         // console.log(begin.toString(),end.toString());
                     }
                 },
-
+                studyNotes:null
             }
         },
         beforeRouteEnter(to, from, next){
@@ -126,7 +124,7 @@
                 Models.send({
                     url:'WechatClockIn',
                     type:'get',
-                    data:{
+                    params:{
                         from:'2017-01-05 21:47:15',
                         to:'2019-01-05 21:47:15'
                     },
@@ -139,11 +137,28 @@
                 Models.send({
                     url:'WechatClockIn',
                     type:'get',
-                    data:{
+                    params:{
                         id:this.uid
                     },
-                    success:()=>{
+                    success:(d)=>{
 
+                    },
+                    error:()=>{
+                        this.visable = true
+                    }
+                })
+            },
+            goCheck(){
+                Models.send({
+                    url:'WechatClockIn',
+                    type:'post',
+                    params:{
+                        StudyNotes:this.studyNotes
+                    },
+                    success:(d)=>{
+                        this.getCheckList()
+                    },
+                    error:()=>{
                     }
                 })
             },
