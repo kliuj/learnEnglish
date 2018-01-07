@@ -1,13 +1,13 @@
 <template>
-    <div class="page pg-courses pg-courses-all">
-        <HeaderView pageName="allcourses" pageTitle="全部课程">
+    <div class="page pg-courses" :class="{'pg-courses-categories':showCate,'pg-courses-all':!showCate}" >
+        <HeaderView pageName="allcourses" :pageTitle="title" :beforeBack="beforeBack">
             <div class="header-right">
-                <router-link :to="{'name':'categories',query:{para:JSON.stringify({'fee':fee}),qhfrom:'allcourses'}}">类别筛选</router-link>
+                <a href="javascript:void(0)" @click="showcate">类别筛选</a>
             </div>
         </HeaderView>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
-        <div class="mainview">
+        <div class="mainview" v-show="!showCate">
             <!-- TAB -->
             <div class="tab-bar-2">
                 <div class="tabs col2">
@@ -31,6 +31,7 @@
                         </a>
                     </li>
                 </ul>  
+                <EmptyPage v-if="feeList && feeList.length === 0 && fee" info="暂无相关课程"/>
             </section>
             <section id="free-courses" class="courses-group"  v-show="!fee">
                 <ul class="courses-list" slot="list">
@@ -43,7 +44,18 @@
                         </a>
                     </li>
                 </ul>  
+                <EmptyPage v-if="freeList && freeList.length === 0 && !fee" info="暂无相关课程"/>
             </section>
+        </div>
+        <div class="mainview" v-show="showCate">
+            <section class="gb-listview">
+                <ul>
+                    <li v-for="(item,index) in categorylist" :key = "index">
+                        <a href="javascript:void(0)" @click="setcateList(item)">{{item.categoryName}}</a>
+                    </li>
+                </ul>
+            </section>
+            <EmptyPage v-if="categorylist && categorylist.length === 0 " info="没有分类类别"/>
         </div>
         <!-- //MAIN VIEW -->
     </div>
@@ -62,18 +74,35 @@
             return{
                 fee:true,//是否付费
                 freeList:null,
-                feeList:null
+                feeList:null,
+                showCate:false,//是否展示类别
+                categorylist:[],
+                title:'全部课程',
+                pageAlltitle:'全部课程',
+                categoryId:0
             }
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
                 vm.fee = to.query.fee
+                vm.title = to.query.pageAlltitle || '全部课程'
+                vm.pageAlltitle = to.query.pageAlltitle || '全部课程'
+                vm.categoryId = to.query.categoryId || 0
                 if(vm.fee){
                     vm.getFeeList()
                 }else{
                     vm.getFreeList()
                 }
             })
+        },
+        watch:{
+            'categoryId'(){
+                if(this.fee){
+                    this.getFeeList()
+                }else{
+                    this.getFreeList()
+                }
+            }
         },
         methods:{
             showFee(){
@@ -88,7 +117,7 @@
                 Models.send({
                     url:'getWechatFeeCourseList',
                     params:{
-                        categoryId:0
+                        categoryId:this.categoryId
                     },
                     success:(d)=>{
                         this.feeList = d.items
@@ -99,7 +128,7 @@
                 Models.send({
                     url:'getWechatFreeCourseList',
                     params:{
-                        categoryId:0
+                        categoryId:this.categoryId
                     },
                     success:(d)=>{
                         this.freeList = d.items
@@ -107,7 +136,38 @@
                 })
             },
             gotoCourseDetail (params){
-                this.$router.push({name:'coursedetail',query:{'id':params.id,'qhfrom':'allcourses','para':JSON.stringify({'fee':this.fee}),}})
+                this.$router.push({name:'coursedetail',query:{'id':params.id,'qhfrom':'allcourses','para':JSON.stringify({'fee':this.fee,categoryId:this.categoryId,pageAlltitle:this.pageAlltitle}),}})
+            },
+            //类别
+            getWechatCourseCategory(){
+                Models.send({
+                    url:'getWechatCourseCategory',
+                    type:'get',
+                    success:(d)=>{
+                        this.categorylist = d.items
+                    }
+                })
+            },
+            showcate(){
+                this.showCate = true;
+                this.title = '按类别筛选课程'
+                if(this.categorylist.length === 0){
+                    this.getWechatCourseCategory()
+                }
+            },
+            beforeBack(callback){
+                if(this.showCate){
+                    this.showCate = false
+                    this.title = this.pageAlltitle
+                }else{
+                    callback && callback()
+                }
+            },
+            setcateList({id,categoryName}){
+                this.showCate = false
+                this.title = categoryName
+                this.pageAlltitle = categoryName
+                this.categoryId = id
             }
         }
     }

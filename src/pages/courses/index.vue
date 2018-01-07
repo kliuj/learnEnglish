@@ -8,7 +8,7 @@
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
         <div class="mainview">
-            <section class="today-checks" v-if="clockInfo.length > 0">
+            <section class="today-checks" v-if="clockInfo && clockInfo.length > 0">
                 <div class="today-checks-title">今日打卡会员</div>
                 <router-link :to="{'name':'todaycheck',query:{'qhfrom':'index'}}">
                     <ul>
@@ -63,13 +63,13 @@
                         </a>
                     </li>
                 </ul>
-                <div class="more">
-                    <router-link :to="{'name':'allcourses',query:{'qhfrom':'index',fee:false}}">
+                <div class="more" @click="gotoAll">
+                    <a href="javascript:void(0)">
                         查看全部
-                    </router-link>
+                    </a>
                 </div>
             </section>
-            <EmptyPage v-if="recommend.length === 0 && free.length === 0 && fee.length ===0" info="没有相关联的学习计划"/>
+            <EmptyPage v-if="recommend.length === 0 && free.length === 0 && fee.length ===0" info="没有相关联的课程"/>
         </div>
         <!-- //MAIN VIEW -->
     </div>
@@ -92,7 +92,7 @@
                 recommend:[],
                 free:[],
                 fee:[],
-                clockInfo:[]
+                clockInfo:null
             }
         },
         mounted(){
@@ -101,6 +101,9 @@
             
         },
         methods:{
+            gotoAll(){
+                this.$router.push({'name':'allcourses',query:{'qhfrom':'index',fee:false}})
+            },
             getInitData(){
                 //post
                 Models.send({

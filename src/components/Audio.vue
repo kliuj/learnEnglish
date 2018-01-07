@@ -3,11 +3,13 @@
         <label for="">L-{{label}}</label>
         <span>
             <a href="javascript:void(0);" @click="clickAction">
-                <audio :src="src"   
+                <audio 
+                :src="src"
                     @error="onerror"
                     @playing="playing"
                     @waiting="playing"
-                    @pause="pauseListener">
+                    @pause="pauseListener"
+                    preload="none">
                     Your browser does not support the audio element.
                 </audio>
                 <i class="fa" :class="classObject"></i> 
@@ -52,6 +54,10 @@
             id:{
                 type: Number,
                 default:0
+            },
+            source:{
+                type: String,
+                default:''
             }
         },
         data(){
@@ -62,7 +68,7 @@
             }
         },
         mounted(){
-            this.src = 'http://wx.ledgetrans.com.cn/api/wechatcoursePlay/'+this.audioId
+            this.src =this.source || 'http://wx.ledgetrans.com.cn/api/wechatcoursePlay/'+this.audioId
         },
         computed: {
             classObject() {

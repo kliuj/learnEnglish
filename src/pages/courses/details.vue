@@ -128,10 +128,7 @@
 					},
 					success:(d)=>{
 						wx.ready(()=> {
-							WeixinJSBridge.invoke('getNetworkType', {},  (e)=> {
-								this.audioList = d.items	
-							});
-							
+							this.audioList = d.items
 						});
 						
 					}

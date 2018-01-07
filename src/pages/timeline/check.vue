@@ -166,7 +166,6 @@
                         }else{
                             this.visable = true
                         }
-                        
                     },
                     error:()=>{
                         this.visable = true
@@ -181,7 +180,11 @@
                         StudyNotes:this.studyNotes
                     },
                     success:(d)=>{
-                        this.getCheckList()
+                        if(d.errorCode === -1){
+                            showToast(d.errorMsg)
+                        }else{
+                            this.getCheckList()
+                        } 
                     },
                     error:(d)=>{
                         // showToast(d.errorMsg)

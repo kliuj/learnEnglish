@@ -104,13 +104,6 @@
     margin:0px auto;
     border-radius:20px;
 }
-.calendar td:not(.selected) span:not(.red):hover{
-    background:#f3f8fa;
-    color:#444;
-}
-.calendar td:not(.selected) span.red:hover{
-    background:#f9efef;
-}
 .calendar td:not(.disabled) span.red{
     color:#ea6151;
 }
@@ -247,7 +240,7 @@
         </thead>
         <tbody>
         <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
-            <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" @click="select(k1,k2,$event)">
+            <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" >
                 <!-- <span :class="{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar)}">{{child.day}}</span> -->
                 <span :class="getCheckedState(child.dataString)">{{child.day}}</span>
                 <div class="text" v-if="child.eventName!=undefined">{{child.eventName}}</div>
@@ -702,6 +695,7 @@ export default {
         },
         // 选中日期
         select(k1, k2, e) {
+            return false
             if (e != undefined) e.stopPropagation()
                 // 日期范围
             if (this.range) {
