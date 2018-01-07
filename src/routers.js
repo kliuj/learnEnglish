@@ -215,18 +215,6 @@ router.beforeEach((to, from, next) => {
 		afterCheck()
 	}else{
 		next()
-		//需要登录的页面先判登录态，由于需要登录的页面很多，所以设置不需要登录的页面参数
-			// baseApi.send('isUserLogin',{},(d)=>{
-			// 	if(d.IsLogin){
-			// 			afterCheck()
-			// 	}else{
-			// 		let toUrl= '/weixin/index.html#' + to.fullPath
-			// 		localStorage.setItem('loginBack',JSON.stringify(toUrl));
-			// 		//未绑定手机号，回退需要退到需要登录前一个页面
-			// 		localStorage.setItem('loginBackForConnect',location.href);
-			// 		baseFun.routerUrl('wxPrepare',router)
-			// 	}
-			// },'','',true)
 	}
 })
 //

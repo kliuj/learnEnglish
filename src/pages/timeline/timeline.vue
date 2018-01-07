@@ -16,24 +16,24 @@
                 <ul class="timeline-cards" v-if="list">
                     <li v-for="(item,index) in list" :key="index">
                         <div class="datetime">{{item.Time}}</div>
-                        <div class="card course-card" v-if="item.Course">
-                            <router-link :to="{name:'coursedetail',query:{'id':item.Course.id,'qhfrom':'timeline'}}">
+                        <div class="card course-card" v-if="item.Course" @click="gotoCourseDetail(item)">
+                            <a href="javasrcipt:void(0)">
                                 <div class="course-cover">
                                     <img :src="item.Course.courseImgUrl">
                                 </div>
                                 <div class="course-title">{{item.Course.courseName}}</div>
                                 <div class="category">{{item.Course.courseClassifyName}}</div>
                                 <div class="period">共{{item.Course.coursePeriod}}课时</div>
-                            </router-link>
+                            </a>
                         </div>
-                        <div class="card activity-card" v-if="item.Activity">
-                            <router-link :to="{'name':'activitydetail',query:{'qhfrom':'timeline','id':item.Activity.id}}">
+                        <div class="card activity-card" v-if="item.Activity" @click="gotoActivityDetail(item)">
+                            <a href="javascript:void(0)">
                                 <div class="activity-title">
                                     {{item.Activity.activityTitle}}
                                     <small>{{item.Activity.activityDate}}</small>
                                 </div>
                                 <div class="activity-poster"><img :src="item.Activity.activityImgUrl"></div>
-                            </router-link>
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -63,6 +63,12 @@
             this.getTimeLine()
         },
         methods:{
+            gotoCourseDetail(item){
+                this.$router.push({name:'coursedetail',query:{'id':item.Course.id,'qhfrom':'timeline'}})
+            },
+            gotoActivityDetail(item){
+                this.$router.push({'name':'activitydetail',query:{'qhfrom':'timeline','id':item.Activity.id}})
+            },
             getTimeLine(){
                 Model.send({
                     url:'getWechatTimeLine',

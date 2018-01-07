@@ -131,6 +131,7 @@
                 if(getStore('userInfo').id > 0){
                     //防止注册时候刷新信息
                     window.USER_INFO = getStore('userInfo')
+                    window.USER_SETTINGS = getStore('settings')
                     this.profileInfo = getStore('userInfo') ;
                     console.log("成功获取用户信息",USER_INFO);
                 }else{

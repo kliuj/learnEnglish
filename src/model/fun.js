@@ -207,7 +207,7 @@ export function wxPay ({d={},success=()=>{},cancel=()=>{},fail=()=>{}}){
         paySign: d.paySign,
         success: function (res) {
             // 支付成功后的回调函数
-            // alert("返回值描述"+res.err_msg);
+            // alert("返回值描述"+JSON.stringify(res));
             if(res.errMsg == "chooseWXPay:ok" ) {
                 success && success()
                 console.log('支付成功')

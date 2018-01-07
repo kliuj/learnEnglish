@@ -1,5 +1,5 @@
 <template>
-    <div  class="slider-container" v-if="dataList.length">
+    <div  class="slider-container" v-if="dataList.length > 0">
         <ul ref="swiperWrap"
             class="item-photos"
             :style="{
@@ -9,8 +9,8 @@
                 'transition-duration': transitionDuration + 'ms'
              }"
             @touchstart="_onTouchStart"
-            @transitionend="_Transitionend">
-            <template v-for="(item,index) in newList">
+            @transitionend="_Transitionend" v-if="dataList.length > 1">
+            <template v-for="(item,index) in newList" >
                 <li
                     :style="{
                         'width':itemWidth *100+'%',
@@ -25,6 +25,24 @@
                                 'width':animationType === 'SCROLL_TYPE' ? '100%' :'auto',
                             }"
                             :src="item.ImageUrl"/>
+                </li>
+            </template>
+        </ul>
+        <ul ref="swiperWrap"
+            class="item-photos"
+            :style="{
+                'width':'100%',
+                'height':domHeight +'px',
+             }" v-if="dataList.length === 1">
+            <template >
+                <li :style="{
+                        'width': '100%',
+                        'height':domHeight+'px',
+                        'position':position,
+                        'backgroundColor':backgroundColor
+                    }"
+                    @click="outLink(dataList[0].LinkUrl)">
+                    <img  :src="dataList[0].ImageUrl"/>
                 </li>
             </template>
         </ul>
@@ -94,6 +112,15 @@
             }
         },
         created(){
+            if(this.animationType === 'SCROLL_TYPE'){
+                this.position = 'relative'
+            }else if(this.animationType === 'FADE_IN'){
+                this.position = 'absolute'
+            }
+            if(this.dataList.length <= 1){
+                return false
+            }
+
             if(this.randomStart){
                 this.dataList = this.random(this.dataList)
             }
@@ -106,12 +133,10 @@
                     this.newList = _cloneDomLast.concat(this.dataList,_cloneDomPrev)
                     this.containerWidth = this.newList.length
                     this.itemWidth = 1/this.containerWidth
-                    this.position = 'relative'
                 }else if(this.animationType === 'FADE_IN'){
                     this.newList = this.dataList
                     this.containerWidth = 1
                     this.itemWidth = 1
-                    this.position = 'absolute'
                 }
             }
             
@@ -120,9 +145,14 @@
             this.clearTimer()
         },
         mounted() {
+
+            this.clientWidth = document.body.clientWidth;
+            if(this.dataList.length === 1){
+                this.domHeight = this.clientWidth * this.squareRatio
+                return false
+            }
             this._onTouchMove = this._onTouchMove.bind(this);
             this._onTouchEnd = this._onTouchEnd.bind(this);
-            this.clientWidth = document.body.clientWidth;
             if(this.squareRatio){
                 this.domHeight = this.clientWidth * this.squareRatio
                 this.startAuto()

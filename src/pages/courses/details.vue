@@ -11,7 +11,7 @@
     	<!-- COURSE DETAILS -->
     	<section class="course-details" v-if="data">
     		<div class="course-summary">
-    			<div class="cover"><img :src="data.courseImgUrl"></div>
+    			<div class="cover"><img v-lazy="data.courseImgUrl"></div>
     			<div class="title">{{data.courseName}}</div>
     			<div class="category">共{{data.coursePeriod}}课时&nbsp;&bull;&nbsp;{{data.courseClassifyName}}</div>
     			<div class="price">课程费 ￥{{data.coursePrice}}</div>
@@ -99,6 +99,16 @@
 		components:{
             HeaderView,Audio
 		},
+		watch:{
+			'usercredit'(){
+				if(this.usercredit){
+					this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
+				}else{
+					this.price = this.data.coursePrice
+				}
+				this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
+			}
+		},
 		beforeRouteEnter(to, from, next) {
 			const {query} = to
 			next(vm=>{
@@ -117,6 +127,8 @@
 					},
 					success:(d)=>{
 						this.data = d.item
+						this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
+               			this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
 					}
 				})
 			},
@@ -164,9 +176,9 @@
 						wxPay({
                             d,
                             success:()=>{
-								showAlert('购买成功')
-								this.modalVisiable = false
-								routerUrl('index')
+								// showAlert('购买成功')
+								// this.modalVisiable = false
+								this.$router.replace({ name: 'timeline' })
                                 console.log('支付成功')
                             },
                             cancel:()=>{
@@ -178,7 +190,7 @@
                         })
 					}
 				})
-			}
+			},
         }
     }
 </script>
