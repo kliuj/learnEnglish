@@ -169,7 +169,7 @@
                         
                     },
                     error:()=>{
-                        
+                        this.visable = true
                     }
                 })
             },
@@ -183,7 +183,8 @@
                     success:(d)=>{
                         this.getCheckList()
                     },
-                    error:()=>{
+                    error:(d)=>{
+                        // showToast(d.errorMsg)
                     }
                 })
             },

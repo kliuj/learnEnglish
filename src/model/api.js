@@ -7,7 +7,8 @@ import {
   showLoading,
   hideLoading,
   jumpUrl,
-  getCookie
+  getCookie,
+  showToast
 } from './fun.js'
 import axios from 'axios'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
@@ -64,7 +65,7 @@ export default class Api {
     _ret.getWechatCourseCategory = this.setModel('WechatCourseCategory')
     //免费课程
     _ret.getWechatFreeCourseList = this.setModel('WechatFreeCourseList')
-    //免费课程
+    //收费课程
     _ret.getWechatFeeCourseList = this.setModel('WechatFeeCourseList')
     return _ret;
   }
@@ -120,6 +121,7 @@ export default class Api {
     if(data.success || data.appId){
       success(data)
     }else{
+      showToast(data.errorMsg)
       error(data)
     }
   }

@@ -114,6 +114,7 @@
                 Models.send({
                     url:'getWechatPlayAudio',
                     type:'get',
+                    notShowLoading:true,
                     params:{
                         audioId:this.id
                     },

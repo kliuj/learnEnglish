@@ -222,3 +222,16 @@ export function wxPay ({d={},success=()=>{},cancel=()=>{},fail=()=>{}}){
         }
     });
 }
+
+//时间
+export function getNow (){
+    const   time = new Date(),
+            year = time.getFullYear() ,
+            month = time.getMonth() + 1,
+            date = time.getDate();  
+    return{
+        year,
+        month:('0'+month).substr(-2),
+        date:('0'+date).substr(-2)
+    }        
+}

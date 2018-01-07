@@ -127,7 +127,13 @@
 						id:this.id
 					},
 					success:(d)=>{
-						this.audioList = d.items
+						wx.ready(()=> {
+							WeixinJSBridge.invoke('getNetworkType', {},  (e)=> {
+								this.audioList = d.items	
+							});
+							
+						});
+						
 					}
 				})
 			},

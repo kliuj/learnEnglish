@@ -12,7 +12,7 @@
                 <div class="upgrade-banner"><img src="../../../Assets/Images/upgrade_banner.png" width="100%"></div>
                 <div class="pay-vip-fee">
                     <a href="javascript:void(0);" @click="upgrade" v-if="!isVip">年费￥1500 成为VIP会员</a>
-                    <a href="javascript:void(0);" @click="upgrade" v-if="isVip">您已经是年费VIP会员</a>
+                    <a href="javascript:void(0);"  v-if="isVip">VIP有效期至{{vipEndTime}}</a>
                 </div>
             </section>
         </div>
@@ -25,7 +25,8 @@
     const Models = new Api()
     import {
         showAlert,
-        wxPay
+        wxPay,
+        getNow
     }from '../../model/fun'
     export default{
         components:{
@@ -33,8 +34,12 @@
         },
         data(){
             return{
-                isVip:false
+                isVip:false,
+                vipEndTime:0
             }
+        },
+        created(){
+            this.checkVip()
         },
         methods:{
             upgrade(){
@@ -45,8 +50,9 @@
                         wxPay({
                             d,
                             success:()=>{
-                                this.isVip = true
+                                this.getVipTime()
                                 console.log('支付成功')
+
                             },
                             cancel:()=>{
                                 console.log('支付取消')
@@ -60,6 +66,20 @@
 
                     }
                 })
+            },
+            getVipTime(){
+                const time = getNow();  
+                this.vipEndTime = `${ time.year + 1 }年${month}月${date}日`
+                this.isVip = true
+            },
+            checkVip(){
+                const time = USER_INFO.userVipEndTime.split(" ")[0].split("-"),
+                      vipTime = (new Date(USER_INFO.userVipEndTime)).getTime(),  
+                      now = Date.now();     
+                if(vipTime > now) {
+                    this.isVip = true
+                    this.vipEndTime = `${ time[0] }年${ time[1] }月${ time[2]}日`
+                }
             }
         }
     }
