@@ -148,6 +148,9 @@
             },
             //设置日历数据
             setCalendarData(details){
+                if(details[0]){
+                    this.calendar2.value[0] = details[0].ClockInDate.split(" ")[0].split("-")
+                }
                 for(let i of details){
                     let value = i.ClockInDate.split(" ")[0]
                     this.calendar2.selectCheckDate[value] = true

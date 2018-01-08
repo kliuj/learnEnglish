@@ -4,12 +4,15 @@
         <span>
             <a href="javascript:void(0);" @click="clickAction">
                 <audio 
-                :src="src"
+                
                     @error="onerror"
                     @playing="playing"
-                    @waiting="playing"
+                    @waiting="waiting"
                     @pause="pauseListener"
-                    preload="none">
+                    preload="none"
+                    crossOrigin = "Anonymous">
+                    <source :src="src">
+                    </source>
                     Your browser does not support the audio element.
                 </audio>
                 <i class="fa" :class="classObject"></i> 
@@ -108,12 +111,16 @@
                 // showAlert(this.label+'课程下载失败')
                 //资源失败时候点击无效
                 this.loadFailed = true
+                this.playState = 0
             },
             pauseListener(e){
                 //被其他任务暂停时候修改状态
                 this.playState = 0
             },
             playing(e){
+                console.log(e)
+            },
+            waiting(e){
                 console.log(e)
             },
             sendApi(){

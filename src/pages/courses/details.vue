@@ -29,6 +29,12 @@
 							:text="(data.isPurchased || data.isFree) ? '播放' : '免费试听'"
 							:intro="item.AudioName"/>
 		            </li>
+					<!-- <li >
+						<Audio 
+							source="http://7fvhf6.com1.z0.glb.clouddn.com/7dyk%E7%BE%A4%E6%98%9F%20-%20%E6%A2%81%E7%A5%9D.mp3"
+							text="播放"
+							intro="测试语音梁祝"/>
+		            </li> -->
 		        </ul>
 		    </div>
     	</section>
