@@ -19,7 +19,7 @@
                         <div class="card course-card" v-if="item.Course" @click="gotoCourseDetail(item)">
                             <a href="javasrcipt:void(0)">
                                 <div class="course-cover">
-                                    <img :src="item.Course.courseImgUrl">
+                                    <img :src="getImgUrl(item.Course.courseImgUrl)" @error="error">
                                 </div>
                                 <div class="course-title">{{item.Course.courseName}}</div>
                                 <div class="category">{{item.Course.courseClassifyName}}</div>
@@ -32,7 +32,7 @@
                                     {{item.Activity.activityTitle}}
                                     <small>{{item.Activity.activityDate}}</small>
                                 </div>
-                                <div class="activity-poster"><img :src="item.Activity.activityImgUrl"></div>
+                                <div class="activity-poster"><img :src="getImgUrl(item.Activity.activityImgUrl)" @error="error"></div>
                             </a>
                         </div>
                     </li>
@@ -79,6 +79,12 @@
             },
             gotoCheck(){
                 this.$router.push({'name':'check',query:{'qhfrom':'timeline','uid':USER_INFO.id}})
+            },
+            error(e){
+               e.target.setAttribute("src",'./CommonImages/loading.jpg')
+            },
+            getImgUrl(uri){
+                return uri || './CommonImages/loading.jpg'
             }
         }
     }
