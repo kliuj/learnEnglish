@@ -26,7 +26,8 @@
     import {
         showAlert,
         wxPay,
-        getNow
+        getNow,
+        transdate
     }from '../../model/fun'
     export default{
         components:{
@@ -74,8 +75,8 @@
             },
             checkVip(){
                 const time = USER_INFO.userVipEndTime.split(" ")[0].split("-"),
-                      vipTime = (new Date(USER_INFO.userVipEndTime)).getTime(),  
-                      now = Date.now();     
+                      vipTime = transdate(USER_INFO.userVipEndTime),  
+                      now = Date.now();    
                 if(vipTime > now) {
                     this.isVip = true
                     this.vipEndTime = `${ time[0] }年${ time[1] }月${ time[2]}日`

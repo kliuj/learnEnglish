@@ -235,3 +235,16 @@ export function getNow (){
         date:('0'+date).substr(-2)
     }        
 }
+
+//获取指定时间
+export function transdate(endTime){
+    var date=new Date();
+    date.setFullYear(endTime.substring(0,4));
+    date.setMonth(endTime.substring(5,7)-1);
+    date.setDate(endTime.substring(8,10));
+    date.setHours(endTime.substring(11,13));
+    date.setMinutes(endTime.substring(14,16));
+    date.setSeconds(endTime.substring(17,19));
+    return Date.parse(date);
+}
+    

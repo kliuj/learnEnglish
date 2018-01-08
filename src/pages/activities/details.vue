@@ -187,7 +187,6 @@
 								// showAlert('购买成功')
 								// this.modalVisiable = false
                                 // routerUrl('index',this.$router)
-                                alert('ok')
                                 this.$router.replace({ name: 'timeline' })
                                 console.log('支付成功')
                             },
