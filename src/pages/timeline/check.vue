@@ -203,7 +203,7 @@
                     url:'getWechatThumbUp',
                     type:'post',
                     params:{
-                        Id:USER_INFO.id
+                        Id:this.uid
                     },
                     success:(d)=>{
                         this.thumbUpCount = this.thumbUpCount + 1

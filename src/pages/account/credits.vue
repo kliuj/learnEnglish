@@ -9,7 +9,7 @@
         <!-- MAINVIEW -->
         <div class="mainview">
             <section class="credits-balance">
-                <h2>{{credit}}</h2>
+                <h2 v-if="credit">{{credit}}</h2>
                 <p>{{settings.UseCredit}}亮值抵扣人民币{{settings.CostPrice}}元，适用所有消费<br>新注册会员即获赠{{settings.NewUserCredit}}亮值，邀请朋友注册会员可获赠{{settings.InvitationUserCredit}}亮值，每消费{{settings.UsePrice}}元可获赠{{settings.UseGiveCredit}}亮值</p>
             </section>
             <section class="gb-listview" v-if="list && list.length > 0">
@@ -39,7 +39,7 @@
         data(){
             return{
                 list:null,
-                credit:USER_INFO.userValidCredit,
+                credit:null,
                 settings:USER_SETTINGS,
             }
         },
@@ -55,6 +55,7 @@
                     url:'getWechatCreditLog',
                     success:(data)=>{
                         this.list = data.items
+                        this.credit = data.total
                     }
                 })
             },

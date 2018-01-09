@@ -50,6 +50,9 @@
         <div class="mainview" v-show="showCate">
             <section class="gb-listview">
                 <ul>
+                    <li>
+                        <a href="javascript:void(0)" @click="setcateList({id:0,categoryName:'全部课程'})">全部课程</a>
+                    </li>
                     <li v-for="(item,index) in categorylist" :key = "index">
                         <a href="javascript:void(0)" @click="setcateList(item)">{{item.categoryName}}</a>
                     </li>
