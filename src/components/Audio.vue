@@ -4,13 +4,11 @@
         <span>
             <a href="javascript:void(0);" @click="clickAction">
                 <audio 
-                
                     @error="onerror"
                     @playing="playing"
                     @waiting="waiting"
                     @pause="pauseListener"
-                    preload="none"
-                    crossOrigin = "Anonymous">
+                    preload="none">
                     <source :src="src">
                     </source>
                     Your browser does not support the audio element.
@@ -124,16 +122,16 @@
                 console.log(e)
             },
             sendApi(){
-                Models.send({
-                    url:'getWechatPlayAudio',
-                    type:'get',
-                    notShowLoading:true,
-                    params:{
-                        audioId:this.id
-                    },
-                    success:(data)=>{
-                    }
-                })
+                // Models.send({
+                //     url:'getWechatPlayAudio',
+                //     type:'get',
+                //     notShowLoading:true,
+                //     params:{
+                //         audioId:this.id
+                //     },
+                //     success:(data)=>{
+                //     }
+                // })
             }
         }
     }
