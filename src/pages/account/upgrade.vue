@@ -11,7 +11,7 @@
             <section>
                 <div class="upgrade-banner"><img src="../../../Assets/Images/upgrade_banner.png" width="100%"></div>
                 <div class="pay-vip-fee">
-                    <a href="javascript:void(0);" @click="upgrade" v-if="!isVip">年费￥1500 成为VIP会员</a>
+                    <a href="javascript:void(0);" @click="upgrade" v-if="!isVip">年费￥{{vipPrice}} 成为VIP会员</a>
                     <a href="javascript:void(0);"  v-if="isVip">VIP会员，有效期至{{vipEndTime}}</a>
                 </div>
             </section>
@@ -35,6 +35,7 @@
         },
         data(){
             return{
+                vipPrice:USER_SETTINGS.VIPPrice,
                 isVip:false,
                 vipEndTime:0
             }

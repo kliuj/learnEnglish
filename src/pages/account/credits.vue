@@ -9,8 +9,8 @@
         <!-- MAINVIEW -->
         <div class="mainview">
             <section class="credits-balance">
-                <h2>0</h2>
-                <p>100亮值抵扣人民币1元，适用所有消费<br>新注册会员即获赠1000亮值，邀请朋友注册会员可获赠500亮值，每消费10元可获赠100亮值</p>
+                <h2>{{credit}}</h2>
+                <p>{{settings.UseCredit}}亮值抵扣人民币{{settings.CostPrice}}元，适用所有消费<br>新注册会员即获赠{{settings.NewUserCredit}}亮值，邀请朋友注册会员可获赠{{settings.InvitationUserCredit}}亮值，每消费{{settings.UsePrice}}元可获赠{{settings.UseGiveCredit}}亮值</p>
             </section>
             <section class="gb-listview" v-if="list && list.length > 0">
                 <div class="legend">亮值明细</div>
@@ -38,7 +38,9 @@
     export default{
         data(){
             return{
-                list:null
+                list:null,
+                credit:USER_INFO.userValidCredit,
+                settings:USER_SETTINGS,
             }
         },
         components:{
