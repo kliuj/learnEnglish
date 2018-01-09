@@ -1,4 +1,4 @@
-//积分类型常量
+//亮值类型常量
 export const CREDITSTYPES = {
     0: '登录',
     1: '注册',

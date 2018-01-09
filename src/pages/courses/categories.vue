@@ -6,6 +6,9 @@
         <div class="mainview">
             <section class="gb-listview" v-if="loaded">
                 <ul>
+                    <li>
+                        <a href="javascript:void(0)" @click="gotoCateList(0)">全部</a>
+                    </li>
                     <li v-for="(item,index) in categorylist" :key = "index">
                         <a href="javascript:void(0)" @click="gotoCateList(item.id)">{{item.categoryName}}</a>
                     </li>

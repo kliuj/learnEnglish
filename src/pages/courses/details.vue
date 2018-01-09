@@ -59,14 +59,14 @@
 								<span>￥{{data.coursePrice}}</span>
 							</li>
 							<li>
-								<label for="">可用积分</label>
+								<label for="">可用亮值</label>
 								<span>{{data.userValidCredit}}</span>
 								<span class="right">
 									<input type="checkbox"  v-model="usercredit" class="ctrl-checkbox">
 								</span>
 							</li>
 							<li>
-								<label>获赠积分</label>
+								<label>获赠亮值</label>
 								<span>{{data.courseGiveCredit}}</span>
 							</li>
 						</ul>

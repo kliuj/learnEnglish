@@ -222,7 +222,7 @@
                 </g>
                 </svg>
             </span>
-            <div class="calendar-info" @click.stop="changeYear">
+            <div class="calendar-info" >
                 <!-- {{monthString}} -->
                 <div class="month">
                     <div class="month-inner" :style="{'top':-(this.month*20)+'px'}">
@@ -240,9 +240,9 @@
         </thead>
         <tbody>
         <tr v-for="(day,k1) in days" style="{'animation-delay',(k1*30)+'ms'}">
-            <td v-for="(child,k2) in day" :class="{'selected':child.selected,'disabled':child.disabled}" >
+            <td v-for="(child,k2) in day" :class="{'selected':getCheckedState(child.dataString)}" >
                 <!-- <span :class="{'red':k2==0||k2==6||((child.isLunarFestival||child.isGregorianFestival) && lunar)}">{{child.day}}</span> -->
-                <span :class="getCheckedState(child.dataString)">{{child.day}}</span>
+                <span :class="{'red':getCheckedState(child.dataString)}">{{child.day}}</span>
                 <div class="text" v-if="child.eventName!=undefined">{{child.eventName}}</div>
                 <div class="text" :class="{'isLunarFestival':child.isLunarFestival,'isGregorianFestival':child.isGregorianFestival}" v-if="lunar">{{child.lunar}}</div>
             </td>
@@ -426,7 +426,9 @@ export default {
         },
         getCheckedState(currentDate){
             if(this.selectcheckdate[currentDate]){
-                return 'red'
+                return true
+            }else{
+                return false
             }     
         },
         // 渲染日期

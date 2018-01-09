@@ -39,7 +39,7 @@ export default class Api {
     _ret.getWechatIsLogin = this.setModel('WechatIsLogin');
     //获取用户信息 get
     _ret.getWechatUser = this.setModel('WechatUser')
-    //获取积分信息
+    //获取亮值信息
     _ret.getWechatCreditLog = this.setModel('WechatCreditLog')
     //记录开始播放音频
     _ret.getWechatPlayAudio = this.setModel('WechatPlayAudio')

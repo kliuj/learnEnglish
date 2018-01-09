@@ -4,6 +4,9 @@
         <header class="gb-header">
             <NavTab />
             <h1 class="has-icon">LEDGE 优选课程</h1>
+            <div class="header-right">
+                <a href="javascript:void(0)" @click="gotoCheck">打卡</a>
+            </div>
         </header>
         <!-- //HEADER -->
         <!-- MAIN VIEW -->
@@ -43,7 +46,7 @@
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.classifyId}}</div>
-                            <div class="read">{{item.hisStudyNum}}人学习</div>
+                            <div class="read"  v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
                 </ul>
@@ -59,7 +62,7 @@
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.classifyId}}</div>
-                            <div class="read">{{item.hisStudyNum}}人学习</div>
+                            <div class="read" v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
                 </ul>
@@ -129,7 +132,10 @@
             },
             gotoCourseDetail (params){
                 this.$router.push({name:'coursedetail',query:{'id':params.id,'qhfrom':'index'}})
-            }
+            },
+            gotoCheck(){
+                this.$router.push({'name':'check',query:{'qhfrom':'index','uid':USER_INFO.id}})
+            },
         }
     }
 </script>

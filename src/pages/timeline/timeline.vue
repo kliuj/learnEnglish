@@ -81,10 +81,10 @@
                 this.$router.push({'name':'check',query:{'qhfrom':'timeline','uid':USER_INFO.id}})
             },
             error(e){
-               e.target.setAttribute("src",'./CommonImages/loading.jpg')
+               e.target.setAttribute("src",'./CommonImages/loading.png')
             },
             getImgUrl(uri){
-                return uri || './CommonImages/loading.jpg'
+                return uri || './CommonImages/loading.png'
             }
         }
     }

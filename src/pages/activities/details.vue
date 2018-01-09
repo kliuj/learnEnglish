@@ -66,14 +66,14 @@
                                 <span>￥{{orderInfo.ticketPrice}}</span>
                             </li>
                             <li>
-                                <label for="">可用积分</label>
+                                <label for="">可用亮值</label>
                                 <span>{{orderInfo.userValidCredit}}</span>
                                 <span class="right">
                                     <input type="checkbox" v-model="usercredit" class="ctrl-checkbox">
                                 </span>
                             </li>
                             <li>
-                                <label>获赠积分</label>
+                                <label>获赠亮值</label>
                                 <span>{{getcredit}}</span>
                             </li>
                         </ul>
@@ -110,7 +110,7 @@
                 orderInfo:{},
                 price:0,
                 usercredit:true,
-                getcredit:0,//获赠积分
+                getcredit:0,//获赠亮值
             }
         },
         beforeRouteEnter: (to, from, next) => {

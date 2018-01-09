@@ -12,7 +12,7 @@
                 <div class="upgrade-banner"><img src="../../../Assets/Images/upgrade_banner.png" width="100%"></div>
                 <div class="pay-vip-fee">
                     <a href="javascript:void(0);" @click="upgrade" v-if="!isVip">年费￥1500 成为VIP会员</a>
-                    <a href="javascript:void(0);"  v-if="isVip">VIP有效期至{{vipEndTime}}</a>
+                    <a href="javascript:void(0);"  v-if="isVip">VIP会员，有效期至{{vipEndTime}}</a>
                 </div>
             </section>
         </div>
@@ -70,7 +70,7 @@
             },
             getVipTime(){
                 const time = getNow();  
-                this.vipEndTime = `${ time.year + 1 }年${month}月${date}日`
+                this.vipEndTime = `${ time.year + 1 }年${time.month}月${time.date}日`
                 this.isVip = true
             },
             checkVip(){

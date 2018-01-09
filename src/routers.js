@@ -18,9 +18,6 @@ const routes = [
 	{
     	path:'/index',//优选课程
     	name:'index',
-		meta: { 
-			needRequiresAuth: true
-		},
     	component:function (resolve) {
 	      require(['./pages/courses/index.vue'], resolve)
 	    }
@@ -78,9 +75,6 @@ const routes = [
     {
         path:'/coursedetail',//课程详情
         name:'coursedetail',
-        meta: {
-            needRequiresAuth: true
-        },
         component:function (resolve) {
             require(['./pages/courses/details.vue'], resolve)
         }
@@ -88,9 +82,6 @@ const routes = [
     {
         path:'/allcourses',//所有课程
         name:'allcourses',
-        meta: {
-            needRequiresAuth: true
-        },
         component:function (resolve) {
             require(['./pages/courses/all.vue'], resolve)
         }
@@ -98,9 +89,6 @@ const routes = [
     {
         path:'/categories',//课程类别
         name:'categories',
-        meta: {
-            needRequiresAuth: true
-        },
         component:function (resolve) {
             require(['./pages/courses/categories.vue'], resolve)
         }
@@ -132,15 +120,12 @@ const routes = [
 	{
     	path:'/activity',//实战活动
     	name:'activity',
-		meta: { 
-			needRequiresAuth: true
-		},
     	component:function (resolve) {
 	      require(['./pages/activities/index.vue'], resolve)
 	    }
 	},
 	{
-    	path:'/credits',//我的积分
+    	path:'/credits',//我的亮值
     	name:'credits',
 		meta: { 
 			needRequiresAuth: true
@@ -152,9 +137,6 @@ const routes = [
 	{
     	path:'/activitydetail',//活动详情
     	name:'activitydetail',
-		meta: { 
-			needRequiresAuth: true
-		},
     	component:function (resolve) {
 	      require(['./pages/activities/details.vue'], resolve)
 	    }

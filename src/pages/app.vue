@@ -32,12 +32,12 @@
                 </li>
                 <li>
                     <a target-name='credits' @click="changeTab">
-                        <span class="sidenav-link-title">我的积分</span>
+                        <span class="sidenav-link-title">我的亮值</span>
                     </a>
                 </li>
                 <li>
                     <a target-name='invite' @click="changeTab">
-                        <span class="sidenav-link-title">邀请同学</span>
+                        <span class="sidenav-link-title">邀请朋友</span>
                     </a>
                 </li>
                 <li>
