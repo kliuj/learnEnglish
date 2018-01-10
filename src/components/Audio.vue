@@ -3,18 +3,8 @@
         <label for="">L-{{label}}</label>
         <span>
             <a href="javascript:void(0);" @click="clickAction">
-                <audio 
-                    @error="onerror"
-                    @playing="playing"
-                    @waiting="waiting"
-                    @pause="pauseListener"
-                    preload="none">
-                    <source :src="src">
-                    </source>
-                    Your browser does not support the audio element.
-                </audio>
                 <i class="fa" :class="classObject"></i> 
-                {{ !playState ? text : '停止'}}
+                {{text}}
             </a>
         </span>
         <em>{{intro}}</em>
@@ -35,6 +25,11 @@
                 default:''
             },
             onplay:{
+                type:Function,
+                default:()=>{
+                }
+            },
+            onSelected:{
                 type:Function,
                 default:()=>{
                 }
@@ -81,20 +76,21 @@
         },
         methods:{
             clickAction(e){
-                if(this.loadFailed){
-                    showAlert(this.label+'课程下载失败')
-                    return false
-                }
-                const dom =  e.currentTarget.childNodes[0]
-                if(this.playState !== 0){
-                    this.playState = 0
-                    dom.pause()
-                }else{
-                    this.closeAll()
-                    this.playState = 1
-                    dom.play()
-                    this.sendApi()
-                }
+                // if(this.loadFailed){
+                //     showAlert(this.label+'课程下载失败')
+                //     return false
+                // }
+                // const dom =  e.currentTarget.childNodes[0]
+                // if(this.playState !== 0){
+                //     this.playState = 0
+                //     dom.pause()
+                // }else{
+                //     this.closeAll()
+                //     this.playState = 1
+                //     dom.play()
+                //     this.sendApi()
+                // }
+                this.onSelected(this.src,this.intro)
             },
             closeAll(){
                 const ele = document.getElementsByTagName('audio');

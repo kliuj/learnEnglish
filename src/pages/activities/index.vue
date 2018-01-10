@@ -16,7 +16,7 @@
                                 {{item.activityTitle}}
                                 <small>{{item.activityDate}}</small>
                             </div>
-                            <div class="activity-poster"><img v-lazy="item.activityImgUrl"></div>
+                            <div class="activity-poster"><img :src="getImgUrl(item.activityImgUrl)" @error="error"></div>
                         </router-link>
                     </li>
                 </ul>
@@ -53,8 +53,11 @@
                     }
                 })
             },
-            onloadmore(){
-                
+            error(e){
+               e.target.setAttribute("src",'./CommonImages/default.png')
+            },
+            getImgUrl(uri){
+                return uri || './CommonImages/default.png'
             }
         }
 

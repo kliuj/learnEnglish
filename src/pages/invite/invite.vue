@@ -10,7 +10,7 @@
          <div class="mainview">
             <section class="invitation-detail">
                 <h2>邀请朋友获得奖励</h2>
-                <p>朋友只需要完成注册，即可获得1000亮值，<br>同时你也获得500亮值，亮值可以用来抵扣消费。</p>
+                <p>朋友只需要完成注册，即可获得{{settings.NewUserCredit}}亮值，<br>同时你也获得{{settings.InvitationUserCredit}}亮值，亮值可以用来抵扣消费。</p>
             </section>
             <section class="how-to-do">
                 <h3>如何邀请</h3>
@@ -33,7 +33,8 @@
         },
         data(){
             return{
-                inviteCode:null
+                inviteCode:null,
+                settings:USER_SETTINGS
             }
         },
         mounted(){

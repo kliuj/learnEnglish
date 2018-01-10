@@ -15,8 +15,8 @@ import store from './store'
 import VueLazyload  from './components/lazyLoad/vue-lazyload'
 
 Vue.use(VueLazyload, {
-  error: './CommonImages/loading.png',
-  loading: './CommonImages/loading.png',
+  error: './CommonImages/default.png',
+  loading: './CommonImages/default.png',
   try: 3 // default 1
 })
 

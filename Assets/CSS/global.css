@@ -1118,6 +1118,77 @@ img {
 .course-details .course-desc p:not(:first-child) {margin: 10px 0 0 0}
 
 
+/* PLAY AUDIO */
+.play-audio {
+	z-index: 11;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,.8)
+}
+.play-audio .player-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -174px;
+	margin-left: -150px;
+	width: 300px;
+	height: 300px;
+	overflow: hidden
+}
+.play-audio .player-box .course-cover {
+	width: 300px;
+	height: 300px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	overflow: hidden
+}
+.play-audio .player-box .lesson-name {
+	position: absolute;
+	top: 60px;
+	left: 50%;
+	margin-left: -120px;
+	width: 240px;
+	text-align: center;
+	font-size: 1.6em;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #000000;
+}
+.play-audio .player-box .audio-player {
+	position: absolute;
+	left: 50%;
+	bottom: 10px;
+	margin-left: -120px;
+	width: 240px
+}
+.play-audio .player-box .audio-player-android {
+	position: absolute;
+	bottom: 0;
+	width: 100%
+}
+.play-audio .player-box .close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 40px;
+	height: 40px;
+	background-image: url(../Images/i_close.png);
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	background-position: center center
+}
+.play-audio .player-box .close a {
+	display: block;
+	margin: 0;
+	height: 100%
+}
+
+
 /* ACTIVITIES HP */
 .pg-activities-hp .activity-list {}
 

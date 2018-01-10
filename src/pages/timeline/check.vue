@@ -164,14 +164,14 @@
                         id:this.uid
                     },
                     success:(d)=>{
-                        if(d.item && d.item.ClockInDate){
-                            showToast('你今天已经打过卡了')
-                        }else{
+                        if(d.item){
                             this.visable = true
+                        }else{
+                            showToast(d.errorMsg)
                         }
                     },
                     error:()=>{
-                        this.visable = true
+                        // this.visable = true
                     }
                 })
             },

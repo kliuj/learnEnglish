@@ -26,17 +26,22 @@
 							:audioId="item.PlayID"
 							:label="index"
 							:id="item.Id"
+							:onSelected="onSelected"
 							:text="(data.isPurchased || data.isFree) ? '播放' : '免费试听'"
 							:intro="item.AudioName"/>
 		            </li>
-					<!-- <li >
-						<Audio 
-							source="http://7fvhf6.com1.z0.glb.clouddn.com/7dyk%E7%BE%A4%E6%98%9F%20-%20%E6%A2%81%E7%A5%9D.mp3"
-							text="播放"
-							intro="测试语音梁祝"/>
-		            </li> -->
 		        </ul>
 		    </div>
+    	</section>
+		<section class="play-audio" v-show="showAudio">
+    		<div class="player-box">
+    			<div class="course-cover"><img src="../../../Assets/Images/temp_300x300.jpg" width="100%"></div>
+    			<div class="lesson-name">{{selectSource.intro}}</div>
+    			<audio :src="selectSource.src" controls="controls" controlsList="nodownload" :class="getClass()" id="audioplayer">
+
+				</audio>
+    			<span class="close" @click="closeAudio"><a href="javascript:void(0)"></a></span>
+    		</div>
     	</section>
     	<!-- //COURSE DETAILS -->
     	<!-- BUY COURSE -->
@@ -58,7 +63,7 @@
 								<label>课程费</label>
 								<span>￥{{data.coursePrice}}</span>
 							</li>
-							<li>
+							<li v-if="data.userValidCredit">
 								<label for="">可用亮值</label>
 								<span>{{data.userValidCredit}}</span>
 								<span class="right">
@@ -90,7 +95,8 @@
 	import {
 		wxPay,
 		showAlert,
-		routerUrl
+		routerUrl,
+		Browser
 	} from '../../model/fun'
     export default{
         data(){
@@ -99,7 +105,9 @@
 				id:0,
 				data:null,
 				audioList:[],
-				usercredit:true
+				usercredit:true,
+				showAudio:false,
+				selectSource:{}
             }
         },
 		components:{
@@ -124,6 +132,26 @@
 			})
 		},
         methods:{
+			getClass(){
+				if(Browser().versions.ios){
+					return 'audio-player'
+				}else{
+					return 'audio-player-android'
+				}
+			},
+			//选中音频
+			onSelected(src,intro){
+				this.showAudio = true
+				this.selectSource = {
+					src,
+					intro
+				}
+				document.getElementById('audioplayer').play()
+			},
+			closeAudio(){
+				this.showAudio = false
+				document.getElementById('audioplayer').pause()
+			},
 			getData(){
 				//post
 				Models.send({

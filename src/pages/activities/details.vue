@@ -65,7 +65,7 @@
                                 <label>价格</label>
                                 <span>￥{{orderInfo.ticketPrice}}</span>
                             </li>
-                            <li>
+                            <li v-if="orderInfo.userValidCredit">
                                 <label for="">可用亮值</label>
                                 <span>{{orderInfo.userValidCredit}}</span>
                                 <span class="right">
