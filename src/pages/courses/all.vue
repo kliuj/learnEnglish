@@ -1,7 +1,7 @@
 <template>
     <div class="page pg-courses" :class="{'pg-courses-categories':showCate,'pg-courses-all':!showCate}" >
         <HeaderView pageName="allcourses" :pageTitle="title" :beforeBack="beforeBack">
-            <div class="header-right">
+            <div class="header-right" v-show="!showCate">
                 <a href="javascript:void(0)" @click="showcate">类别筛选</a>
             </div>
         </HeaderView>
@@ -24,10 +24,10 @@
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in feeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
-                            <div class="course-cover"><img :src="item.courseImgUrl"></div>
+                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
-                            <div class="read">{{item.courseHisStudyNum}}人学习</div>
+                            <div class="read" v-if="item.courseHisStudyNum">{{item.courseHisStudyNum}}人学习</div>
                         </a>
                     </li>
                 </ul>  
@@ -37,10 +37,10 @@
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in freeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
-                            <div class="course-cover"><img :src="item.courseImgUrl"></div>
+                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
-                            <div class="read">{{item.courseHisStudyNum}}人学习</div>
+                            <div class="read" v-if="item.courseHisStudyNum">{{item.courseHisStudyNum}}人学习</div>
                         </a>
                     </li>
                 </ul>  
@@ -51,7 +51,7 @@
             <section class="gb-listview">
                 <ul>
                     <li>
-                        <a href="javascript:void(0)" @click="setcateList({id:0,categoryName:'全部课程'})">全部课程</a>
+                        <a href="javascript:void(0)" @click="setcateList({id:0,categoryName:'全部'})">全部</a>
                     </li>
                     <li v-for="(item,index) in categorylist" :key = "index">
                         <a href="javascript:void(0)" @click="setcateList(item)">{{item.categoryName}}</a>
@@ -80,16 +80,16 @@
                 feeList:null,
                 showCate:false,//是否展示类别
                 categorylist:[],
-                title:'全部课程',
-                pageAlltitle:'全部课程',
+                title:'全部',
+                pageAlltitle:'全部',
                 categoryId:0
             }
         },
         beforeRouteEnter: (to, from, next) => {
             next(vm=>{
                 vm.fee = to.query.fee
-                vm.title = to.query.pageAlltitle || '全部课程'
-                vm.pageAlltitle = to.query.pageAlltitle || '全部课程'
+                vm.title = to.query.pageAlltitle || '全部'
+                vm.pageAlltitle = to.query.pageAlltitle || '全部'
                 vm.categoryId = to.query.categoryId || 0
                 if(vm.fee){
                     vm.getFeeList()

@@ -25,7 +25,7 @@
                     </a>
                 </div>
             </section>
-            <section class="gb-listview" v-show="!isCalendar">
+            <section class="gb-listview" v-if="!isCalendar">
                 <div class="legend">打卡{{data.Total}}天</div>
                 <ul>
                     <li v-for="(item,index) in data.Details" :key="index">
@@ -37,7 +37,7 @@
                     </li>
                 </ul>
             </section>
-            <section class="calendar-view" v-show="isCalendar">	    	
+            <section class="calendar-view" v-if="isCalendar">	    	
                 <div class="legend">打卡{{data.Total}}天</div>
                 <div class="c">
                     <Calendar 

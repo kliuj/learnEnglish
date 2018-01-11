@@ -4,7 +4,7 @@
         <span>
             <a href="javascript:void(0);" @click="clickAction">
                 <i class="fa" :class="classObject"></i> 
-                {{text}}
+                {{audioId ? text : ''}}
             </a>
         </span>
         <em>{{intro}}</em>
@@ -68,9 +68,13 @@
         },
         computed: {
             classObject() {
-                return {
-                    'fa-play-circle': this.playState === 0,
-                    'fa-stop-circle': this.playState === 1
+                if(this.audioId){
+                    return {
+                        'fa-play-circle': this.playState === 0,
+                        'fa-stop-circle': this.playState === 1
+                    }
+                }else{
+                    return 'fa-lock'
                 }
             }
         },
@@ -90,7 +94,9 @@
                 //     dom.play()
                 //     this.sendApi()
                 // }
-                this.onSelected(this.src,this.intro)
+                if(this.audioId){
+                    this.onSelected(this.src,this.intro)
+                }
             },
             closeAll(){
                 const ele = document.getElementsByTagName('audio');

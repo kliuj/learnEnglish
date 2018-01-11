@@ -15,7 +15,7 @@
                 <p>学习时间轴自动记录您在 LEDGE 的学习过程，它以卡片的形式为您导航，在这里能找到您的每一次进步。</p>
                 <ul class="timeline-cards" v-if="list">
                     <li v-for="(item,index) in list" :key="index">
-                        <div class="datetime">{{item.Time}}</div>
+                        <div class="datetime">{{item.Time.split(" ")[0]}}</div>
                         <div class="card course-card" v-if="item.Course" @click="gotoCourseDetail(item)">
                             <a href="javasrcipt:void(0)">
                                 <div class="course-cover">
@@ -30,7 +30,7 @@
                             <a href="javascript:void(0)">
                                 <div class="activity-title">
                                     {{item.Activity.activityTitle}}
-                                    <small>{{item.Activity.activityDate}}</small>
+                                    <small>{{item.Activity.activityDate.split(" ")[0]}}</small>
                                 </div>
                                 <div class="activity-poster"><img :src="getImgUrl(item.Activity.activityImgUrl)" @error="error"></div>
                             </a>
