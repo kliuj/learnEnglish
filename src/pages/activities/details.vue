@@ -154,7 +154,23 @@
             hideModal(){
                 this.modalVisiable = false
             },
-            showModal(item){
+            showModal(data){
+                Models.send({
+					url:'getWechatIsLogin',
+					type:'get',
+					needLogin:false,
+					success:({item})=>{
+						if(item == true){
+							this.successShowModal(data)
+						}else{
+							let toUrl= location.href
+							localStorage.setItem('loginBack',JSON.stringify(toUrl));
+							jumpUrl('login')
+						}
+					}
+				})
+            },
+            successShowModal(item){
                 this.modalVisiable = true
                 this.orderInfo = item
                 this.price = this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)

@@ -72,12 +72,12 @@
 							</li>
 							<li>
 								<label>获赠亮值</label>
-								<span>{{data.courseGiveCredit}}</span>
+								<span>{{getcredit}}</span>
 							</li>
 						</ul>
 					</div>
 					<div class="action">
-						<a href="javascript:void(0);" class="button" @click="pay">去支付￥{{data.coursePrice}}</a>
+						<a href="javascript:void(0);" class="button" @click="pay">去支付￥{{price}}</a>
 					</div>
 				</div>
 			</section>
@@ -96,7 +96,8 @@
 		wxPay,
 		showAlert,
 		routerUrl,
-		Browser
+		Browser,
+		jumpUrl
 	} from '../../model/fun'
     export default{
         data(){
@@ -115,12 +116,14 @@
 		},
 		watch:{
 			'usercredit'(){
-				if(this.usercredit){
-					this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-				}else{
-					this.price = this.data.coursePrice
+				if(USER_SETTINGS.UsePrice){
+					if(this.usercredit){
+						this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
+					}else{
+						this.price = this.data.coursePrice
+					}
+					this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
 				}
-				this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
 			}
 		},
 		beforeRouteEnter(to, from, next) {
@@ -184,7 +187,21 @@
                 this.modalVisiable = false
 			},
 			buy(){
-				this.modalVisiable = true
+				Models.send({
+					url:'getWechatIsLogin',
+					type:'get',
+					needLogin:false,
+					success:({item})=>{
+						if(item == true){
+							this.modalVisiable = true
+						}else{
+							let toUrl= location.href
+							localStorage.setItem('loginBack',JSON.stringify(toUrl));
+							jumpUrl('login')
+						}
+					}
+				})
+				
 			},
 			pay(){
 				Models.send({

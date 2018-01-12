@@ -128,6 +128,8 @@
                 this.getInfo()   
             },
             getInfo(){
+                window.USER_INFO = {}
+                window.USER_SETTINGS = {}
                 if(getStore('userInfo').id > 0){
                     //防止注册时候刷新信息
                     window.USER_INFO = getStore('userInfo')
