@@ -30,7 +30,7 @@
                         <a href="javascript:void(0);">
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
-                            <div class="category">{{item.classifyId}}</div>
+                            <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                         <a href="javascript:void(0);">
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
-                            <div class="category">{{item.classifyId}}</div>
+                            <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read"  v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
@@ -61,7 +61,7 @@
                         <a href="javascript:void(0);">
                             <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
                             <div class="course-title">{{item.courseName}}</div>
-                            <div class="category">{{item.classifyId}}</div>
+                            <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read" v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
