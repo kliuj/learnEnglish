@@ -4,6 +4,9 @@
 		<div class="header-right" v-if="data && !data.isPurchased && !data.isFree">
 			<a href="javascript:void(0);" @click="buy">购买</a>
 		</div>
+		<div class="header-right" v-if="data && data.isFree && !data.isPurchased">
+			<a href="javascript:void(0);" @click="getFree">获取</a>
+		</div>
 	</HeaderView>
     <!-- //HEADER -->
     <!-- MAIN VIEW -->
@@ -98,7 +101,8 @@
 		showAlert,
 		routerUrl,
 		Browser,
-		jumpUrl
+		jumpUrl,
+		showToast
 	} from '../../model/fun'
     export default{
         data(){
@@ -109,7 +113,8 @@
 				audioList:[],
 				usercredit:true,
 				showAudio:false,
-				selectSource:{}
+				selectSource:{},
+				playerListener:null
             }
         },
 		components:{
@@ -124,7 +129,7 @@
 			}
 			document.addEventListener('touchend',this.playerListener );
 		},
-		beforeRouteLeave: (to, from, next) => {
+		beforeRouteLeave(to, from, next){
 			// ...
 			this.playerListener && document.removeEventListener('touchend',this.playerListener)
 			next()
@@ -222,6 +227,21 @@
 				})
 				
 			},
+			getFree(){
+				Models.send({
+					url:'getWechatBuyCourse',
+					type:'post',
+					params:{
+						CourseId:this.id,
+						CreditPay:0
+					},
+					success:(d)=>{
+						if(d.item.courseOrderStatus === 1){
+							this.$router.replace({ name: 'timeline' })
+						}
+					}
+				})
+			},
 			pay(){
 				Models.send({
 					url:'getWechatBuyCourse',
@@ -231,7 +251,9 @@
 						CreditPay:this.usercredit ? this.data.userValidCredit : 0
 					},
 					success:(d)=>{
-						this.sendWxPay(d.item)
+						if(d.item.courseOrderStatus === 0){
+							this.sendWxPay(d.item)
+						}
 					}
 				})
 			},

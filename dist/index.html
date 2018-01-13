@@ -39,7 +39,7 @@
             // timeout:50,
             success:function(d){
                 wx.config({
-                    debug: true, //
+                    debug: false, //
                     appId: d.appId, // 必填，公众号的唯一标识
                     timestamp: d.timestamp, // 必填，生成签名的时间戳
                     nonceStr: d.nonceStr, // 必填，生成签名的随机串
@@ -116,9 +116,9 @@
   //     // includeLinkStyle('Assets/CSS/css.css',version)
   //     // addJs('js/main.min.js',version);
   //   })
-//   addJs('js/main.min.js',Date.now());
+  addJs('js/main.min.js',Date.now());
    }
 </script>
 <script src="lib/zepto.min.js" type="text/javascript" onload="loadInit()"></script>
-<script type="text/javascript" src="js/main.min.js"></script></body>
+<!-- <script type="text/javascript" src="js/main.min.js"></script></body> -->
 </html>
