@@ -14,7 +14,8 @@
     			<div class="cover"><img v-lazy="data.courseImgUrl"></div>
     			<div class="title">{{data.courseName}}</div>
     			<div class="category">共{{data.coursePeriod}}课时&nbsp;&bull;&nbsp;{{data.courseClassifyName}}</div>
-    			<div class="price">课程费 ￥{{data.coursePrice}}</div>
+    			<div class="price" v-if="data.coursePrice !== 0">课程费 ￥{{data.coursePrice}}</div>
+    			<div class="price" v-if="data.coursePrice === 0">免费课程</div>
     			
     		</div>
     		<div class="course-desc" v-html="data.courseIntroduce"></div>
@@ -33,7 +34,7 @@
 		        </ul>
 		    </div>
     	</section>
-		<section class="play-audio" v-show="showAudio">
+		<section class="play-audio" v-if="showAudio">
     		<div class="player-box">
     			<div class="course-cover"><img src="../../../Assets/Images/temp_300x300.jpg" width="100%"></div>
     			<div class="lesson-name">{{selectSource.intro}}</div>
@@ -114,6 +115,20 @@
 		components:{
             HeaderView,Audio
 		},
+		mounted(){
+			this.playerListener = function () {
+				setTimeout(()=>{
+					var audio = document.getElementById('audioplayer');
+					audio && audio.play();
+				},100)
+			}
+			document.addEventListener('touchend',this.playerListener );
+		},
+		beforeRouteLeave: (to, from, next) => {
+			// ...
+			this.playerListener && document.removeEventListener('touchend',this.playerListener)
+			next()
+		},
 		watch:{
 			'usercredit'(){
 				if(USER_SETTINGS.UsePrice){
@@ -122,7 +137,7 @@
 					}else{
 						this.price = this.data.coursePrice
 					}
-					this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
+					this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
 				}
 			}
 		},
@@ -149,11 +164,15 @@
 					src,
 					intro
 				}
-				document.getElementById('audioplayer').play()
+				// document.getElementById('audioplayer').pause()
+				// this.$nextTick(()=> {
+				// 	document.getElementById('audioplayer').play()
+				// });
+				
 			},
 			closeAudio(){
 				this.showAudio = false
-				document.getElementById('audioplayer').pause()
+				// document.getElementById('audioplayer').pause()
 			},
 			getData(){
 				//post
@@ -165,7 +184,7 @@
 					success:(d)=>{
 						this.data = d.item
 						this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-               			this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
+               			this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
 					}
 				})
 			},
@@ -195,7 +214,7 @@
 						if(item == true){
 							this.modalVisiable = true
 						}else{
-							let toUrl= location.href
+							let toUrl= 'http://wx.ledgetrans.com.cn/index.html'+location.hash
 							localStorage.setItem('loginBack',JSON.stringify(toUrl));
 							jumpUrl('login')
 						}

@@ -126,7 +126,7 @@
                 }else{
                     this.price = this.orderInfo.ticketPrice
                 }
-                this.getcredit = this.orderInfo.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
+                this.getcredit = parseInt(this.orderInfo.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
             }
         },
         methods:{
@@ -163,7 +163,7 @@
 						if(item == true){
 							this.successShowModal(data)
 						}else{
-							let toUrl= location.href
+							let toUrl= 'http://wx.ledgetrans.com.cn/index.html'+location.hash
 							localStorage.setItem('loginBack',JSON.stringify(toUrl));
 							jumpUrl('login')
 						}
@@ -174,7 +174,7 @@
                 this.modalVisiable = true
                 this.orderInfo = item
                 this.price = this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-                this.getcredit = this.price * parseInt(USER_SETTINGS.UseGiveCredit)/parseInt(USER_SETTINGS.UsePrice)
+                this.getcredit = parseInt(this.orderInfo.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
             },
             pay(){
 				Models.send({

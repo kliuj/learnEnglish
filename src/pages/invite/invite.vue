@@ -56,7 +56,7 @@
                     link =  'http://wx.ledgetrans.com.cn/home/autologin?returnUrl='+encodeURIComponent('http://wx.ledgetrans.com.cn/index.html#/signup?inviteCode='+this.inviteCode);
                 share({
                     title ,
-                    desc:'你的好多朋友都在这里！完成注册即可获得1000亮值。',
+                    desc:'你的好多朋友都在这里！完成注册即可获得'+USER_SETTINGS.NewUserCredit+'亮值。',
                     link ,
                     imgUrl
                 })
