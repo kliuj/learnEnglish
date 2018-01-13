@@ -30,7 +30,7 @@
                 <ul>
                     <li v-for="(item,index) in checkedDates" :key="index">
                         <div>
-                            <label for="">第{{index + 1}}天打卡</label>
+                            <label for="">第{{checkedDates.length - index}}天打卡</label>
                             <span>聆听了{{item.LearnCourseNum}}节课</span>
                             <em>{{item.ClockInDate.split(" ")[0]}}{{'，'+item.StudyNotes}}</em>
                         </div>
@@ -144,7 +144,7 @@
                         this.thumbUpCount = d.item.ThumbUpCount
                         this.icon = d.item.UserHeadImgUrl
                         this.setCalendarData(d.item.Details)
-                        this.checkedDates = d.item.Details.reverse()
+                        this.checkedDates = d.item.Details
                     }
                 })
             },

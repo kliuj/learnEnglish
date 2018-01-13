@@ -14,7 +14,7 @@
                         <router-link :to="{'name':'activitydetail',query:{'qhfrom':'activity','id':item.id}}">
                             <div class="activity-title">
                                 {{item.activityTitle}}
-                                <small>{{item.activityDate}}</small>
+                                <small>{{item.activityDate.split(" ")[0]}}</small>
                             </div>
                             <div class="activity-poster"><img :src="getImgUrl(item.activityImgUrl)" @error="error"></div>
                         </router-link>

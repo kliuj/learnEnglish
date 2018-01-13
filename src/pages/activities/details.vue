@@ -8,7 +8,7 @@
             <!-- ACTIVITY DETAILS -->
             <section class="activity-details" v-if="data">
                 <div class="activity-summary">
-                    <div class="activity-poster"><img v-lazy="data.activityImgUrl[0]"></div>
+                    <div class="activity-poster"><img :src="getImgUrl(data.activityImgUrl[0])" @error="error"></div>
                 </div>
                 <div class="gb-listview">
                     <ul>
@@ -21,7 +21,7 @@
                         <li>
                             <div>
                                 <label for="">时间</label>
-                                <span>{{data.activityDate}}</span>
+                                <span>{{data.activityDate.split(" ")[0]}}</span>
                             </div>
                         </li>
                         <li>
@@ -187,7 +187,7 @@
 					url:'wechatBuyActivity',
 					type:'post',
 					params:{
-						ActivityTicketId:this.id,
+						ActivityTicketId:this.orderInfo.id,
 						CreditPay:this.usercredit ? this.orderInfo.userValidCredit : 0
 					},
 					success:(d)=>{
@@ -213,6 +213,7 @@
                                 console.log('支付成功')
                             },
                             cancel:()=>{
+                                this.cancelPay(activityOrderNo)
                                 console.log('支付取消')
                             },
                             fail:()=>{
@@ -221,7 +222,22 @@
                         })
 					}
 				})
-			},
+            },
+			cancelPay({activityOrderNo}){
+				Models.send({
+					url:'wechatBuyActivity',
+					type:'put',
+					params:{
+						activityOrderNo
+					}
+				})
+            },
+            error(e){
+               e.target.setAttribute("src",'./CommonImages/default.png')
+            },
+            getImgUrl(uri){
+                return uri || './CommonImages/default.png'
+            }
         }
     }
 </script>

@@ -19,7 +19,7 @@
                         <div>
                             <label for="">{{item.logTime.split(" ")[0]}}</label>
                             <span>{{getNum(item.creditNum)}}</span>
-                            <em>{{getTypeName(item.creditType)}}</em>
+                            <em>{{item.creditTypeName}}</em>
                         </div>
                     </li>
                 </ul>

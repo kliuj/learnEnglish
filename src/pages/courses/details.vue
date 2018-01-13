@@ -284,6 +284,7 @@
                                 console.log('支付成功')
                             },
                             cancel:()=>{
+								this.cancelPay(orderNo)
                                 console.log('支付取消')
                             },
                             fail:()=>{
@@ -293,6 +294,15 @@
 					}
 				})
 			},
+			cancelPay({orderNo}){
+				Models.send({
+					url:'getWechatBuyCourse',
+					type:'put',
+					params:{
+						orderNo
+					}
+				})
+			}
         }
     }
 </script>
