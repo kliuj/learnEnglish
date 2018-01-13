@@ -188,10 +188,20 @@
 					},
 					success:(d)=>{
 						this.data = d.item
-						this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-               			this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
+						this.caculetePrice()	
 					}
 				})
+			},
+			caculetePrice(){
+				if(USER_SETTINGS.UsePrice){
+					if(this.usercredit){
+						let _price_ = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
+						this.price = _price_ > 0 ? _price_ : 0 ;
+					}else{
+						this.price = this.data.coursePrice
+					}
+					this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
+				}	
 			},
 			getAudioList(){
 				Models.send({

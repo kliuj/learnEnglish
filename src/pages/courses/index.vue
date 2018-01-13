@@ -28,7 +28,7 @@
                 <ul class="courses-list">
                     <li v-for="(item,index) in recommend" :key="item.id" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0);">
-                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
+                            <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)"  @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read">{{item.hisStudyNum}}人学习</div>
@@ -43,7 +43,7 @@
                 <ul class="courses-list">
                     <li v-for="(item,index) in fee" :key="item.id" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0);">
-                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
+                            <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)" @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read"  v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
@@ -59,7 +59,7 @@
                 <ul class="courses-list">
                     <li v-for="(item,index) in free" :key="item.id" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0);">
-                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
+                            <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)"  @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read" v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
@@ -136,6 +136,12 @@
             gotoCheck(){
                 this.$router.push({'name':'check',query:{'qhfrom':'index','uid':USER_INFO.id}})
             },
+            error(e){
+               e.target.setAttribute("src",'./CommonImages/default.png')
+            },
+            getImgUrl(uri){
+                return uri || './CommonImages/default.png'
+            }
         }
     }
 </script>

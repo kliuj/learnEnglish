@@ -24,7 +24,7 @@
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in feeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
-                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
+                            <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)"    @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read" v-if="item.courseHisStudyNum">{{item.courseHisStudyNum}}人学习</div>
@@ -37,7 +37,7 @@
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in freeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
-                            <div class="course-cover"><img v-lazy="item.courseImgUrl"></div>
+                            <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)"   @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
                             <div class="read" v-if="item.courseHisStudyNum">{{item.courseHisStudyNum}}人学习</div>
@@ -171,6 +171,12 @@
                 this.title = categoryName
                 this.pageAlltitle = categoryName
                 this.categoryId = id
+            },
+            error(e){
+               e.target.setAttribute("src",'./CommonImages/default.png')
+            },
+            getImgUrl(uri){
+                return uri || './CommonImages/default.png'
             }
         }
     }

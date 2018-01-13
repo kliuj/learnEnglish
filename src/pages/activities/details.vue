@@ -120,13 +120,8 @@
             })
         },
         watch:{
-            'checked'(){
-                if(this.checked){
-                    this.price = this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-                }else{
-                    this.price = this.orderInfo.ticketPrice
-                }
-                this.getcredit = parseInt(this.orderInfo.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
+            'usercredit'(){
+                this.caculetePrice()    
             }
         },
         methods:{
@@ -173,8 +168,19 @@
             successShowModal(item){
                 this.modalVisiable = true
                 this.orderInfo = item
-                this.price = this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-                this.getcredit = parseInt(this.orderInfo.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
+                this.caculetePrice()    
+            },
+            caculetePrice(){
+                if(USER_SETTINGS.UsePrice){
+                    if(this.usercredit){
+                        let _price_ =  this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)   
+                        console.log(_price_)    
+                        this.price = _price_ > 0 ? _price_ : 0 ;
+                    }else{
+                        this.price = this.orderInfo.ticketPrice
+                    }
+                    this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
+                }
             },
             pay(){
 				Models.send({

@@ -28,7 +28,7 @@
             <section class="gb-listview" v-if="!isCalendar">
                 <div class="legend">打卡{{data.Total}}天</div>
                 <ul>
-                    <li v-for="(item,index) in data.Details" :key="index">
+                    <li v-for="(item,index) in checkedDates" :key="index">
                         <div>
                             <label for="">第{{index + 1}}天打卡</label>
                             <span>聆听了{{item.LearnCourseNum}}节课</span>
@@ -110,7 +110,8 @@
                         // console.log(begin.toString(),end.toString());
                     }
                 },
-                studyNotes:null
+                studyNotes:null,
+                checkedDates:[]
             }
         },
         beforeRouteEnter(to, from, next){
@@ -143,6 +144,7 @@
                         this.thumbUpCount = d.item.ThumbUpCount
                         this.icon = d.item.UserHeadImgUrl
                         this.setCalendarData(d.item.Details)
+                        this.checkedDates = d.item.Details.reverse()
                     }
                 })
             },
