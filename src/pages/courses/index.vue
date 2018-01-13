@@ -31,7 +31,7 @@
                             <div class="course-cover"><img :src="getImgUrl(item.courseImgUrl)"  @error="error"></div>
                             <div class="course-title">{{item.courseName}}</div>
                             <div class="category">{{item.courseClassifyName}}</div>
-                            <div class="read">{{item.hisStudyNum}}人学习</div>
+                            <div class="read" v-if="item.hisStudyNum">{{item.hisStudyNum}}人学习</div>
                         </a>
                     </li>
                 </ul>
@@ -72,7 +72,7 @@
                     </a>
                 </div>
             </section>
-            <EmptyPage v-if="recommend.length === 0 && free.length === 0 && fee.length ===0" info="没有相关联的课程"/>
+            <EmptyPage v-if="loaded && recommend.length === 0 && free.length === 0 && fee.length ===0" info="没有相关联的课程"/>
         </div>
         <!-- //MAIN VIEW -->
     </div>
@@ -95,7 +95,8 @@
                 recommend:[],
                 free:[],
                 fee:[],
-                clockInfo:null
+                clockInfo:null,
+                loaded:false
             }
         },
         mounted(){
@@ -115,6 +116,7 @@
                         this.free = d.free;
                         this.fee = d.fee;
                         this.recommend = d.recommend;
+                        this.loaded = true
                     }
                 })
             },
