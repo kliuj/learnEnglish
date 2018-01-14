@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label for="">L-{{label}}</label>
+        <label for="">#{{label}}</label>
         <span>
             <a href="javascript:void(0);" @click="clickAction">
                 <i class="fa" :class="classObject"></i> 

@@ -28,7 +28,7 @@
 		            <li v-for="(item,index) in audioList" :key="index">
 						<Audio 
 							:audioId="item.PlayID"
-							:label="index"
+							:label="index + 1"
 							:id="item.Id"
 							:onSelected="onSelected"
 							:text="(data.isPurchased || data.isFree) ? '播放' : '免费试听'"
@@ -42,7 +42,6 @@
     			<div class="course-cover"><img src="../../../Assets/Images/temp_300x300.jpg" width="100%"></div>
     			<div class="lesson-name">{{selectSource.intro}}</div>
     			<audio :src="selectSource.src" controls="controls" controlsList="nodownload" :class="getClass()" id="audioplayer">
-
 				</audio>
     			<span class="close" @click="closeAudio"><a href="javascript:void(0)"></a></span>
     		</div>
