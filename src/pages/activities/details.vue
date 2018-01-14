@@ -79,7 +79,7 @@
                         </ul>
                     </div>
                     <div class="action" @click="pay">
-                        <a href="javascript:void(0);" class="button">去支付￥{{price}}</a>
+                        <a href="javascript:void(0);" class="button">去支付￥{{price.toFixed(2)}}</a>
                     </div>
                 </div>
             </section>
