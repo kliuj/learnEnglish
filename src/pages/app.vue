@@ -70,6 +70,7 @@
         },
         watch:{
             'userStateTime' () {
+                console.log(this.userStateTime,'获取时间')
                 this.getInfo()
             },
             'isOpenTap' (){

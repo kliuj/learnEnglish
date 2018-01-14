@@ -95,7 +95,8 @@
     import Swiper from '../../components/swiper/vue-swiper'
     import{
         wxPay,
-        routerUrl
+        routerUrl,
+        jumpUrl
     }from '../../model/fun'
     export default{
         components:{
@@ -174,7 +175,6 @@
                 if(USER_SETTINGS.UsePrice){
                     if(this.usercredit){
                         let _price_ =  this.orderInfo.ticketPrice -  this.orderInfo.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)   
-                        console.log(_price_)    
                         this.price = _price_ > 0 ? _price_ : 0 ;
                     }else{
                         this.price = this.orderInfo.ticketPrice

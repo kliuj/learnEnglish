@@ -136,14 +136,7 @@
 		},
 		watch:{
 			'usercredit'(){
-				if(USER_SETTINGS.UsePrice){
-					if(this.usercredit){
-						this.price = this.data.coursePrice -  this.data.userValidCredit * parseInt(USER_SETTINGS.CostPrice)/parseInt(USER_SETTINGS.UseCredit)
-					}else{
-						this.price = this.data.coursePrice
-					}
-					this.getcredit = parseInt(this.price/parseInt(USER_SETTINGS.UsePrice)) * parseInt(USER_SETTINGS.UseGiveCredit)
-				}
+				this.caculetePrice()
 			}
 		},
 		beforeRouteEnter(to, from, next) {
