@@ -41,7 +41,7 @@
             },
             text:{
                 type:String,
-                default:'免费试听'
+                default:''
             },
             audioId:{
                 type:String,

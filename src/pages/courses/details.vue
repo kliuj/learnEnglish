@@ -31,7 +31,7 @@
 							:label="index + 1"
 							:id="item.Id"
 							:onSelected="onSelected"
-							:text="(data.isPurchased || data.isFree) ? '播放' : '免费试听'"
+							:text="getPlayText(item.PlayID)"
 							:intro="item.AudioName"/>
 		            </li>
 		        </ul>
@@ -183,6 +183,20 @@
 						this.caculetePrice()	
 					}
 				})
+			},
+			getPlayText(pid){
+				if(this.data.isFree){
+					return '免费试听'
+				}
+				if(this.data.isPurchased){
+					return '播放'
+				}
+				if(!this.data.isFree && !this.data.isPurchased && pid){
+					return '免费试听'
+				}
+				if(!this.data.isFree && !this.data.isPurchased && !pid){
+					return ''
+				}
 			},
 			caculetePrice(){
 				if(USER_SETTINGS.UsePrice){
