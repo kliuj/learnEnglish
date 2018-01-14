@@ -11,6 +11,7 @@ import {
 } from './model/fun.js'
 import VueRouter from "vue-router";
 import Vue from "vue";
+import { getStore } from './model/store'
 
 Vue.use(VueRouter);
 
@@ -178,6 +179,7 @@ router.beforeEach((to, from, next) => {
 	//验证后的回调
 	let afterCheck = ()=>{
 		//检查是否登录过
+		if(getStore('userInfo').id > 0 && getStore('settings').UsePrice){
 			Models.send({
                 url:'getWechatIsLogin',
                 type:'get',
@@ -192,6 +194,12 @@ router.beforeEach((to, from, next) => {
 					}
 				}
 			})
+		}else{
+			let toUrl= '/index.html#' + to.fullPath
+			localStorage.setItem('loginBack',JSON.stringify(toUrl));
+			jumpUrl('login')
+		}
+			
 	}
 	if(to.meta.needRequiresAuth){
 		afterCheck()
