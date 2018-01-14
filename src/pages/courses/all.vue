@@ -20,7 +20,7 @@
                 </div>
             </div>
             <!-- //TAB -->
-            <section id="paid-courses" class="courses-group" v-show="fee">
+            <section id="paid-courses" class="courses-group" v-if="fee">
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in feeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
@@ -33,7 +33,7 @@
                 </ul>  
                 <EmptyPage v-if="feeList && feeList.length === 0 && fee" info="暂无相关课程"/>
             </section>
-            <section id="free-courses" class="courses-group"  v-show="!fee">
+            <section id="free-courses" class="courses-group"  v-if="!fee">
                 <ul class="courses-list" slot="list">
                     <li v-for="(item,index) in freeList" :key="index" @click="gotoCourseDetail(item)">
                         <a href="javascript:void(0)" >
@@ -109,14 +109,16 @@
         },
         methods:{
             showFee(){
-                this.fee = true,
-                this.getFeeList()
+                this.getFeeList(()=>{
+                    this.fee = true
+                })
             },
             showNoFee(){
-                this.fee = false
-                this.getFreeList()
+                this.getFreeList(()=>{
+                    this.fee = false
+                })
             },
-            getFeeList(){
+            getFeeList(cb){
                 Models.send({
                     url:'getWechatFeeCourseList',
                     params:{
@@ -124,10 +126,11 @@
                     },
                     success:(d)=>{
                         this.feeList = d.items
+                        cb && cb()
                     }
                 })
             },
-            getFreeList(){
+            getFreeList(cb){
                 Models.send({
                     url:'getWechatFreeCourseList',
                     params:{
@@ -135,6 +138,7 @@
                     },
                     success:(d)=>{
                         this.freeList = d.items
+                        cb && cb()
                     }
                 })
             },
