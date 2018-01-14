@@ -8,7 +8,7 @@
             <!-- ACTIVITY DETAILS -->
             <section class="activity-details" v-if="data">
                 <div class="activity-summary">
-                    <div class="activity-poster"><img :src="getImgUrl(data.activityImgUrl[0])" @error="error"></div>
+                    <div class="activity-poster"><img :src="getImgUrl(data.activityImgUrl)" @error="error"></div>
                 </div>
                 <div class="gb-listview">
                     <ul>

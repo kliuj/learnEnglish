@@ -31,6 +31,7 @@
                                 <div class="activity-title">
                                     {{item.Activity.activityTitle}}
                                     <small>{{item.Activity.activityDate.split(" ")[0]}}</small>
+                                    <small>{{item.Activity.ticketName}}</small>
                                 </div>
                                 <div class="activity-poster"><img :src="getImgUrl(item.Activity.activityImgUrl)" @error="error"></div>
                             </a>
