@@ -56,7 +56,7 @@
                     backUrl:'/index.html#/index',
                     success:({item = {}})=>{
                         setStore('userInfo',item);
-                        this.getSetting()
+                        this.goBack(item)
                     },
                     error:(d)=>{
                         console.log('获取用户信息失败')
@@ -64,15 +64,6 @@
                             routerUrl('signUp',this.$router)
                         }
                     }
-                })
-            },
-            getSetting(){
-                Models.send({
-                    url:'wechatSystemSetting',
-                    success:({item = {}})=>{
-                        setStore('settings',item);
-                        this.goBack(item)
-                    },
                 })
             }
         }

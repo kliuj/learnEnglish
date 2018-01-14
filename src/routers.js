@@ -179,7 +179,7 @@ router.beforeEach((to, from, next) => {
 	//验证后的回调
 	let afterCheck = ()=>{
 		//检查是否登录过
-		if(getStore('userInfo').id > 0 && getStore('settings').UsePrice){
+		if(getStore('userInfo').id > 0){
 			Models.send({
                 url:'getWechatIsLogin',
                 type:'get',

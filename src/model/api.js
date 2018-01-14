@@ -100,16 +100,33 @@ export default class Api {
       //get 请求需要 params key
       params = { params }
     }
-    axios[type](self.models()[url],params)
-    .then(({data})=>{
-        this.preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin})
+    //每次都获取设置
+    axios.get(self.models()['wechatSystemSetting']).then((item = {})=>{
+        setStore('settings',item)
+        window.USER_SETTINGS = getStore('settings')
+        //真正发送接口
+        axios[type](self.models()[url],params)
+        .then(({data})=>{
+            this.preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin})
+        })
+        .catch((err)=>{
+            hideLoading()
+            console.dir(err)
+            // showAlert("网络异常");
+            return false;
+        });
+    }).catch(()=>{
+        axios[type](self.models()[url],params)
+        .then(({data})=>{
+            this.preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin})
+        })
+        .catch((err)=>{
+            hideLoading()
+            console.dir(err)
+            // showAlert("网络异常");
+            return false;
+        });
     })
-    .catch((err)=>{
-        hideLoading()
-        console.dir(err)
-        // showAlert("网络异常");
-        return false;
-    });
   }
   //接口回调函数
   /*
