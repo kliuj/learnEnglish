@@ -101,8 +101,8 @@ export default class Api {
       params = { params }
     }
     //每次都获取设置
-    axios.get(self.models()['wechatSystemSetting']).then((item = {})=>{
-        setStore('settings',item)
+    axios.get(self.models()['wechatSystemSetting']).then((settings)=>{
+        setStore('settings',settings.data.item)
         window.USER_SETTINGS = getStore('settings')
         //真正发送接口
         axios[type](self.models()[url],params)
