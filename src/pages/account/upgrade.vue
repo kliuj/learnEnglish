@@ -75,12 +75,14 @@
                 this.isVip = true
             },
             checkVip(){
-                const time = USER_INFO.userVipEndTime.split(" ")[0].split("-"),
-                      vipTime = transdate(USER_INFO.userVipEndTime),  
-                      now = Date.now();    
-                if(vipTime > now) {
-                    this.isVip = true
-                    this.vipEndTime = `${ time[0] }年${ time[1] }月${ time[2]}日`
+                if(USER_INFO.userVipEndTime){
+                    const time = USER_INFO.userVipEndTime.split(" ")[0].split("-"),
+                        vipTime = transdate(USER_INFO.userVipEndTime),
+                        now = Date.now();
+                    if(vipTime > now) {
+                        this.isVip = true
+                        this.vipEndTime = `${ time[0] }年${ time[1] }月${ time[2]}日`
+                    }
                 }
             }
         }

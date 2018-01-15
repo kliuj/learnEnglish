@@ -274,3 +274,13 @@ export function Browser(){
     return browser
 }
 
+//查询当前页面是否可以打开侧边栏
+export function checkNameCanOpen(name) {
+    const nameObj = {
+        // ''
+        'timeline':true,
+        'index':true,
+        'activity':true,
+        'upgrade':true
+    }
+}

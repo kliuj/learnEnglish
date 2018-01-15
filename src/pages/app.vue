@@ -108,8 +108,22 @@
                 e.preventDefault();
                 this.changeOpenTap()
             })
+
+        },
+        beforeUpdate(){
+            this.initTap()
+        },
+        updated(){
+            this.initTap()
         },
         methods:{
+            initTap(){
+                //获取子组件完成后的状态
+                const {name,query}  = this.$router.currentRoute
+                if(query.open == 1){
+
+                }
+            },
             changeOpenTap(){
                 this.$store.dispatch('changeOpenTap')
             },

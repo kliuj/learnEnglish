@@ -102,7 +102,6 @@
         mounted(){
             this.getInitData()
             this.getWechatClockIn()
-            
         },
         methods:{
             gotoAll(){
