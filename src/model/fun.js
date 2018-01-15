@@ -281,6 +281,15 @@ export function checkNameCanOpen(name) {
         'timeline':true,
         'index':true,
         'activity':true,
-        'upgrade':true
+        'upgrade':true,
+        'credits':true,
+        'invite':true,
+        'about':true
     }
+    return nameObj[name]
+}
+
+//去掉url的一些参数
+export function deleteParams(url){
+    return url.replace(/open/ig,'notopen')
 }

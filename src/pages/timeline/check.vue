@@ -1,12 +1,20 @@
 <template>
   <div class="page pg-timeline pg-timeline-check">
         <!-- HEADER -->
-        <HeaderView pageName="check" pageTitle="打卡记录">
+        <HeaderView pageName="check" pageTitle="打卡记录" v-if="hasBack">
             <div class="header-right">
                 <a href="javascript:void(0);" class="icon calendar" v-show="!isCalendar" @click="changeCalendar(true)"></a>
                 <a href="javascript:void(0);" class="icon list " v-show="isCalendar" @click="changeCalendar(false)"></a>
             </div>
         </HeaderView>
+        <header class="gb-header" v-if="!hasBack">
+            <NavTab />
+            <h1 class="has-icon">打卡记录</h1>
+            <div class="header-right">
+                <a href="javascript:void(0);" class="icon calendar" v-show="!isCalendar" @click="changeCalendar(true)"></a>
+                <a href="javascript:void(0);" class="icon list " v-show="isCalendar" @click="changeCalendar(false)"></a>
+            </div>
+        </header>
         <!-- //HEADER -->
         <!-- MAINVIEW -->
         <div class="mainview" v-if="data">
@@ -80,6 +88,7 @@
 <script>
     import HeaderView from '../../components/HeaderView'
     import Calendar from '../../components/calendar/calendar.vue'
+    import NavTab from '../../components/NavTab'
     import Api from '../../model/api'
     const Models = new Api()
     import{
@@ -87,7 +96,7 @@
     }from '../../model/fun'
     export default{
         components:{
-            HeaderView,Calendar
+            HeaderView,Calendar,NavTab
         },
         data(){
             return {
@@ -111,14 +120,16 @@
                     }
                 },
                 studyNotes:null,
-                checkedDates:[]
+                checkedDates:[],
+                hasBack:false
             }
         },
         beforeRouteEnter(to, from, next){
             // ...
             next(vm=>{
-                vm.uid = to.query.uid
+                vm.uid = to.query.uid || USER_INFO.id;//没有id默认是用户自己
                 vm.isowner = vm.uid == USER_INFO.id,
+                vm.hasBack = to.query.qhfrom
                 vm.getCheckList()
             })
         },

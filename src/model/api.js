@@ -135,7 +135,7 @@ export default class Api {
   preCallback({success,error,nocheck,notShowLoading,data,backUrl,needLogin}){
     hideLoading()
     if(data.errorCode === -8 && needLogin){
-        setStore('loginBack',backUrl || location.href)
+        setStore('loginBack',backUrl || location.href.replace(/open/ig,'notopen'))
         jumpUrl('login')
         return false
     }

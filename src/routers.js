@@ -170,12 +170,12 @@ router.beforeEach((to, from, next) => {
     wx && wx.hideOptionMenu();
     hideMessage();
 	showLoading()
-	if(to.query.force){
-		//强制登录
-		localStorage.setItem('loginBack',location.href.split('force')[0]);
-        jumpUrl('login')
-		// return false;
-	}
+	// if(to.query.force){
+	// 	//强制登录
+	// 	localStorage.setItem('loginBack',location.href.split('force')[0]);
+    //     jumpUrl('login')
+	// 	// return false;
+	// }
 	//验证后的回调
 	let afterCheck = ()=>{
 		//检查是否登录过

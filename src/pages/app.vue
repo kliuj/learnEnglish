@@ -11,6 +11,11 @@
             </div>
             <ul class="sidenav-menu">
                 <li>
+                    <a target-name='check' @click="changeTab">
+                        <span class="sidenav-link-title">打卡</span>
+                    </a>
+                </li>
+                <li>
                     <a target-name='timeline' @click="changeTab">
                         <span class="sidenav-link-title">学习时间轴</span>
                     </a>
@@ -57,7 +62,7 @@
 </template>
 <script>
     import { mapActions } from 'vuex'
-    import { fadeIn ,showAlert } from '../model/fun'
+    import { fadeIn ,showAlert ,checkNameCanOpen} from '../model/fun'
     import { setStore ,getStore} from '../model/store'
     import Api from '../model/api'
     const Models = new Api()
@@ -66,6 +71,7 @@
             return{
                 tabVisiable:false,
                 profileInfo:'',
+                hasInit:false
             }
         },
         watch:{
@@ -120,8 +126,11 @@
             initTap(){
                 //获取子组件完成后的状态
                 const {name,query}  = this.$router.currentRoute
-                if(query.open == 1){
-
+                if(query.open == 1 && !this.hasInit){
+                    if(checkNameCanOpen(name)){
+                        this.hasInit = true
+                        this.changeOpenTap()
+                    }
                 }
             },
             changeOpenTap(){

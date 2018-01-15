@@ -758,7 +758,7 @@ img {
 	padding: 20px 24px
 }
 .sidenav-brand .logo {
-	width: 50%;
+	width: 40%;
 	vertical-align: top
 }
 
@@ -820,8 +820,10 @@ img {
 	font-size: 2.0em;
 	color: #ffffff
 }
-.sidenav-menu a:hover {background-color: rgba(255,255,255,.5)}
-.sidenav-menu a.active {color: #ffffff}
+.sidenav-menu a.active {
+	background-color: rgba(255,255,255,.5);
+	color: #ffffff
+}
 
 .sidenav-link-title {display: block}
 
