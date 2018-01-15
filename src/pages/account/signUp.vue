@@ -155,16 +155,25 @@
                 //强制更新用户信息
                 this.$store.dispatch('getNewUserInfo')
                 if(this.backurl && this.backurl != 'undefined'){
-                    location.replace(this.backurl)
+                    this.replaceWithOpen(this.backurl)
                 }else{
                     if(loginBack){
                         delStore('loginBack')
-                        location.replace(loginBack)
+                        this.replaceWithOpen(loginBack)
                     }else{
-                        routerUrl('index',this.$router)
+//                        routerUrl('index',this.$router)
+                        this.$router.replace({'name':'index',query:{'open':1}})
                     }
                 }
             },
+            replaceWithOpen(url){
+                if(/\?/g.test(url)){
+                    url = url + '&open=1'
+                }else{
+                    url = url + '?open=1'
+                }
+                location.replace(url)
+            }
         }
     }
 </script>
