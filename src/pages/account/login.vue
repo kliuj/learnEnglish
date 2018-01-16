@@ -18,7 +18,8 @@
     export default{
         data(){
             return{
-                backurl:''
+                backurl:'',
+                open:0
             }
         },
         components:{
@@ -27,6 +28,7 @@
         beforeRouteEnter(to, from, next){
             next(vm=>{
                 // vm.backurl = to.query.returnUrl
+                vm.open = to.query.open
             })
         },
         created(){
@@ -38,13 +40,13 @@
                 //强制更新用户信息
                 this.$store.dispatch('getNewUserInfo')
                 if(this.backurl && this.backurl != 'undefined'){
-                    location.replace(this.backurl)
+                    this.replaceWithOpen(this.backurl)
                 }else{
                     if(loginBack){
                         delStore('loginBack')
-                        location.replace(loginBack)
+                        this.replaceWithOpen(loginBack)
                     }else{
-                        routerUrl('index',this.$router)
+                        this.$router.replace({'name':'index',query:{'open':this.open}})
                     }
                 }
             },
@@ -65,6 +67,14 @@
                         }
                     }
                 })
+            },
+            replaceWithOpen(url){
+                if(/\?/g.test(url)){
+                    url = url + '&open='+this.open
+                }else{
+                    url = url + '?open='+this.open
+                }
+                location.replace(url)
             }
         }
     }
