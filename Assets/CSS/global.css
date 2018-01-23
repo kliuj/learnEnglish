@@ -1884,7 +1884,7 @@ img {
 
 /* ABOUT */
 .pg-about .about-ledge {
-	padding: 15px 15px;
+	padding: 0 0;
 	font-size: 1.4em;
 	color: #333333
 }
