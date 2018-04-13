@@ -141,7 +141,7 @@
                             title:info.activityTitle,
                             desc:info.activityDate.split(" ")[0] + ',' +info.activityAddress,
                             link:'http://wx.ledgetrans.com.cn/index.html#/activitydetail?id='+this.id ,
-                            imgUrl:info.activityImgUrl
+                            imgUrl:info.activityImgUrl.indexOf('http') < 0 ? 'http://wx.ledgetrans.com.cn'+info.activityImgUrl :info.activityImgUrl 
                         })
                     }
                 })
