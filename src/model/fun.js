@@ -173,27 +173,26 @@ export function setCookie({name,value}) {
 }
 //微信分享
 export function share({title,link,imgUrl,desc,success = ()=>{},cancel=()=>{}}){
-    console.log(link)
-  if(wx){
-    wx.showOptionMenu();
-    //朋友圈
-    wx.onMenuShareTimeline({
-        title , // 分享标题
-        link , // 分享链接
-        imgUrl , // 分享图标
-        success ,
-        cancel
-    });
-    //“分享给朋友”
-    wx.onMenuShareAppMessage({
-        title, // 分享标题
-        desc, // 分享描述
-        link, // 分享链接
-        imgUrl, // 分享图标
-        success,
-        cancel
-    });
-  }
+    wx.ready(()=>{ 
+        wx.showOptionMenu();
+        //朋友圈
+        wx.onMenuShareTimeline({
+            title , // 分享标题
+            link , // 分享链接
+            imgUrl , // 分享图标
+            success ,
+            cancel
+        });
+        //“分享给朋友”
+        wx.onMenuShareAppMessage({
+            title, // 分享标题
+            desc, // 分享描述
+            link, // 分享链接
+            imgUrl, // 分享图标
+            success,
+            cancel
+        });
+    })
 }
 
 //微信支付

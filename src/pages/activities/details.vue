@@ -96,7 +96,8 @@
     import{
         wxPay,
         routerUrl,
-        jumpUrl
+        jumpUrl,
+        share
     }from '../../model/fun'
     export default{
         components:{
@@ -134,7 +135,14 @@
                         id:this.id
                     },
                     success:(d)=>{
-                        this.data = d.item
+                        const info = d.item;
+                        this.data = info
+                        share({
+                            title:info.activityTitle,
+                            desc:info.activityDate.split(" ")[0] + ',' +info.activityAddress,
+                            link:'http://wx.ledgetrans.com.cn/index.html#/activitydetail?id='+this.id ,
+                            imgUrl:info.activityImgUrl
+                        })
                     }
                 })
                 Models.send({
