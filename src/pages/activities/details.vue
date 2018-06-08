@@ -97,7 +97,8 @@
         wxPay,
         routerUrl,
         jumpUrl,
-        share
+        share,
+        showToast
     }from '../../model/fun'
     export default{
         components:{
@@ -199,7 +200,16 @@
 						CreditPay:this.usercredit ? this.orderInfo.userValidCredit : 0
 					},
 					success:(d)=>{
-						this.sendWxPay(d.item)
+					    if(d.item){
+                            if(d.item.activityOrderStatus === 0){
+                                this.sendWxPay(d.item)
+                            }else if(d.item.activityOrderStatus === 1){
+                                //已经支付成功
+                                this.$router.replace({ name: 'timeline' })
+                            }
+                        }else{
+                            showToast(d.errorMsg)
+                        }
 					}
 				})
 			},
